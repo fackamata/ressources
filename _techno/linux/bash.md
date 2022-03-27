@@ -6,12 +6,25 @@ techno: linux
 
 # bash
 
-## script
+## variable
 
-### special character
+### result of a command
+
+$( <cmd> ) to stock result in a variable
+
+```bash
+nb=$(ls -l /etc | wc -l)
+echo $nb
+259
+```
+
+### built-in variable
 
 #### $?
 error code of the last command
+
+#### $#
+number of parameters passed to script
 
 #### $@
 all the argument of a script 
@@ -21,6 +34,8 @@ first argument of a script
 
 $2 for the second
 $3 for the third
+
+## add text to file
 
 #### >
 ```bash
@@ -34,6 +49,8 @@ echo 'text suite' >> new.txt
 ```
 
 append text suite to our file new.txt. Erase nothing, just append at the end of file.
+
+## send to command
 
 #### <
 ```bash
