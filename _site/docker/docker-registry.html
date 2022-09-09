@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Docker Registry - </title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+  </head>
+  <body>
+    <nav id="navbarTop">
+
+    
+        <!-- docker -->
+        <ul>
+            
+            <li><a href=" /flask/home" 
+                docker
+                class="  ">
+                flask</a>
+                
+            </li>
+        
+            <li><a href=" /jekyll/home" 
+                docker
+                class="  ">
+                jekyll</a>
+                
+            </li>
+        
+            <li><a href=" /symfony/home" 
+                docker
+                class="  ">
+                symfony</a>
+                
+            </li>
+        
+            <li><a href=" /mysql/home" 
+                docker
+                class="  ">
+                mysql</a>
+                
+            </li>
+        
+            <li><a href=" /laravel/home" 
+                docker
+                class="  ">
+                laravel</a>
+                
+            </li>
+        
+            <li><a href=" /docker/home" 
+                docker
+                class="  activeTop  ">
+                docker</a>
+                
+            </li>
+        
+    </ul>
+</nav>
+    <nav id="sidebar" class="sidenav">
+    
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <ul>
+        
+        
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+                    
+                
+                    <li><a href="/docker/home" 
+                        class="  ">
+                                           
+                            home</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/getting-started" 
+                        class="  ">
+                        
+                            getting started</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/run" 
+                        class="  ">
+                                           
+                            run</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/environment-variables" 
+                        class="  ">
+                        
+                            environment variables</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/docker-images" 
+                        class="  ">
+                        
+                            docker images</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/CMD-vs-ENTRYPOINT" 
+                        class="  ">
+                        
+                            CMD vs ENTRYPOINT</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/networking" 
+                        class="  ">
+                                           
+                            networking</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/storage" 
+                        class="  ">
+                                           
+                            storage</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/docker-compose" 
+                        class="  ">
+                        
+                            docker compose</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/docker-registry" 
+                        class="  active  ">
+                        
+                            docker registry</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/container-orcherstration" 
+                        class="  ">
+                        
+                            container orcherstration</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/kubernetes" 
+                        class="  ">
+                                           
+                            kubernetes</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/docker-swarm" 
+                        class="  ">
+                        
+                            docker swarm</a>
+                        
+
+                    </li>
+                
+            
+        
+    </ul>
+</nav>
+    
+    <button onclick="openNav()" id="sideBtn">></button>
+    <main>
+      <!-- <button onclick="sideFunction()" id="sideBtn" title="Go to top">></button> -->
+      <h1>Docker registry</h1>
+      
+      <p>docker registry est le cloud, c’est là où les images sont rangées</p>
+
+<p><img src="/assets/img/docker/imageName.png" alt="image name" /></p>
+
+<p>quand on précise qu’un seul nom, docker assume que les deux sont similaires</p>
+
+<p>par défaut toutes les images sont stockées dans docker hub</p>
+
+<p><img src="/assets/img/docker/dockerIo.png" alt="docker io" /></p>
+
+<h2 id="private-registry">private registry</h2>
+
+<p>si on ne veut pas partager ses images, on les places dans des registres privés.</p>
+
+<p>AWS, Azure ou BCP donne accès à un registre privé par défaut.</p>
+
+<h2 id="docker-private-registry">docker private registry</h2>
+
+<p>on peut placer des images privé dans docker</p>
+
+<p>on doit alors se loger</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker login private-registry.io
+</code></pre></div></div>
+
+<p>et pour lancer un container</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run private-registry.io/apps/internal-app
+</code></pre></div></div>
+
+<p>si on est pas loguer, docker nous indiquera que l’image ne peut pas être trouvé</p>
+
+<h2 id="docker-registry-local">docker registry local</h2>
+
+<p>docker registry à sa propre image, on peut lancer un container à partir de celle-la.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-d</span> <span class="nt">-p</span> 5000:5000 <span class="nt">--name</span> registry registry:2
+</code></pre></div></div>
+
+<p>pour enregistrer une image dans ce registre</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker image tag my-image localhost:5000/my-image
+</code></pre></div></div>
+<p>on doit taguer l’image avec l’adresse de notre registre privé</p>
+
+<p>on peut maintenant pusher notre image dans ce registre</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker push localhost:5000/my-image
+</code></pre></div></div>
+
+<p>en utilisant la commande <code class="language-plaintext highlighter-rouge">push</code> et les info de notre registre et le nom de notre image</p>
+
+<p>on peut maintenant puller cette image depuis ce réseau</p>
+
+<p>si on est sur le même host :</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull localhost:5000/my-image
+</code></pre></div></div>
+
+<p>ou par l’ip ou le nom de domain du docker host, si on est sur un notre host dans notre environnement :</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull 192.168.56.100:5000/my-image
+</code></pre></div></div>
+
+
+      
+      <button onclick="topFunction()" id="topBtn" title="Go to top">></button>
+    </main>
+
+    <script src="/assets/js/sideBar.js"></script>
+    <script src="/assets/js/topButton.js"></script>
+    <script src="/assets/js/capitalizeFirstLetter.js"></script>
+
+  </body>
+</html>

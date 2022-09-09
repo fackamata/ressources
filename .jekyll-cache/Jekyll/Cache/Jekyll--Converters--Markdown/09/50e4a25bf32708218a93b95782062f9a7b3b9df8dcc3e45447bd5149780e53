@@ -1,0 +1,48 @@
+I"�<h2 id="à-quoi-sert-il-">à quoi sert-il ?</h2>
+
+<p>facilite les problèmes de dépendances, librairies entre les systèmes.
+Si je travail avec nodeJS, MongoDB, Reddit et Ansible, je peux créer un container pour chacun. Chaque container aura les dépendances et les librairies utile à chaque techno.</p>
+
+<h2 id="container">container</h2>
+
+<p>des environements totalement isolé. Ils ont leur propre process, services, network interfaces, mount.
+Ils tournent tous sur le même OS Kernel</p>
+
+<p>Les containers sont réutilisable n’importe où autant de fois que l’on veut.</p>
+
+<p>Ils sont beaucoup moins gourmant en ressources et en poids (en Mb contre Gb pour VirtualMachine), ils chargent très rapidement.</p>
+
+<h2 id="os">OS</h2>
+
+<p>la différence entre les différent OS linux c’est les softwares qui sont installer, les drivers, l’interface utilisateur.</p>
+
+<p>Il partage tous l’OS Kernel Linux.</p>
+
+<p>Si on veut faire tourner des containers ubuntu, fedora, redHat… On peut, il partageront tous l’OS kernel, et chaque container aura les softwares, driver… propres à chaque OS.</p>
+
+<h2 id="comment-ça-marche">comment ça marche.</h2>
+
+<p>Beaucoup d’OS, DBB, services on des images toute prête sur DockerHub</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run ansible
+docker run mongodb
+docker run redis
+</code></pre></div></div>
+
+<p>cette commande va nous installer les containers ansible, mongodb et redis</p>
+
+<p>on peut également installer plusieurs container d’une même techno</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run nodejs
+docker run nodejs
+docker run nodejs
+</code></pre></div></div>
+<p>comme ça, si un des containers ne fonctionne pas correctement on n’a juste a détruire son container</p>
+
+<h2 id="container-vs-image">container vs image</h2>
+
+<p>une image est un package, une configuration prêt à être utiliser.</p>
+
+<p>un container et une version de cette image, on peut en faire tourner autaut que voulu.</p>
+
+<p>Une image docker fonctionnera de la même façon sur n’importe quel ordi.</p>
+:ET

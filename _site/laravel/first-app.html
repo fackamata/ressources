@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>First App - </title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+  </head>
+  <body>
+    <nav id="navbarTop">
+
+    
+        <!-- laravel -->
+        <ul>
+            
+            <li><a href=" /flask/home" 
+                laravel
+                class="  ">
+                flask</a>
+                
+            </li>
+        
+            <li><a href=" /jekyll/home" 
+                laravel
+                class="  ">
+                jekyll</a>
+                
+            </li>
+        
+            <li><a href=" /symfony/home" 
+                laravel
+                class="  ">
+                symfony</a>
+                
+            </li>
+        
+            <li><a href=" /mysql/home" 
+                laravel
+                class="  ">
+                mysql</a>
+                
+            </li>
+        
+            <li><a href=" /laravel/home" 
+                laravel
+                class="  activeTop  ">
+                laravel</a>
+                
+            </li>
+        
+            <li><a href=" /docker/home" 
+                laravel
+                class="  ">
+                docker</a>
+                
+            </li>
+        
+    </ul>
+</nav>
+    <nav id="sidebar" class="sidenav">
+    
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <ul>
+        
+        
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+                    
+                
+                    <li><a href="/laravel/first-app" 
+                        class="  active  ">
+                        
+                            first app</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/simple-app" 
+                        class="  ">
+                        
+                            simple app</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/setup" 
+                        class="  ">
+                                           
+                            setup</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/authentication" 
+                        class="  ">
+                                           
+                            authentication</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/mail" 
+                        class="  ">
+                                           
+                            mail</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/authorization" 
+                        class="  ">
+                                           
+                            authorization</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/notification" 
+                        class="  ">
+                                           
+                            notification</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/soft-delete" 
+                        class="  ">
+                        
+                            soft delete</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/event-listener" 
+                        class="  ">
+                        
+                            event listener</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/blade-component" 
+                        class="  ">
+                        
+                            blade component</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/middleware" 
+                        class="  ">
+                                           
+                            middleware</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/anonymous-component" 
+                        class="  ">
+                        
+                            anonymous component</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/routing-advanced" 
+                        class="  ">
+                        
+                            routing advanced</a>
+                        
+
+                    </li>
+                
+            
+        
+            
+            
+        
+    </ul>
+</nav>
+    
+    <button onclick="openNav()" id="sideBtn">></button>
+    <main>
+      <!-- <button onclick="sideFunction()" id="sideBtn" title="Go to top">></button> -->
+      <h1>First app</h1>
+      
+      <h1 id="laravel-learn">laravel learn</h1>
+
+<h2 id="install-laravel">install laravel</h2>
+
+<p>install laravel from composer</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>composer global require <span class="s2">"laravel/installer"</span>
+</code></pre></div></div>
+
+<p>to make it global</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"~/.config/composer/vendor/bin:</span><span class="nv">$PATH</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<h2 id="new-app">new app</h2>
+
+<p>via composer and github repository</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>composer create-project laravel/laravel app-name
+</code></pre></div></div>
+
+<p>via laravel</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>laravel new blog
+</code></pre></div></div>
+
+<p>install missing packages and dependency</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>composer <span class="nb">install</span>
+</code></pre></div></div>
+
+<p>test the app</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>php artisan serve
+</code></pre></div></div>
+
+<h3 id="shortcut">shortcut</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>php artisan make:model Timer <span class="nt">-mc</span>
+</code></pre></div></div>
+<p>The command above will not only create the Models, it will also create the migrations and controllers due to the -mc flag.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>php artisan route:list
+</code></pre></div></div>
+<p>to list all route of our app</p>
+
+<h2 id="rooting">rooting</h2>
+
+<p>in routes directory, web.php</p>
+
+<p>we can return a view : in ressources/view
+or a string
+or a json</p>
+
+<h3 id="naming-route">naming route</h3>
+
+<p>with the option name, we name a route so if we want to change url, we don’t have to change everything</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Route</span><span class="o">::</span><span class="nf">get</span><span class="p">(</span><span class="s1">'/contact'</span><span class="p">,</span> <span class="p">[</span><span class="nc">PostController</span><span class="o">::</span><span class="n">class</span><span class="p">,</span> <span class="s1">'contact'</span><span class="p">])</span><span class="o">-&gt;</span><span class="nf">name</span><span class="p">(</span><span class="s1">'contact'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="find-all-route">find all route</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>php artisan route:list
+</code></pre></div></div>
+
+<h3 id="verification-in-the-rooting">verification in the rooting</h3>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Route</span><span class="o">::</span><span class="nf">get</span><span class="p">(</span><span class="s1">'/posts/{id}'</span><span class="p">,</span> <span class="p">[</span><span class="nc">PostController</span><span class="o">::</span><span class="n">class</span><span class="p">,</span> <span class="s1">'show'</span><span class="p">])</span><span class="o">-&gt;</span><span class="nf">whereNumber</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span> 
+</code></pre></div></div>
+<p>we check that id is a number, if not return 404 error code</p>
+
+<h2 id="controller">controller</h2>
+
+<p>controller should send the view</p>
+
+<p>in app/Http/Controllers</p>
+
+<p>new controllers extends controller, controller.php in the directory above</p>
+
+<p>we can make a controller with CLI</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>php artisan make:controller
+</code></pre></div></div>
+
+<h2 id="blade">blade</h2>
+
+<h3 id="carbon">carbon</h3>
+
+<p>carbon to format data like date</p>
+
+<h3 id="render-variable">render variable</h3>
+<p>with extrapolation in blade</p>
+
+<pre><code class="language-blade">{{ $title }}
+</code></pre>
+
+<h3 id="function">function</h3>
+
+<p>foreach :</p>
+
+<pre><code class="language-blade">@foreach($posts as $post)
+    &lt;h3&gt;{{ $post }}&lt;/h3&gt;
+@endforeach
+</code></pre>
+
+<h1 id="database">database</h1>
+
+<p>in config/database.php, DB_CONNECTION is the database connection name and not the name of the database</p>
+
+<p>we configure the access in .env</p>
+
+<p>migration goes along model in app/Models</p>
+
+<h2 id="relation">relation</h2>
+
+<h3 id="one-to-many">one to many</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>php artisan make:model Comment <span class="nt">-m</span>
+</code></pre></div></div>
+
+<p>create model and migration</p>
+
+<p>then in migration we add the column that we want and the foreign key</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$table</span><span class="o">-&gt;</span><span class="nf">unsignedBigInteger</span><span class="p">(</span><span class="s1">'post_id'</span><span class="p">);</span>
+    <span class="nv">$talbe</span><span class="o">-&gt;</span><span class="nf">foreign</span><span class="p">(</span><span class="s1">'post_id'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">references</span><span class="p">(</span><span class="s1">'id'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">on</span><span class="p">(</span><span class="s1">'posts'</span><span class="p">);</span>
+
+    <span class="n">in</span> <span class="n">shorter</span> <span class="n">therms</span> <span class="o">:</span>
+    <span class="nv">$table</span><span class="o">-&gt;</span><span class="nf">foreignId</span><span class="p">(</span><span class="s1">'post_id'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">constrained</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>and then in Post models :</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">public</span> <span class="k">function</span> <span class="n">comments</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="nf">hasMany</span><span class="p">(</span><span class="nc">Comment</span><span class="o">::</span><span class="n">class</span><span class="p">);</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>and in Comment models:</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">public</span> <span class="k">function</span> <span class="n">post</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="nf">belongsTo</span><span class="p">(</span><span class="nc">Post</span><span class="o">::</span><span class="n">class</span><span class="p">);</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>to display all comment, in the view:</p>
+
+<pre><code class="language-blade">    @forelse($post-&gt;comments as $comment)
+        &lt;h2&gt;{{ $comment-&gt;content }} | créé le {{ $comment-&gt;created_at-&gt;format('d-m-Y') }}&lt;/h2&gt;
+    @empty
+        &lt;h2&gt;aucun commentaire&lt;/h2&gt;
+    @endforelse
+
+</code></pre>
+
+<p>@ forelse equivalent to foreach, but goes to empty if any</p>
+
+<h3 id="many-to-many">many to many</h3>
+
+<p>need to create a linking table</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>php artisan make:migration create_pivot_table_post_tag
+</code></pre></div></div>
+
+<p>then we add the foreign key to our pivot table</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nv">$table</span><span class="o">-&gt;</span><span class="nf">foreignId</span><span class="p">(</span><span class="s1">'post_id'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">constrained</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">onDelete</span><span class="p">(</span><span class="s1">'cascade'</span><span class="p">);</span>
+    <span class="nv">$table</span><span class="o">-&gt;</span><span class="nf">foreignId</span><span class="p">(</span><span class="s1">'tag_id'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">constrained</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">onDelete</span><span class="p">(</span><span class="s1">'cascade'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>and we migrate</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>php artisan migrate
+</code></pre></div></div>
+
+<h3 id="one-to-many-polymorphic">one to many polymorphic</h3>
+
+<p>like comment on video or post</p>
+
+<p>to optimise and don’t create to table comment</p>
+
+<h3 id="has-one-through">has one through</h3>
+
+<p>like a post as one image and an image as one artist</p>
+
+<p>with this relation we can get the artist directly from the post</p>
+
+<h3 id="has-one-of-many">has one of many</h3>
+
+<p>like to get le last or the first of comments</p>
+
+<h2 id="validation">validation</h2>
+
+<p>we can use the validate function to check input like :</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$validated</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="nf">validate</span><span class="p">([</span>
+    <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'required|min:5|max:255|unique:posts'</span><span class="p">,</span>
+    <span class="s1">'content'</span><span class="o">=&gt;</span> <span class="s1">'required'</span>
+<span class="p">]);</span>
+</code></pre></div></div>
+<p>so, if title or content are empty, the form will not be validated, we won’t get an error but it will reload the form</p>
+
+<p>if the form is not validated a variable $errors is created.</p>
+
+<p>to view error on our view:</p>
+
+<pre><code class="language-blade">@if($errors-&gt;any())
+    @foreach ($errors-&gt;all() as $error)
+        &lt;div class="text-red-500"&gt;{{ $error }}&lt;/div&gt;        
+    @endforeach
+@endif
+</code></pre>
+
+<h3 id="custom-validation-rules">custom validation rules</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>php artisan make:rule Uppercase
+</code></pre></div></div>
+<p>create a file Uppercase.php in app/Rules</p>
+
+<p>in this file, edit the passes function and message if needed</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">function</span> <span class="n">passes</span><span class="p">(</span><span class="nv">$attribute</span><span class="p">,</span> <span class="nv">$value</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="nb">strtoupper</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="o">===</span> <span class="nv">$value</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>and in our Controller :</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'required'</span><span class="p">,</span><span class="s1">'min:5'</span><span class="p">,</span><span class="s1">'max:255'</span><span class="p">,</span><span class="s1">'unique:posts'</span><span class="p">,</span> <span class="k">new</span> <span class="nc">Uppercase</span><span class="p">],</span> <span class="c1">// another way with custom validation rule</span>
+
+</code></pre></div></div>
+
+<h3 id="translate-error-message">translate error message</h3>
+
+<p>in config/app.php change to :</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">'locale'</span> <span class="o">=&gt;</span> <span class="s1">'fr'</span><span class="p">,</span>
+</code></pre></div></div>
+
+<p>and in resources/lang create a fr directory, copy the 4 files of en directory in it. And then change what need to be change</p>
+
+<h2 id="file-storage">file storage</h2>
+
+<p>in a controller :</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Storage</span><span class="o">::</span><span class="nf">disk</span><span class="p">(</span><span class="s1">'local'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">put</span><span class="p">(</span><span class="s1">'avatars'</span><span class="p">,</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="nb">file</span><span class="p">(</span><span class="s1">'avatar'</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>it’s gonna upload the file in storage/app/avatars</p>
+
+<p>to use the public directory,in a controller :</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Storage</span><span class="o">::</span><span class="nf">disk</span><span class="p">(</span><span class="s1">'public'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">put</span><span class="p">(</span><span class="s1">'avatars'</span><span class="p">,</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="n">avatar</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>it’s gonna upload the file in storage/app/public/avatars</p>
+
+<p>without Storage, directly with $request</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$name</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="n">avatar</span><span class="o">-&gt;</span><span class="nf">store</span><span class="p">(</span><span class="s1">'avatartest'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="helper">helper</h3>
+
+<p>in the documentation, there is some helpers for file like:</p>
+<ul>
+  <li>exists : return a boolean</li>
+  <li>missing : return a boolean</li>
+  <li>download : to download a file</li>
+  <li>url : return the url of the file</li>
+  <li>size : return the size of the file</li>
+  <li>path: return the path of the file, but it’s better to get the url</li>
+</ul>
+
+<p>to use those helper :</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Storage</span><span class="o">::</span><span class="nf">disk</span><span class="p">(</span><span class="s1">'local'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">exists</span><span class="p">(</span><span class="nv">$name</span><span class="p">);</span>
+<span class="nc">Storage</span><span class="o">::</span><span class="nf">disk</span><span class="p">(</span><span class="s1">'local'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">missing</span><span class="p">(</span><span class="nv">$name</span><span class="p">);</span>
+<span class="nc">Storage</span><span class="o">::</span><span class="nf">download</span><span class="p">(</span><span class="nv">$name</span><span class="p">);</span>
+<span class="nc">Storage</span><span class="o">::</span><span class="nf">url</span><span class="p">(</span><span class="nv">$name</span><span class="p">);</span>
+<span class="nc">Storage</span><span class="o">::</span><span class="nf">size</span><span class="p">(</span><span class="nv">$name</span><span class="p">);</span>
+<span class="nc">Storage</span><span class="o">::</span><span class="nf">path</span><span class="p">(</span><span class="nv">$name</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="to-display-image-in-view">to display image in view</h3>
+
+<p>we need to create a symbolic link so laravel can link the storage/ to the app/public/ :</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>php artisan storage:link
+</code></pre></div></div>
+
+<h1 id="front-end">front-end</h1>
+
+<h2 id="include-css-and-js">include css and js</h2>
+
+<p>in our layout file:</p>
+
+<pre><code class="language-blade">    &lt;link rel="stylesheet" href="{{ asset('css/app.css')}}"&gt;    
+    &lt;!-- get the css from public directory --&gt;
+ ...
+
+    &lt;script src="{{ asset('js/app.js')}}"&gt;&lt;/script&gt; 
+    &lt;!-- get the js from public directory --&gt;
+</code></pre>
+
+<h3 id="laravel-mix">laravel mix</h3>
+<p>package base on webpack encore</p>
+
+<p>compile all css and js file, to get only one js and css minified to gain space</p>
+
+<p>see webpack.mix.js  at the root of our app</p>
+
+<p>will create /public/js and /public/css when compiling</p>
+
+<p>we need npm to install all dependencies</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span>
+</code></pre></div></div>
+
+<p>to compile all js and css from ressources</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run dev
+</code></pre></div></div>
+
+<h3 id="tailwind">tailwind</h3>
+
+<h4 id="installation">installation</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">-D</span> tailwindcss
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npx tailwindcss init
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>content: <span class="o">[</span>
+    <span class="s1">'./storage/framework/views/*.php'</span>,
+    <span class="s1">'./resources/**/*.blade.php'</span>,
+    <span class="s1">'./resources/**/*.js'</span>,
+    <span class="s1">'./resources/**/*.vue'</span>,
+<span class="o">]</span>,
+</code></pre></div></div>
+<p>create a tailwind.config.js where we can configure link to our file that contain template and css,
+so tailwind can remove all unnecessary class name to minified</p>
+
+<p>then we need to add “layers” to our app in ressources/css/app.css</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@tailwind base;
+@tailwind components;
+@tailwind utilities;
+</code></pre></div></div>
+
+<p>and we modifie our webpack.mix.js like in the documentation</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mix.js('resources/js/app.js', 'public/js')
+    .postCss('resources/css/app.css', 'public/css', [
+        require('tailwindcss'),
+    ]);
+</code></pre></div></div>
+<h3 id="sassscss">sass/scss</h3>
+
+<p>in webpack.mix.js :</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mix</span><span class="mf">.</span><span class="nf">js</span><span class="p">(</span><span class="s1">'resources/js/app.js'</span><span class="p">,</span> <span class="s1">'public/js'</span><span class="p">)</span>
+    <span class="mf">.</span><span class="nf">sass</span><span class="p">(</span><span class="s1">'resources/scss/app.scss'</span><span class="p">,</span> <span class="s1">'public/css'</span><span class="p">,</span> <span class="p">[</span>
+        <span class="c1">//</span>
+    <span class="p">]);</span>
+</code></pre></div></div>
+
+<p>then create in resources :
+file scss containing file app.scss</p>
+
+<p>then run :</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run watch
+</code></pre></div></div>
+<p>listen for changes in ressources, and compile only those changes</p>
+
+<p>if it needs to install packages, run the same command again</p>
+
+<p>don’t need to lauch the command everytime to make changes as it listen for them</p>
+
+      
+      <button onclick="topFunction()" id="topBtn" title="Go to top">></button>
+    </main>
+
+    <script src="/assets/js/sideBar.js"></script>
+    <script src="/assets/js/topButton.js"></script>
+    <script src="/assets/js/capitalizeFirstLetter.js"></script>
+
+  </body>
+</html>

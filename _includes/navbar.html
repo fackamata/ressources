@@ -1,0 +1,15 @@
+<nav id="navbarTop">
+
+    {% assign current = page.url | split: '/' %}
+        <!-- {{ current[1]}} -->
+        <ul>
+            {% for tech in site.data.techno %}
+            <li><a href="{{ site.baseurl }} {{ tech.link | relative_url }}/home" 
+                {{ page.techno}}
+                class=" {% if page.techno == tech.active  %} activeTop {% endif %} ">
+                {{ tech.title }}</a>
+                
+            </li>
+        {% endfor %}
+    </ul>
+</nav>

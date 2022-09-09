@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Authorization - </title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+  </head>
+  <body>
+    <nav id="navbarTop">
+
+    
+        <!-- laravel -->
+        <ul>
+            
+            <li><a href=" /flask/home" 
+                laravel
+                class="  ">
+                flask</a>
+                
+            </li>
+        
+            <li><a href=" /jekyll/home" 
+                laravel
+                class="  ">
+                jekyll</a>
+                
+            </li>
+        
+            <li><a href=" /symfony/home" 
+                laravel
+                class="  ">
+                symfony</a>
+                
+            </li>
+        
+            <li><a href=" /mysql/home" 
+                laravel
+                class="  ">
+                mysql</a>
+                
+            </li>
+        
+            <li><a href=" /laravel/home" 
+                laravel
+                class="  activeTop  ">
+                laravel</a>
+                
+            </li>
+        
+            <li><a href=" /docker/home" 
+                laravel
+                class="  ">
+                docker</a>
+                
+            </li>
+        
+    </ul>
+</nav>
+    <nav id="sidebar" class="sidenav">
+    
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <ul>
+        
+        
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+                    
+                
+                    <li><a href="/laravel/first-app" 
+                        class="  ">
+                        
+                            first app</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/simple-app" 
+                        class="  ">
+                        
+                            simple app</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/setup" 
+                        class="  ">
+                                           
+                            setup</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/authentication" 
+                        class="  ">
+                                           
+                            authentication</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/mail" 
+                        class="  ">
+                                           
+                            mail</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/authorization" 
+                        class="  active  ">
+                                           
+                            authorization</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/notification" 
+                        class="  ">
+                                           
+                            notification</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/soft-delete" 
+                        class="  ">
+                        
+                            soft delete</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/event-listener" 
+                        class="  ">
+                        
+                            event listener</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/blade-component" 
+                        class="  ">
+                        
+                            blade component</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/middleware" 
+                        class="  ">
+                                           
+                            middleware</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/anonymous-component" 
+                        class="  ">
+                        
+                            anonymous component</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/routing-advanced" 
+                        class="  ">
+                        
+                            routing advanced</a>
+                        
+
+                    </li>
+                
+            
+        
+            
+            
+        
+    </ul>
+</nav>
+    
+    <button onclick="openNav()" id="sideBtn">></button>
+    <main>
+      <!-- <button onclick="sideFunction()" id="sideBtn" title="Go to top">></button> -->
+      <h1>Authorization</h1>
+      
+      <p>similaire au role dans symfony</p>
+
+<h2 id="migration-pour-ajouter-une-colonne-à-user">migration pour ajouter une colonne à user</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>php artisan make:migration add_admin_column_to_users_table <span class="nt">--table</span><span class="o">=</span><span class="nb">users</span>
+</code></pre></div></div>
+
+<p>ensuite, on ajoute une colonne admin à user qui par defaut est un boolean à O.</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">function</span> <span class="n">up</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nc">Schema</span><span class="o">::</span><span class="nf">table</span><span class="p">(</span><span class="s1">'users'</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="kt">Blueprint</span> <span class="nv">$table</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$table</span><span class="o">-&gt;</span><span class="nf">boolean</span><span class="p">(</span><span class="s1">'admin'</span><span class="p">)</span><span class="o">-&gt;</span><span class="k">default</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>et on migre</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>php artisan migrate
+</code></pre></div></div>
+
+<h2 id="gates">gates</h2>
+
+<p>dans le fichier <code class="language-plaintext highlighter-rouge">app/Providers/AuthServiceProvider.php</code></p>
+
+<p>dans la fonction boot on défini une gate</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Gate</span><span class="o">::</span><span class="nb">define</span><span class="p">(</span><span class="s1">'access-admin'</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="kt">User</span> <span class="nv">$user</span><span class="p">){</span>
+        <span class="k">return</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="n">admin</span><span class="p">;</span>
+    <span class="p">});</span>
+</code></pre></div></div>
+
+<p>avec la façade Gate on a les méthodes allows ou denies</p>
+
+      
+      <button onclick="topFunction()" id="topBtn" title="Go to top">></button>
+    </main>
+
+    <script src="/assets/js/sideBar.js"></script>
+    <script src="/assets/js/topButton.js"></script>
+    <script src="/assets/js/capitalizeFirstLetter.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Event Listener - </title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+  </head>
+  <body>
+    <nav id="navbarTop">
+
+    
+        <!-- laravel -->
+        <ul>
+            
+            <li><a href=" /flask/home" 
+                laravel
+                class="  ">
+                flask</a>
+                
+            </li>
+        
+            <li><a href=" /jekyll/home" 
+                laravel
+                class="  ">
+                jekyll</a>
+                
+            </li>
+        
+            <li><a href=" /symfony/home" 
+                laravel
+                class="  ">
+                symfony</a>
+                
+            </li>
+        
+            <li><a href=" /mysql/home" 
+                laravel
+                class="  ">
+                mysql</a>
+                
+            </li>
+        
+            <li><a href=" /laravel/home" 
+                laravel
+                class="  activeTop  ">
+                laravel</a>
+                
+            </li>
+        
+            <li><a href=" /docker/home" 
+                laravel
+                class="  ">
+                docker</a>
+                
+            </li>
+        
+    </ul>
+</nav>
+    <nav id="sidebar" class="sidenav">
+    
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <ul>
+        
+        
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+                    
+                
+                    <li><a href="/laravel/first-app" 
+                        class="  ">
+                        
+                            first app</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/simple-app" 
+                        class="  ">
+                        
+                            simple app</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/setup" 
+                        class="  ">
+                                           
+                            setup</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/authentication" 
+                        class="  ">
+                                           
+                            authentication</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/mail" 
+                        class="  ">
+                                           
+                            mail</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/authorization" 
+                        class="  ">
+                                           
+                            authorization</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/notification" 
+                        class="  ">
+                                           
+                            notification</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/soft-delete" 
+                        class="  ">
+                        
+                            soft delete</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/event-listener" 
+                        class="  active  ">
+                        
+                            event listener</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/blade-component" 
+                        class="  ">
+                        
+                            blade component</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/middleware" 
+                        class="  ">
+                                           
+                            middleware</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/anonymous-component" 
+                        class="  ">
+                        
+                            anonymous component</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/routing-advanced" 
+                        class="  ">
+                        
+                            routing advanced</a>
+                        
+
+                    </li>
+                
+            
+        
+            
+            
+        
+    </ul>
+</nav>
+    
+    <button onclick="openNav()" id="sideBtn">></button>
+    <main>
+      <!-- <button onclick="sideFunction()" id="sideBtn" title="Go to top">></button> -->
+      <h1>Event listener</h1>
+      
+      <p>il existe différent type d’event comme : login, logout, registered, passwordReset…</p>
+
+<p>dans le fichier <code class="language-plaintext highlighter-rouge">app/Http/Controllers/Auth/RegisteredUserController.php</code>, à la ligne 49, on utilise la fonction event</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">event</span><span class="p">(</span><span class="k">new</span> <span class="nc">Registered</span><span class="p">(</span><span class="nv">$user</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>cette fonction va appeler les listeners de cette évênement</p>
+
+<p>dans le fichier <code class="language-plaintext highlighter-rouge">app/Providers/EventServiceProvider.php</code>, on retrouve ce listener</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">protected</span> <span class="nv">$listen</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="nc">Registered</span><span class="o">::</span><span class="n">class</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="nc">SendEmailVerificationNotification</span><span class="o">::</span><span class="n">class</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">];</span>
+</code></pre></div></div>
+<p>quand l’évênement Registered est déclenché, la fonction SendEmailVerificationNotification va être déclenchée.</p>
+
+<h2 id="création-devent">création d’event</h2>
+
+<p>voir <a href="https://laravel.com/docs/9.x/events#generating-events-and-listeners">documentation</a></p>
+
+<p>on créer l’event :</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>php artisan make:event PostCreatedEvent
+</code></pre></div></div>
+
+<p>on créer le listener :</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>php artisan make:listener PostCreatedListener <span class="nt">--event</span><span class="o">=</span>PostCreatedEvent
+</code></pre></div></div>
+
+<p>Ces commandes vont nous créer les dossier Event et Listener dans app</p>
+
+<h2 id="utilisation-dun-event">utilisation d’un event</h2>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">event</span><span class="p">(</span><span class="k">new</span> <span class="nc">PostCreatedEvent</span><span class="p">(</span><span class="nv">$post</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>celui-ci va appeler le listener PostCreatedListener, et on place la logique dans la fonction handle de notre listener</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">function</span> <span class="n">handle</span><span class="p">(</span><span class="kt">PostCreatedEvent</span> <span class="nv">$event</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nf">dd</span><span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="n">post</span><span class="o">-&gt;</span><span class="n">title</span> <span class="mf">.</span> <span class="s1">' vient d\être créé !'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="mapping">mapping</h2>
+<p>on doit mapper ses event listener dans le EventService Provider pour pouvoir l’utiliser:</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">protected</span> <span class="nv">$listen</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="nc">Registered</span><span class="o">::</span><span class="n">class</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="nc">SendEmailVerificationNotification</span><span class="o">::</span><span class="n">class</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="nc">PostCreatedEvent</span><span class="o">::</span><span class="n">class</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="nc">PostCreatedListener</span><span class="o">::</span><span class="n">class</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">];</span>
+</code></pre></div></div>
+
+      
+      <button onclick="topFunction()" id="topBtn" title="Go to top">></button>
+    </main>
+
+    <script src="/assets/js/sideBar.js"></script>
+    <script src="/assets/js/topButton.js"></script>
+    <script src="/assets/js/capitalizeFirstLetter.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,59 @@
+* { padding: none; margin: none; }
+
+body { background: #141D2B; color: #A3B0CC; font-family: Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; width: 100vw; padding: 1vw; font-size: 13px; }
+
+main { width: 100vw; margin-top: 2vh; }
+
+h1, h2, h3, h4 { color: #A3B0CC; }
+
+h1 { margin-left: 20vw; margin-bottom: 5vh; margin-top: 5vh; }
+
+p a { color: #9FEF00; }
+
+pre { padding: 1vh 3vw; background-color: #1A2332; max-width: fit-content; }
+
+pre code { color: #7ca728; font-size: 10px; }
+
+img { max-width: 100%; }
+
+#topBtn { display: none; position: fixed; bottom: 20px; right: 30px; z-index: 99; font-size: 18px; border: none; outline: none; background-color: #283A55; color: #CAD2E2; cursor: pointer; padding: 10px 15px; border-radius: 40%; transform: rotate(-90deg); }
+
+#sideBtn { display: block; position: fixed; top: 40px; left: 0px; font-size: 18px; z-index: 3; border: none; outline: none; background-color: #1A2332; color: #CAD2E2; cursor: pointer; padding: 10px 15px; border-radius: 40%; }
+
+.activeTop { color: #9FEF00 !important; }
+
+#navbarTop { height: 40px; position: fixed; z-index: 1; top: 0; width: 100vw; background-color: #141D2B; }
+
+#navbarTop ul { margin: 0; list-style: none; display: flex; justify-content: space-around; }
+
+#navbarTop ul a { text-decoration: none; color: #A3B0CC; }
+
+#navbarTop ul a:visited { color: #A3B0CC; }
+
+#navbarTop ul a .active { background-color: blue; color: red; }
+
+@media screen and (min-width: 769px) { body { font-size: 16px; } main { padding: 0px  3vw; margin-left: 200px; } p { margin-left: 4vh; } pre { margin-left: 6vw; padding: 0.5rem 1rem; } pre code { font-size: 14px; } #sidebar { display: block; height: 100%; width: 200px; position: fixed; z-index: 1; top: 0; left: 0; overflow-x: hidden; padding-top: 100px; } #sidebar ul { padding-left: 10px; list-style: none; } #sidebar ul li { padding-top: 2vh; } #sidebar ul a { text-decoration: none; color: #A3B0CC; } #sidebar ul a:visited { color: #A3B0CC; } }
+
+#sidebar { height: 100%; width: 200px; position: fixed; z-index: 1; top: 70px; left: 0; overflow-x: hidden; padding-top: 10px; }
+
+#sidebar ul { padding-left: 10px; list-style: none; }
+
+#sidebar ul li { padding-top: 2vh; }
+
+#sidebar ul a { text-decoration: none; color: #A3B0CC; }
+
+#sidebar ul a:visited { color: #A3B0CC; }
+
+.active { padding-left: 10px; color: #9FEF00 !important; }
+
+#sidebar { height: 100%; width: 200px; position: fixed; z-index: 5; top: 0; left: 0; background-color: #1A2332; overflow-x: hidden; transition: 0.5s; padding-top: 60px; }
+
+.sidenav a { text-decoration: none; color: #818181; display: block; transition: 0.3s; }
+
+.sidenav a:hover { color: #f1f1f1; }
+
+.sidenav .closebtn { position: absolute; top: 0; right: 25px; font-size: 36px; margin-left: 50px; }
+
+@media screen and (max-height: 450px) { .sidenav { padding-top: 15px; } .sidenav a { font-size: 18px; } }
+
+/*# sourceMappingURL=main.css.map */

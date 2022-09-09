@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Docker Swarm - </title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+  </head>
+  <body>
+    <nav id="navbarTop">
+
+    
+        <!-- docker -->
+        <ul>
+            
+            <li><a href=" /flask/home" 
+                docker
+                class="  ">
+                flask</a>
+                
+            </li>
+        
+            <li><a href=" /jekyll/home" 
+                docker
+                class="  ">
+                jekyll</a>
+                
+            </li>
+        
+            <li><a href=" /symfony/home" 
+                docker
+                class="  ">
+                symfony</a>
+                
+            </li>
+        
+            <li><a href=" /mysql/home" 
+                docker
+                class="  ">
+                mysql</a>
+                
+            </li>
+        
+            <li><a href=" /laravel/home" 
+                docker
+                class="  ">
+                laravel</a>
+                
+            </li>
+        
+            <li><a href=" /docker/home" 
+                docker
+                class="  activeTop  ">
+                docker</a>
+                
+            </li>
+        
+    </ul>
+</nav>
+    <nav id="sidebar" class="sidenav">
+    
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <ul>
+        
+        
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+                    
+                
+                    <li><a href="/docker/home" 
+                        class="  ">
+                                           
+                            home</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/getting-started" 
+                        class="  ">
+                        
+                            getting started</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/run" 
+                        class="  ">
+                                           
+                            run</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/environment-variables" 
+                        class="  ">
+                        
+                            environment variables</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/docker-images" 
+                        class="  ">
+                        
+                            docker images</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/CMD-vs-ENTRYPOINT" 
+                        class="  ">
+                        
+                            CMD vs ENTRYPOINT</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/networking" 
+                        class="  ">
+                                           
+                            networking</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/storage" 
+                        class="  ">
+                                           
+                            storage</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/docker-compose" 
+                        class="  ">
+                        
+                            docker compose</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/docker-registry" 
+                        class="  ">
+                        
+                            docker registry</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/container-orcherstration" 
+                        class="  ">
+                        
+                            container orcherstration</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/kubernetes" 
+                        class="  ">
+                                           
+                            kubernetes</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/docker-swarm" 
+                        class="  active  ">
+                        
+                            docker swarm</a>
+                        
+
+                    </li>
+                
+            
+        
+    </ul>
+</nav>
+    
+    <button onclick="openNav()" id="sideBtn">></button>
+    <main>
+      <!-- <button onclick="sideFunction()" id="sideBtn" title="Go to top">></button> -->
+      <h1>Docker swarm</h1>
+      
+      <p>on peut créer plusieurs host, docker swarm va s’occuper de distribuer nos container entres ces hosts pour de meilleur performance</p>
+
+<p>pour cela on doit avoir plusieur host avec docker installer</p>
+
+<p>on désigne un de ces hosts comme le swarm manager et les autres comme slave/worker</p>
+
+<p>ensuite on lance <code class="language-plaintext highlighter-rouge">docker swarm init</code> dans le swarm manager, ça va l’initialiser</p>
+
+<p>cette commande nous renvera une autre commande à lancer sur nos worker host <code class="language-plaintext highlighter-rouge">docker swarm join --token &lt;token&gt;</code> pour qu’il ce join à notre swarm manager</p>
+
+<p>nos worker sont maintenant des nodes de notre swarm cluster</p>
+
+<h2 id="docker-swarm-orchestration">docker swarm orchestration</h2>
+
+<p>pour lancer plusieurs instances d’un serveur web</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker service create <span class="nt">--replicas</span><span class="o">=</span>3 my-web-server
+</code></pre></div></div>
+
+<p>docker service va créer 3 instances de notre webserver</p>
+
+<p>cette commande est lancer depuis le manager node</p>
+
+<p>docker service create fonctionne comme docker run, on lui passe les options de la même manière</p>
+
+      
+      <button onclick="topFunction()" id="topBtn" title="Go to top">></button>
+    </main>
+
+    <script src="/assets/js/sideBar.js"></script>
+    <script src="/assets/js/topButton.js"></script>
+    <script src="/assets/js/capitalizeFirstLetter.js"></script>
+
+  </body>
+</html>

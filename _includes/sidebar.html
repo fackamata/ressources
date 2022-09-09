@@ -1,0 +1,25 @@
+<nav id="sidebar" class="sidenav">
+    
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <ul>
+        {% assign current = page.url | split: '/' %}
+        
+        {% for tech in site.data.techno %}
+            
+            {% if tech.title == page.techno %}
+                    
+                {% for navItem in tech.nav %}
+                    <li><a href="{{ site.baseurl }}/{{tech.title}}{{navItem | relative_url }}" 
+                        class=" {% if current[-1] == navItem %} active {% endif %} ">
+                        {% if navItem contains "-" %}
+                            {{navItem | replace: '-', ' '}}</a>
+                        {% else %}                   
+                            {{navItem }}</a>
+                        {% endif %}
+
+                    </li>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+    </ul>
+</nav>

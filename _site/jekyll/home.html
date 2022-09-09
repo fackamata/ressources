@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Home - </title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+  </head>
+  <body>
+    <nav id="navbarTop">
+
+    
+        <!-- jekyll -->
+        <ul>
+            
+            <li><a href=" /flask/home" 
+                jekyll
+                class="  ">
+                flask</a>
+                
+            </li>
+        
+            <li><a href=" /jekyll/home" 
+                jekyll
+                class="  activeTop  ">
+                jekyll</a>
+                
+            </li>
+        
+            <li><a href=" /symfony/home" 
+                jekyll
+                class="  ">
+                symfony</a>
+                
+            </li>
+        
+            <li><a href=" /mysql/home" 
+                jekyll
+                class="  ">
+                mysql</a>
+                
+            </li>
+        
+            <li><a href=" /laravel/home" 
+                jekyll
+                class="  ">
+                laravel</a>
+                
+            </li>
+        
+            <li><a href=" /docker/home" 
+                jekyll
+                class="  ">
+                docker</a>
+                
+            </li>
+        
+    </ul>
+</nav>
+    <nav id="sidebar" class="sidenav">
+    
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <ul>
+        
+        
+        
+            
+            
+        
+            
+            
+                    
+                
+                    <li><a href="/jekyll/back-office" 
+                        class="  ">
+                        
+                            back office</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/jekyll/getting-started" 
+                        class="  ">
+                        
+                            getting started</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/jekyll/usefull-package" 
+                        class="  ">
+                        
+                            usefull package</a>
+                        
+
+                    </li>
+                
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+    </ul>
+</nav>
+    
+    <button onclick="openNav()" id="sideBtn">></button>
+    <main>
+      <!-- <button onclick="sideFunction()" id="sideBtn" title="Go to top">></button> -->
+      <h1>Jekyll</h1>
+      
+      <p>To install it in ubuntu : <a href="https://jekyllrb.com/docs/installation/ubuntu/">Installation</a>.</p>
+
+<h2 id="create-a-jekyll">create a jekyll</h2>
+
+<p>to create a basic website</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll new websiteName
+</code></pre></div></div>
+
+<h3 id="jekyll-with-no-theme">jekyll with no theme</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll new websiteName <span class="nt">--blank</span>
+</code></pre></div></div>
+
+<p>then create a Gemfile</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle init
+</code></pre></div></div>
+
+<p>then in this file add jekyll</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s2">"jekyll"</span>
+</code></pre></div></div>
+
+<h2 id="_configyml">_config.yml</h2>
+
+<p>this file contains configuration &amp; global variables.</p>
+
+<p>After each modification of this file, we need to restart the server</p>
+
+<h2 id="_includes">_includes</h2>
+
+<p>contains HTML for elements you’d repeatedly use like header, footer, navbar, …</p>
+
+<h2 id="_layouts">_layouts</h2>
+
+<p>contains templates for different types of pages.</p>
+
+<p>in this directory store all the layout like default.html</p>
+
+<p>to use them, in the front matter :</p>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">default</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">Home</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<h2 id="_posts">_posts</h2>
+
+<p>contains .md and .html blog posts</p>
+
+<h2 id="_sass">_sass</h2>
+
+<p>contains styling for website</p>
+
+<p>can contains multiple sass files</p>
+
+<h3 id="include-multiple-sass">include multiple sass</h3>
+
+<p>in assets/css/main.scss</p>
+<div class="language-scss highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">---</span><span class="err"> 
+</span><span class="na">---</span><span class="err"> 
+
+$</span><span class="na">baseurl</span><span class="p">:</span> <span class="s2">""</span><span class="p">;</span>
+
+<span class="k">@import</span> <span class="s2">"main"</span><span class="p">;</span>
+<span class="k">@import</span> <span class="s2">"utilities"</span><span class="p">;</span>
+<span class="nc">...</span>
+</code></pre></div></div>
+<p>list all sass files contained in _sass</p>
+
+<h2 id="start-server">start server</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll serve
+</code></pre></div></div>
+
+<h2 id="add-collection">add collection</h2>
+
+<p>to add a new collection we add to _config.yml</p>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="na">collections</span><span class="pi">:</span>
+      <span class="na">recipes</span><span class="pi">:</span>
+        <span class="na">output</span><span class="pi">:</span> <span class="no">true</span>
+</code></pre></div></div>
+<p>where recipes is the name of our collection</p>
+
+<p>output true, so all the items of our collection will be a page linkable</p>
+
+<h2 id="debug">debug</h2>
+
+<p>to inspect a variable like with console_log or var_dump :</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nil 
+</code></pre></div></div>
+<p>ou</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>null 
+</code></pre></div></div>
+
+      
+      <button onclick="topFunction()" id="topBtn" title="Go to top">></button>
+    </main>
+
+    <script src="/assets/js/sideBar.js"></script>
+    <script src="/assets/js/topButton.js"></script>
+    <script src="/assets/js/capitalizeFirstLetter.js"></script>
+
+  </body>
+</html>

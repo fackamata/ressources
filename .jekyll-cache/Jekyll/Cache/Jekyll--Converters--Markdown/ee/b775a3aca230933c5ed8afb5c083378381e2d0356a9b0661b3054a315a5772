@@ -1,0 +1,49 @@
+I"\<p>permet de couper la requête entre le client et le server</p>
+
+<p>pour autoriser l’accès seulement aux personnes identifier sur plusieurs route :</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Route</span><span class="o">::</span><span class="nf">middleware</span><span class="p">(</span><span class="s1">'auth'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">group</span><span class="p">(</span><span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nc">Route</span><span class="o">::</span><span class="nf">get</span><span class="p">(</span><span class="s1">'/foo'</span><span class="p">,</span> <span class="p">[</span><span class="nc">TestConstroller</span><span class="o">::</span><span class="n">class</span><span class="p">,</span> <span class="s1">'foo'</span><span class="p">]);</span>
+    <span class="nc">Route</span><span class="o">::</span><span class="nf">get</span><span class="p">(</span><span class="s1">'/bar'</span><span class="p">,</span> <span class="p">[</span><span class="nc">TestConstroller</span><span class="o">::</span><span class="n">class</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">]);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+<p>dans le fichier web.php</p>
+
+<h2 id="dans-un-controller">dans un controller</h2>
+
+<p>on peut utiliser les middlewares directement dans la fonction construct d’un controller</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">function</span> <span class="n">__construct</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="nf">middleware</span><span class="p">(</span><span class="s1">'auth'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">except</span><span class="p">(</span><span class="s1">'bar'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="middleware-personnalisé">middleware personnalisé</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>php artisan make:middleware IsAdmin
+</code></pre></div></div>
+<p>créé le fichier <code class="language-plaintext highlighter-rouge">app/Http/Middleware/IsAdmin.php</code></p>
+
+<p>on doit l’enregistrer dans notre <code class="language-plaintext highlighter-rouge">app/Http/kernel.php</code></p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">protected</span> <span class="nv">$routeMiddleware</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">'auth'</span> <span class="o">=&gt;</span> <span class="err">\</span><span class="nc">App\Http\Middleware\Authenticate</span><span class="o">::</span><span class="n">class</span><span class="p">,</span>
+    <span class="mf">...</span>
+    <span class="s1">'admin'</span> <span class="o">=&gt;</span> <span class="err">\</span><span class="nc">App\Http\Middleware\IsAdmin</span><span class="o">::</span><span class="n">class</span><span class="p">,</span>        
+<span class="p">];</span>
+</code></pre></div></div>
+
+<p>on peut déshormais l’utiliser comme n’importe quel middleware</p>
+
+<p>on entre la logique du middleware dans la fonction handle</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">function</span> <span class="n">handle</span><span class="p">(</span><span class="kt">Request</span> <span class="nv">$request</span><span class="p">,</span> <span class="kt">Closure</span> <span class="nv">$next</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// on vérifie si l'utilisateur connecté est administrateur</span>
+
+    <span class="c1">// si oui, continuer jusqu'a la prochaine requête</span>
+    <span class="k">if</span><span class="p">(</span><span class="nf">auth</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">user</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">admin</span> <span class="o">==</span> <span class="mi">1</span><span class="p">){</span>
+        <span class="k">return</span> <span class="nv">$next</span><span class="p">(</span><span class="nv">$request</span><span class="p">);</span> <span class="c1">// je passe la main à la prochaine request</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">// si non, on retourne une 403</span>
+        <span class="nf">abort</span><span class="p">(</span><span class="mi">403</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+:ET

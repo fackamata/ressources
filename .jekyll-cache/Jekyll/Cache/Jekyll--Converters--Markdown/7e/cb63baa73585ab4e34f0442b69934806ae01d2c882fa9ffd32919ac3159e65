@@ -1,0 +1,10 @@
+I"½<p>in terminal, make sure to be in (env)</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3
+<span class="o">&gt;&gt;&gt;</span> from app import db
+<span class="o">&gt;&gt;&gt;</span> db.create_all<span class="o">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">exit</span><span class="o">()</span>
+</code></pre></div></div>
+
+<p>those command will create our database.</p>
+:ET

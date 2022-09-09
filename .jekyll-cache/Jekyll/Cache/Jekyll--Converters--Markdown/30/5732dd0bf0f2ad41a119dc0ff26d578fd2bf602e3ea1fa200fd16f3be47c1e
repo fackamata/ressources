@@ -1,0 +1,66 @@
+I"�
+<p>docker registry est le cloud, c’est là où les images sont rangées</p>
+
+<p><img src="/assets/img/docker/imageName.png" alt="image name" /></p>
+
+<p>quand on précise qu’un seul nom, docker assume que les deux sont similaires</p>
+
+<p>par défaut toutes les images sont stockées dans docker hub</p>
+
+<p><img src="/assets/img/docker/dockerIo.png" alt="docker io" /></p>
+
+<h2 id="private-registry">private registry</h2>
+
+<p>si on ne veut pas partager ses images, on les places dans des registres privés.</p>
+
+<p>AWS, Azure ou BCP donne accès à un registre privé par défaut.</p>
+
+<h2 id="docker-private-registry">docker private registry</h2>
+
+<p>on peut placer des images privé dans docker</p>
+
+<p>on doit alors se loger</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker login private-registry.io
+</code></pre></div></div>
+
+<p>et pour lancer un container</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run private-registry.io/apps/internal-app
+</code></pre></div></div>
+
+<p>si on est pas loguer, docker nous indiquera que l’image ne peut pas être trouvé</p>
+
+<h2 id="docker-registry-local">docker registry local</h2>
+
+<p>docker registry à sa propre image, on peut lancer un container à partir de celle-la.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-d</span> <span class="nt">-p</span> 5000:5000 <span class="nt">--name</span> registry registry:2
+</code></pre></div></div>
+
+<p>pour enregistrer une image dans ce registre</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker image tag my-image localhost:5000/my-image
+</code></pre></div></div>
+<p>on doit taguer l’image avec l’adresse de notre registre privé</p>
+
+<p>on peut maintenant pusher notre image dans ce registre</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker push localhost:5000/my-image
+</code></pre></div></div>
+
+<p>en utilisant la commande <code class="language-plaintext highlighter-rouge">push</code> et les info de notre registre et le nom de notre image</p>
+
+<p>on peut maintenant puller cette image depuis ce réseau</p>
+
+<p>si on est sur le même host :</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull localhost:5000/my-image
+</code></pre></div></div>
+
+<p>ou par l’ip ou le nom de domain du docker host, si on est sur un notre host dans notre environnement :</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull 192.168.56.100:5000/my-image
+</code></pre></div></div>
+
+:ET

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Blade Component - </title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+  </head>
+  <body>
+    <nav id="navbarTop">
+
+    
+        <!-- laravel -->
+        <ul>
+            
+            <li><a href=" /flask/home" 
+                laravel
+                class="  ">
+                flask</a>
+                
+            </li>
+        
+            <li><a href=" /jekyll/home" 
+                laravel
+                class="  ">
+                jekyll</a>
+                
+            </li>
+        
+            <li><a href=" /symfony/home" 
+                laravel
+                class="  ">
+                symfony</a>
+                
+            </li>
+        
+            <li><a href=" /mysql/home" 
+                laravel
+                class="  ">
+                mysql</a>
+                
+            </li>
+        
+            <li><a href=" /laravel/home" 
+                laravel
+                class="  activeTop  ">
+                laravel</a>
+                
+            </li>
+        
+            <li><a href=" /docker/home" 
+                laravel
+                class="  ">
+                docker</a>
+                
+            </li>
+        
+    </ul>
+</nav>
+    <nav id="sidebar" class="sidenav">
+    
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <ul>
+        
+        
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+                    
+                
+                    <li><a href="/laravel/first-app" 
+                        class="  ">
+                        
+                            first app</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/simple-app" 
+                        class="  ">
+                        
+                            simple app</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/setup" 
+                        class="  ">
+                                           
+                            setup</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/authentication" 
+                        class="  ">
+                                           
+                            authentication</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/mail" 
+                        class="  ">
+                                           
+                            mail</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/authorization" 
+                        class="  ">
+                                           
+                            authorization</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/notification" 
+                        class="  ">
+                                           
+                            notification</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/soft-delete" 
+                        class="  ">
+                        
+                            soft delete</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/event-listener" 
+                        class="  ">
+                        
+                            event listener</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/blade-component" 
+                        class="  active  ">
+                        
+                            blade component</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/middleware" 
+                        class="  ">
+                                           
+                            middleware</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/anonymous-component" 
+                        class="  ">
+                        
+                            anonymous component</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/routing-advanced" 
+                        class="  ">
+                        
+                            routing advanced</a>
+                        
+
+                    </li>
+                
+            
+        
+            
+            
+        
+    </ul>
+</nav>
+    
+    <button onclick="openNav()" id="sideBtn">></button>
+    <main>
+      <!-- <button onclick="sideFunction()" id="sideBtn" title="Go to top">></button> -->
+      <h1>Blade component</h1>
+      
+      <p>plus optimiser que les composant anonyme et dynamique</p>
+
+<h2 id="créer-un-nouveau-composant">créer un nouveau composant</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>php artisan make:component NewFirstComponent
+</code></pre></div></div>
+
+<p>créé un nouveau fichier app\View\Component\NewFirstComponent.php, qui fonctionne comme un sous controller
+créé un nouveau fichier ressource\view\components\new-first-component.blade.php</p>
+
+<h2 id="utiliser-un-composant-blade">utiliser un composant blade</h2>
+
+<p>dans une vue:</p>
+<div class="language-twig highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;x-newFirstComponent</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<h2 id="utilisation-de-variable">utilisation de variable</h2>
+<p>on initialise la variable dans NewFirstComponent.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">NewFirstComponent</span> <span class="kd">extends</span> <span class="nc">Component</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$name</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">__construct</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">name</span> <span class="o">=</span> <span class="nv">$name</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>initialisation de notre composant blade</p>
+
+<div class="language-twig highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h3&gt;</span>salut <span class="cp">{{</span> <span class="err">$</span><span class="nv">name</span> <span class="cp">}}</span><span class="nt">&lt;/h3&gt;</span>
+</code></pre></div></div>
+
+<p>utilisation dans blade</p>
+<div class="language-twig highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;x-newFirstComponent</span> <span class="na">name=</span><span class="s">'richard'</span><span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<h2 id="variable-dynamique">variable dynamique</h2>
+
+<p>on initialise la variable dans NewFirstComponent.php</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">NewFirstComponent</span> <span class="kd">extends</span> <span class="nc">Component</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nv">$name</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nv">$title</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">__construct</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="nv">$title</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">name</span> <span class="o">=</span> <span class="nv">$name</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">title</span> <span class="o">=</span> <span class="nv">$title</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>initialisation de notre composant blade</p>
+
+<div class="language-twig highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h3&gt;</span>salut <span class="cp">{{</span> <span class="err">$</span><span class="nv">name</span> <span class="cp">}}</span>, le post à pour titre <span class="cp">{{</span> <span class="err">$</span><span class="nv">title</span> <span class="cp">}}</span><span class="nt">&lt;/h3&gt;</span>
+</code></pre></div></div>
+
+<p>utilisation dans blade</p>
+<div class="language-twig highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;x-newFirstComponent</span> <span class="na">name=</span><span class="s">'richard'</span> <span class="na">:title=</span><span class="s">"$post-&gt;title"</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<h2 id="utilisation-de-style">utilisation de style</h2>
+<p>dans notre composant</p>
+
+<div class="language-twig highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="cp">{{</span> <span class="err">$</span><span class="nv">attributes</span> <span class="cp">}}</span><span class="nt">&gt;</span>
+    ...
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p>pour autoriser l’utilisation de classe dans notre vue</p>
+
+<p>utilisation dans blade</p>
+<div class="language-twig highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;x-newFirstComponent</span> <span class="na">name=</span><span class="s">'richard'</span> <span class="na">class=</span><span class="s">'text-green-300'</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<h2 id="fusionner-les-attributs">fusionner les attributs</h2>
+
+<div class="language-twig highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="cp">{{</span> <span class="err">$</span><span class="nv">attributes</span><span class="o">-&gt;</span><span class="nv">merge</span><span class="p">([</span><span class="s1">'class'</span> <span class="o">=&gt;</span> <span class="s1">'font-bold'</span><span class="p">])</span> <span class="cp">}}</span><span class="nt">&gt;</span>
+    ...
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h2 id="render-des-tags">render des tags</h2>
+
+<p>on créer une fonction getTags dans notre NewFirstComponent, et on les retourne à la vue dans la fonction render</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">function</span> <span class="n">render</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="nf">view</span><span class="p">(</span><span class="s1">'components.new-first-component'</span><span class="p">,</span> <span class="p">[</span>
+        <span class="s1">'tags'</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="nf">getTags</span><span class="p">()</span>
+    <span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="k">private</span> <span class="k">function</span> <span class="n">getTags</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="s1">'HTML'</span><span class="p">,</span>
+        <span class="s1">'PHP'</span><span class="p">,</span>
+        <span class="s1">'JavaScript'</span>
+    <span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>et on peut ensuite l’utiliser dans notre component blade</p>
+
+<div class="language-twig highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"text-green-300"</span> <span class="nt">&gt;</span>salut <span class="cp">{{</span> <span class="err">$</span><span class="nv">name</span> <span class="cp">}}</span><span class="nt">&lt;/h3&gt;</span>
+
+    @foreach ($tags as $tag)
+        <span class="cp">{{</span> <span class="err">$</span><span class="nv">tag</span> <span class="cp">}}</span>
+    @endforeach
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h2 id="ajout-de-contenu">ajout de contenu</h2>
+
+<div class="language-twig highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;x-newFirstComponent</span> <span class="na">name=</span><span class="s">'slot'</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div&gt;</span>test d'inclusion de contenu<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/x-newFirstComponent&gt;</span>
+</code></pre></div></div>
+
+<p>pour qu’il soit inclus, on rajoute slot à l’endroit voulu dans notre component blade</p>
+
+<div class="language-twig highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"text-green-300"</span> <span class="nt">&gt;</span>salut <span class="cp">{{</span> <span class="err">$</span><span class="nv">name</span> <span class="cp">}}</span><span class="nt">&lt;/h3&gt;</span>
+
+    <span class="cp">{{</span> <span class="err">$</span><span class="nv">slot</span> <span class="cp">}}</span>
+    @foreach ($tags as $tag)
+        <span class="cp">{{</span> <span class="err">$</span><span class="nv">tag</span> <span class="cp">}}</span>
+    @endforeach
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h3 id="balise-">balise <x-slot></x-slot></h3>
+
+<div class="language-twig highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;x-newFirstComponent</span> <span class="na">name=</span><span class="s">'slot'</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;x-slot</span> <span class="na">name=</span><span class="s">'soustitre'</span><span class="nt">&gt;</span>un sous titre<span class="nt">&lt;/x-slot&gt;</span>
+<span class="nt">&lt;/x-newFirstComponent&gt;</span>
+</code></pre></div></div>
+
+<p>pour qu’il soit inclus, on rajoute la variable du nom du slot à l’endroit voulu dans notre component blade</p>
+
+<div class="language-twig highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"text-green-300"</span> <span class="nt">&gt;</span>salut <span class="cp">{{</span> <span class="err">$</span><span class="nv">name</span> <span class="cp">}}</span><span class="nt">&lt;/h3&gt;</span>
+
+
+
+    <span class="cp">{{</span> <span class="err">$</span><span class="nv">soustitre</span> <span class="cp">}}</span>
+
+    @foreach ($tags as $tag)
+        <span class="cp">{{</span> <span class="err">$</span><span class="nv">tag</span> <span class="cp">}}</span>
+    @endforeach
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+      
+      <button onclick="topFunction()" id="topBtn" title="Go to top">></button>
+    </main>
+
+    <script src="/assets/js/sideBar.js"></script>
+    <script src="/assets/js/topButton.js"></script>
+    <script src="/assets/js/capitalizeFirstLetter.js"></script>
+
+  </body>
+</html>

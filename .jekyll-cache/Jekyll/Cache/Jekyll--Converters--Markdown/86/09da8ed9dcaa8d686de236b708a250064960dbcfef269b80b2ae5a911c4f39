@@ -1,0 +1,81 @@
+I"B<p>lorsque l’on install docker, cela créé 3 réseaux automatiquement</p>
+
+<ul>
+  <li>bridge</li>
+  <li>none</li>
+  <li>host</li>
+</ul>
+
+<p>réseau par défaut ou les container son rattachés</p>
+
+<p>si on veut rattacher un container à un autre réseau il faut le préciser avec l’option <code class="language-plaintext highlighter-rouge">--network</code></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run Ubuntu <span class="nt">--network</span><span class="o">=</span>host
+docker run Ubuntu <span class="nt">--network</span><span class="o">=</span>none
+</code></pre></div></div>
+
+<h2 id="bridge">bridge</h2>
+
+<p>c’est un réseau privé interne créé par docker sur la machine (host)</p>
+
+<p>par défaut chaque container est lancer dans ce réseau.</p>
+
+<p>en général chaque container à une address ip dans les 172.17.0.0/255</p>
+
+<p>chaque container peut recourir à un autre en utilisant ces ip</p>
+
+<p>pour accéder à ces container depuis l’extérieur, il nous faut mapper les port</p>
+
+<p>une autre possibilité est de rattacher nos container au réseau host</p>
+
+<h2 id="host">host</h2>
+
+<p>pour accéder au container sans avoir a mapper les ports.</p>
+
+<p>mais on ne pourra pas lancer plusieur container similaire comme un server web car les ports seront les même</p>
+
+<h2 id="none">none</h2>
+
+<p>les container dans ce réseau sont isolé. on ne peut pas y accéder depuis l’extérieur</p>
+
+<h2 id="network">network</h2>
+
+<p>par défaut tout nos container seront reliés à un seul bridge réseau à l’intérieur de host</p>
+
+<p><img src="/assets/img/docker/singleNetwork.png" alt="un réseau" /></p>
+
+<p>si l’on veut créer plusieur réseau</p>
+
+<p><img src="/assets/img/docker/multipleNetwork.png" alt="plusieurs réseau" /></p>
+
+<p>ici on créé un nouveau réseau à partir du driver bridge et du subnet 182.18.0/16 suivi par le nom custom-isolated-network</p>
+
+<h2 id="voir-les-réseau">voir les réseau</h2>
+
+<p>pour voir les réseau configurer dans un container on lance la commande <code class="language-plaintext highlighter-rouge">inspect</code></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker inspect <span class="sb">`</span>container name<span class="sb">`</span>
+</code></pre></div></div>
+
+<p>dans les résultats dans la section <code class="language-plaintext highlighter-rouge">NetworkSettings</code> &gt; <code class="language-plaintext highlighter-rouge">Ǹetwork</code> on peut retrouver le type de réseau ainsi que son ip interne et son address MAC</p>
+
+<p>pour voir les réseau configurer dans notre systeme on lance la commande <code class="language-plaintext highlighter-rouge">network</code></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker network <span class="nb">ls</span>
+</code></pre></div></div>
+
+<p>on peut inspecter un network</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker network inspect bridge
+</code></pre></div></div>
+
+<h2 id="accès-entre-container">accès entre container</h2>
+
+<p>pour avoir accès d’un container à un autre on pourrai utiliser leur address ip mais celle-ci pourrait être différente</p>
+
+<p>on utilisera plutôt le nom des container. Docker comprend un server DNS interne</p>
+
+<p>le serveur DNS interne de docker utilise l’addres 127.17.0.11</p>
+
+<h2 id="création-de-réseau">création de réseau</h2>
+
+<p>docker network create –driver bridge –subnet 182.18.0.1/24 –gateway 182.18.0.1 wp-mysql-network</p>
+:ET

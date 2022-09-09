@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Mail - </title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+  </head>
+  <body>
+    <nav id="navbarTop">
+
+    
+        <!-- laravel -->
+        <ul>
+            
+            <li><a href=" /flask/home" 
+                laravel
+                class="  ">
+                flask</a>
+                
+            </li>
+        
+            <li><a href=" /jekyll/home" 
+                laravel
+                class="  ">
+                jekyll</a>
+                
+            </li>
+        
+            <li><a href=" /symfony/home" 
+                laravel
+                class="  ">
+                symfony</a>
+                
+            </li>
+        
+            <li><a href=" /mysql/home" 
+                laravel
+                class="  ">
+                mysql</a>
+                
+            </li>
+        
+            <li><a href=" /laravel/home" 
+                laravel
+                class="  activeTop  ">
+                laravel</a>
+                
+            </li>
+        
+            <li><a href=" /docker/home" 
+                laravel
+                class="  ">
+                docker</a>
+                
+            </li>
+        
+    </ul>
+</nav>
+    <nav id="sidebar" class="sidenav">
+    
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <ul>
+        
+        
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+                    
+                
+                    <li><a href="/laravel/first-app" 
+                        class="  ">
+                        
+                            first app</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/simple-app" 
+                        class="  ">
+                        
+                            simple app</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/setup" 
+                        class="  ">
+                                           
+                            setup</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/authentication" 
+                        class="  ">
+                                           
+                            authentication</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/mail" 
+                        class="  active  ">
+                                           
+                            mail</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/authorization" 
+                        class="  ">
+                                           
+                            authorization</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/notification" 
+                        class="  ">
+                                           
+                            notification</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/soft-delete" 
+                        class="  ">
+                        
+                            soft delete</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/event-listener" 
+                        class="  ">
+                        
+                            event listener</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/blade-component" 
+                        class="  ">
+                        
+                            blade component</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/middleware" 
+                        class="  ">
+                                           
+                            middleware</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/anonymous-component" 
+                        class="  ">
+                        
+                            anonymous component</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/laravel/routing-advanced" 
+                        class="  ">
+                        
+                            routing advanced</a>
+                        
+
+                    </li>
+                
+            
+        
+            
+            
+        
+    </ul>
+</nav>
+    
+    <button onclick="openNav()" id="sideBtn">></button>
+    <main>
+      <!-- <button onclick="sideFunction()" id="sideBtn" title="Go to top">></button> -->
+      <h1>Mail</h1>
+      
+      <p>on doit créer une class mail :</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>php artisan make:mail
+</code></pre></div></div>
+<p>créer un fichier dans <code class="language-plaintext highlighter-rouge">App/Mail/TestMail.php</code></p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">function</span> <span class="n">build</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="nf">from</span><span class="p">(</span><span class="s1">'monemails@test.com'</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="nf">subject</span><span class="p">(</span><span class="s1">'Mon objet personnalisé'</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="nf">view</span><span class="p">(</span><span class="s1">'emails.test'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>on créer ensuite une vue <code class="language-plaintext highlighter-rouge">ressources/views/emails/test.blade.php</code>, en fonction du nom que l’on a donné dans la fonction
+build de TestMail.</p>
+
+<p>on peut définir le contenu de notre mail comme n’importe quelle vue blade</p>
+
+<h2 id="pièce-jointe">pièce jointe</h2>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">function</span> <span class="n">build</span><span class="p">()</span>
+<span class="p">{</span>
+    
+    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="nf">from</span><span class="p">(</span><span class="s1">'monemails@test.com'</span><span class="p">)</span>
+                <span class="o">-&gt;</span><span class="nf">subject</span><span class="p">(</span><span class="s1">'Mon objet personnalisé'</span><span class="p">)</span>
+                <span class="o">-&gt;</span><span class="nf">view</span><span class="p">(</span><span class="s1">'emails.test'</span><span class="p">)</span>
+                <span class="o">-&gt;</span><span class="nf">attach</span><span class="p">(</span><span class="nf">public_path</span><span class="p">(</span><span class="s1">'likn.png'</span><span class="p">))</span>
+                <span class="o">-&gt;</span><span class="nf">attachFromStorage</span><span class="p">(</span><span class="s1">'img/test.png'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>à la suite de la vue, on peut rajouter des pièces jointes.</p>
+<ul>
+  <li>attach : depuis le dossier public avec public_path</li>
+  <li>attachFromStorage : depuis le dossier Storage</li>
+</ul>
+
+<h2 id="markdown">markdown</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>php artisan make:mail TestMarkdownMail <span class="nt">-m</span> emails.markdown-test
+</code></pre></div></div>
+
+<p>créé le fichier <code class="language-plaintext highlighter-rouge">ressources/views/emails/mardown-test.blade.php</code>
+créé également <code class="language-plaintext highlighter-rouge">app/Mail/TestMarkdownMail.php</code></p>
+
+      
+      <button onclick="topFunction()" id="topBtn" title="Go to top">></button>
+    </main>
+
+    <script src="/assets/js/sideBar.js"></script>
+    <script src="/assets/js/topButton.js"></script>
+    <script src="/assets/js/capitalizeFirstLetter.js"></script>
+
+  </body>
+</html>

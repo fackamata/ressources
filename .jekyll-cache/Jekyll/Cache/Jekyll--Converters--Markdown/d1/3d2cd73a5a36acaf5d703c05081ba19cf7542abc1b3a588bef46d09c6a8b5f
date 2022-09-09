@@ -1,0 +1,88 @@
+I"�!<p>comme pour un CRUD :
+afficher les livres, afficher le formulaire d’ajout, ajout d’un livre (POST), formulaire d’édition, éditer un livre (PUT/PATCH), supprimer un livre (DELETE)</p>
+
+<p>pour faire cela automatiquement, on utilise la facade route</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Route</span><span class="o">::</span><span class="nf">resource</span><span class="p">(</span><span class="s1">'livre'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\BookController'</span><span class="p">);</span>
+</code></pre></div></div>
+<p>les uri commenceront par livre/… on peut changer livre par book si on veut une uri book/…</p>
+
+<p>resource va créer toute les routes nécessaire à la gestion du CRUD</p>
+
+<p>on peut exclure des routes</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Route</span><span class="o">::</span><span class="nf">resource</span><span class="p">(</span><span class="s1">'livre'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\BookController'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">except</span><span class="p">([</span><span class="s1">'destroy'</span><span class="p">,</span> <span class="s1">'update'</span><span class="p">]);</span>
+</code></pre></div></div>
+
+<p>ou en créer que quelques une</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Route</span><span class="o">::</span><span class="nf">resource</span><span class="p">(</span><span class="s1">'livre'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\BookController'</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">only</span><span class="p">([</span><span class="s1">'destroy'</span><span class="p">,</span> <span class="s1">'update'</span><span class="p">]);</span>
+</code></pre></div></div>
+
+<p>pour créer un controller avec toutes les fonctions nécessaire, on ajoute l’option -r</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>php artisan make:controller BookController <span class="nt">-r</span>
+</code></pre></div></div>
+
+<h2 id="utilisation-dun-middleware">utilisation d’un middleware</h2>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Route</span><span class="o">::</span><span class="nf">group</span><span class="p">([</span><span class="s1">'middleware'</span> <span class="o">=&gt;</span> <span class="s1">'auth'</span><span class="p">],</span> <span class="k">function</span><span class="p">(){</span>
+    <span class="nc">Route</span><span class="o">::</span><span class="nf">resource</span><span class="p">(</span><span class="s1">'livre'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\BookController'</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>avec group, on peut attribuer un middleware à un ensemble de route</p>
+
+<p>on peut attribuer plusieurs middleware</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Route</span><span class="o">::</span><span class="nf">group</span><span class="p">([</span><span class="s1">'middleware'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'auth'</span><span class="p">,</span> <span class="s1">'admin'</span><span class="p">]],</span> <span class="k">function</span><span class="p">(){</span>
+    <span class="nc">Route</span><span class="o">::</span><span class="nf">resource</span><span class="p">(</span><span class="s1">'livre'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\BookController'</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h3 id="profondeur">profondeur</h3>
+
+<p>on peut rajouter de la profondeur à nos middleware</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Route</span><span class="o">::</span><span class="nf">group</span><span class="p">([</span><span class="s1">'middleware'</span> <span class="o">=&gt;</span> <span class="s1">'auth'</span><span class="p">],</span> <span class="k">function</span><span class="p">(){</span>
+    <span class="nc">Route</span><span class="o">::</span><span class="nf">resource</span><span class="p">(</span><span class="s1">'livre'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\BookController'</span><span class="p">);</span>
+    
+    <span class="nc">Route</span><span class="o">::</span><span class="nf">group</span><span class="p">([</span><span class="s1">'middleware'</span> <span class="o">=&gt;</span> <span class="s1">'admin'</span><span class="p">],</span> <span class="k">function</span><span class="p">(){</span>
+        <span class="nc">Route</span><span class="o">::</span><span class="nf">resource</span><span class="p">(</span><span class="s1">'admin'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\AdminController'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h2 id="prefix-des-routes">prefix des routes</h2>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Route</span><span class="o">::</span><span class="nf">group</span><span class="p">(</span>
+    <span class="p">[</span><span class="s1">'middleware'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'auth'</span><span class="p">,</span> <span class="s1">'admin'</span><span class="p">],</span>
+    <span class="s1">'prefix'</span> <span class="o">=&gt;</span> <span class="s1">'gestion'</span><span class="p">,</span> 
+    <span class="p">],</span>
+    <span class="k">function</span><span class="p">(){</span>
+    <span class="nc">Route</span><span class="o">::</span><span class="nf">resource</span><span class="p">(</span><span class="s1">'livre'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\BookController'</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>toute les routes de livre seront préfixer de gestion : gestion/livre/…</p>
+
+<h2 id="namespace">namespace</h2>
+
+<p>si on place notre controller dans un dossier book, on peut le préciser dans la route</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Route</span><span class="o">::</span><span class="nf">group</span><span class="p">(</span>
+    <span class="p">[</span><span class="s1">'middleware'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'auth'</span><span class="p">,</span> <span class="s1">'admin'</span><span class="p">],</span>
+    <span class="s1">'namespace'</span> <span class="o">=&gt;</span> <span class="s1">'book'</span><span class="p">,</span> 
+    <span class="p">],</span>
+    <span class="k">function</span><span class="p">(){</span>
+    <span class="nc">Route</span><span class="o">::</span><span class="nf">resource</span><span class="p">(</span><span class="s1">'livre'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\BookController'</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h2 id="name">name</h2>
+
+<p>on peut également préfixer la route avec l’option as :</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Route</span><span class="o">::</span><span class="nf">group</span><span class="p">(</span>
+    <span class="p">[</span><span class="s1">'middleware'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'auth'</span><span class="p">,</span> <span class="s1">'admin'</span><span class="p">],</span>
+    <span class="s1">'namespace'</span> <span class="o">=&gt;</span> <span class="s1">'book'</span><span class="p">,</span> 
+    <span class="s1">'as'</span> <span class="o">=&gt;</span> <span class="s1">'gestion.'</span>
+    <span class="p">],</span>
+    <span class="k">function</span><span class="p">(){</span>
+    <span class="nc">Route</span><span class="o">::</span><span class="nf">resource</span><span class="p">(</span><span class="s1">'livre'</span><span class="p">,</span> <span class="s1">'App\Http\Controllers\BookController'</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+:ET

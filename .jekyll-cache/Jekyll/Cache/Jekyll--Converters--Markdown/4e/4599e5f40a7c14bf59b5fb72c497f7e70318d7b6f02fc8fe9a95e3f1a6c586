@@ -1,0 +1,68 @@
+I"�<p>ne supprime pas de façon permanente</p>
+
+<p>rajoute la colonne delete_at qui une fois rempli sera considérer comme supprimer</p>
+
+<p>pour utiliser le softdelete, on utilise un Trait</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Flight</span> <span class="kd">extends</span> <span class="nc">Model</span>
+<span class="p">{</span>
+    <span class="kn">use</span> <span class="nc">SoftDeletes</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>et ensuite on fait une migration pour créer la colonne delete_at</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>php artisan make:migration add_delete_at_to_post_table <span class="nt">--table</span><span class="o">=</span>Posts
+</code></pre></div></div>
+
+<p>dans le fichier créer, on met à jour les schemas en se servant de la <a href="https://laravel.com/docs/9.x/eloquent#querying-soft-deleted-models">documentation</a></p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">use</span> <span class="nc">Illuminate\Database\Schema\Blueprint</span><span class="p">;</span>
+<span class="kn">use</span> <span class="nc">Illuminate\Support\Facades\Schema</span><span class="p">;</span>
+ 
+<span class="nc">Schema</span><span class="o">::</span><span class="nf">table</span><span class="p">(</span><span class="s1">'posts'</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="kt">Blueprint</span> <span class="nv">$table</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$table</span><span class="o">-&gt;</span><span class="nf">softDeletes</span><span class="p">();</span>
+<span class="p">});</span>
+ 
+<span class="nc">Schema</span><span class="o">::</span><span class="nf">table</span><span class="p">(</span><span class="s1">'posts'</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="kt">Blueprint</span> <span class="nv">$table</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$table</span><span class="o">-&gt;</span><span class="nf">dropSoftDeletes</span><span class="p">();</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>et pour prendre en compte ces changement :</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>php artisan migrate
+</code></pre></div></div>
+
+<h2 id="suprimer-un-post">suprimer un post</h2>
+
+<p>pour supprimer un post en particulier</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$post</span> <span class="o">=</span> <span class="nc">Post</span><span class="o">:</span><span class="nf">find</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="nv">$post</span><span class="o">-&gt;</span><span class="nb">delete</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>notre post n’apparait plus dans la vue, mais il est toujours présent dans notre base de données avec une date dans 
+la colonne delete_at</p>
+
+<h2 id="récupérer-un-post-supprimer">récupérer un post supprimer</h2>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$post_supprimer</span> <span class="o">=</span> <span class="nc">Post</span><span class="o">::</span><span class="nf">withTrashed</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">where</span><span class="p">(</span><span class="s1">'id'</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">get</span><span class="p">();</span>
+
+<span class="nf">dd</span><span class="p">(</span><span class="nv">$post_supprimer</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="restaurer-un-post-supprimer">restaurer un post supprimer</h2>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$post_supprimer</span> <span class="o">=</span> <span class="nc">Post</span><span class="o">::</span><span class="nf">withTrashed</span><span class="p">()</span><span class="o">-&gt;</span><span class="nf">where</span><span class="p">(</span><span class="s1">'id'</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">-&gt;</span><span class="nf">restore</span><span class="p">();</span>
+</code></pre></div></div>
+
+<h2 id="supprimer-définitivement">supprimer définitivement</h2>
+
+<p>:warning: <strong>Warning:</strong> Le post est supprimé définitivement.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$post</span> <span class="o">=</span> <span class="nc">Post</span><span class="o">:</span><span class="nf">find</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="nv">$post</span><span class="o">-&gt;</span><span class="nf">forceDelete</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>cette fois le post est supprimer en base de données, il est impossible de le retrouver.</p>
+
+:ET

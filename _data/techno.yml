@@ -1,0 +1,63 @@
+- title: flask
+  link: /flask
+  active: flask
+  nav:
+    - setup
+    - app-basics
+    - jinja
+    - database
+- title: jekyll
+  link: /jekyll
+  active: jekyll
+  nav:
+    - back-office
+    - getting-started
+    - usefull-package
+- title: symfony
+  link: /symfony
+  active: symfony
+  nav:
+    - projet
+    - getting-started
+    - usefull-package
+- title: mysql
+  link: /mysql
+  active: mysql
+  nav:
+    - command-line
+    - cheat-sheet
+- title: laravel
+  link: /laravel
+  active: laravel
+  nav:
+    - first-app
+    - simple-app
+    - setup
+    - authentication
+    - mail
+    - authorization
+    - notification
+    - soft-delete
+    - event-listener
+    - blade-component
+    - middleware
+    - anonymous-component
+    - routing-advanced
+
+- title: docker
+  link: /docker
+  active: docker
+  nav:
+    - home
+    - getting-started
+    - run
+    - environment-variables
+    - docker-images
+    - CMD-vs-ENTRYPOINT
+    - networking
+    - storage
+    - docker-compose
+    - docker-registry
+    - container-orcherstration
+    - kubernetes
+    - docker-swarm

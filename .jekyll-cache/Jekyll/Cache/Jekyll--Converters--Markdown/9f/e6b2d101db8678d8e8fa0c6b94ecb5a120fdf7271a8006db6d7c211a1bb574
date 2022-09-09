@@ -1,0 +1,111 @@
+I"�<p>avec docker compose on fait de la config avec yaml</p>
+
+<h2 id="complexe-application">complexe application</h2>
+
+<p>si on utilise plusieurs container il est plus simple de les configurer à l’aide d’un fichier docker-compose.yml</p>
+
+<p><img src="/assets/img/docker/dockerCompose.png" alt="docker-compose.yml" /></p>
+
+<p>une fois notre docker-compose configurer on lance la commande <code class="language-plaintext highlighter-rouge">up</code></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker-compose up
+</code></pre></div></div>
+
+<p>cette commande va installer l’ensemble de notre stack définit dans docker compose</p>
+
+<h2 id="links">–links</h2>
+
+<p>pour relier différent container on peut utiliser l’option link</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-d</span> <span class="nt">--name</span><span class="o">=</span>redis redis
+docker run <span class="nt">-d</span> <span class="nt">--name</span><span class="o">=</span>vote <span class="nt">-p</span> 5000:80 <span class="nt">--link</span> redis:redis voting-app
+docker run <span class="nt">-d</span> <span class="nt">--name</span><span class="o">=</span>db postgres:9.4 
+docker run <span class="nt">-d</span> <span class="nt">--name</span><span class="o">=</span>result <span class="nt">-p</span> 5001:80 result-app
+docker run <span class="nt">-d</span> <span class="nt">--name</span><span class="o">=</span>worker <span class="nt">--link</span> db:db <span class="nt">--link</span> redis:redis worker
+</code></pre></div></div>
+
+<p>on peut remarquer que plus gros est notre stack et plus les liens vont être compliquer à maintenir</p>
+
+<h3 id="avec-docker-compose">avec docker-compose</h3>
+
+<p>pour le même stack en utilisant docker-compose.yml</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">redis</span><span class="pi">:</span>
+  <span class="na">image</span><span class="pi">:</span> <span class="s">redis</span>
+<span class="na">db</span><span class="pi">:</span>
+  <span class="na">image</span><span class="pi">:</span> <span class="s">postgres:9.4</span>
+<span class="na">vote</span><span class="pi">:</span>
+  <span class="na">image</span><span class="pi">:</span> <span class="s">voting-app</span>
+  <span class="na">ports</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">5000:80</span>
+  <span class="na">links</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">redis</span>
+<span class="na">result</span><span class="pi">:</span>
+  <span class="na">image</span><span class="pi">:</span> <span class="s">result-app</span>
+  <span class="na">ports</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">5001:80</span>
+  <span class="na">links</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">db</span>
+<span class="na">worker</span><span class="pi">:</span>
+  <span class="na">image</span><span class="pi">:</span> <span class="s">worker</span>
+  <span class="na">links</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">db</span>
+    <span class="pi">-</span> <span class="s">redis</span>
+</code></pre></div></div>
+
+<p>et pour lancer cette config</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker-compose up
+</code></pre></div></div>
+
+<p>le fichier docker-compose est beaucoup plus clair et si des changement sont à opérer, ce sera plus simple</p>
+
+<h2 id="compose---build">compose - build</h2>
+
+<p>on peut utiliser des images de dockerhub dans notre yaml mais également des image que l’on a créé nous même. Si celle ci ne sont pas encore build, on le précise dans notre docker-compose</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">vote</span><span class="pi">:</span>
+  <span class="na">build</span><span class="pi">:</span> <span class="s">./vote</span>
+</code></pre></div></div>
+
+<p>au lien de l’instruction <code class="language-plaintext highlighter-rouge">image</code>, on va utiliser l’instruction <code class="language-plaintext highlighter-rouge">build</code> avec le chemin où se situe notre code.</p>
+
+<p>Maintenant quand on va lancer <code class="language-plaintext highlighter-rouge">docker-composer up</code>, docker va d’abord builder notre image, lui donner un nom temporaire et run un container à partir de cette image.</p>
+
+<h2 id="docker-compose--versions">docker compose -versions</h2>
+
+<p>docker compose à évolué avec le temps.</p>
+
+<p>pour les versions 2 et suppérieur, on spécifie en début de fichier la version que l’on utilise</p>
+
+<p><img src="/assets/img/docker/composeVersion.png" alt="compose version" /></p>
+
+<h3 id="with-network">with network</h3>
+
+<p>dans la version 1, docker attache tout les container au réseau bridge par défaut. Et les links sont là pour relier nos différent container.</p>
+
+<p>dans la version 2, docker créé un réseau bridge dédié à cette application et y attache tous les containers. Les containers communique entre eux en utilisant leur service name. les links sont du coup inutile</p>
+
+<h3 id="priorité-dinstall">priorité d’install</h3>
+
+<p>à partir de la version 2, on peut spécifier un ordre d’install en indiquant si un container est dépendant d’un autre avec <code class="language-plaintext highlighter-rouge">depends_on</code></p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">version</span><span class="pi">:</span> <span class="m">2</span>
+<span class="na">services</span><span class="pi">:</span>
+  <span class="na">redis</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">redis</span>
+  <span class="na">vote</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">voting-app</span>
+    <span class="na">depends_on</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">redis</span>
+</code></pre></div></div>
+
+<p>dans cette exemple docker installera redis avant vote puisque celui-ci dépend de redis</p>
+
+<h3 id="plusieur-réseau">plusieur réseau</h3>
+
+<p>avec la version 2, on peut créer des réseau avec docker-compose</p>
+
+<p><img src="/assets/img/docker/ComposeMultipleNetwork.png" alt="compose version" /></p>
+
+<p>dans cette exemple, on relie certain container au réseau back-end et d’autre au réseau back-end et front-end. Le container worker devrait lui aussi être relié au réseau back-end</p>
+:ET

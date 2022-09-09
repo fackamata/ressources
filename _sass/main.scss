@@ -1,0 +1,94 @@
+$backgroundColor: #141D2B;
+$backgroundColorLight: #1A2332;
+$titleColor: #CAD2E2;
+$paragraphColor: #A3B0CC;
+$bodyFont: Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+$green: #9FEF00;
+$softGreen: #7ca728;
+
+*{
+  padding: none;
+  margin: none;
+}
+
+body {
+  background: $backgroundColor;
+  color: $paragraphColor;
+  font-family: $bodyFont;
+  width: 100vw;
+  padding: 1vw;
+  font-size: 13px;
+}
+main{
+  width: 100vw;
+  margin-top: 2vh;
+}
+
+h1, h2, h3, h4{
+  color: $paragraphColor;
+}
+
+h1{
+  // text-align: center;
+  // text-align: start;
+  margin-left: 20vw;
+  margin-bottom: 5vh;
+  margin-top: 5vh;
+}
+
+p{
+  // margin-left: 4vh;
+  a{
+    color : $green;
+  }
+}
+
+pre{
+  // margin-left: 2vw;
+  padding: 1vh 3vw;
+  background-color: $backgroundColorLight;
+  max-width: fit-content;
+  // padding: 0.5rem 1rem;
+  code{
+    color: $softGreen;
+    font-size:10px;
+  }
+}
+
+img{
+  max-width: 100%;
+}
+
+#topBtn{
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #283A55;
+  color: $titleColor;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 40%;
+  transform: rotate(-90deg);
+}
+
+#sideBtn{
+  display: block;
+  position: fixed;
+  top: 40px;
+  left: 0px;
+  font-size: 18px;
+  z-index: 3;
+  border: none;
+  outline: none;
+  background-color: $backgroundColorLight;
+  color: $titleColor;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 40%;
+  // transform: rotate(-90deg);
+}

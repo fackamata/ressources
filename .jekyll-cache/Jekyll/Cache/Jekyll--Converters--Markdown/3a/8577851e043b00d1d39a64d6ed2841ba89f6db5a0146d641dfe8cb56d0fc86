@@ -1,0 +1,36 @@
+I"æ<h2 id="install">install</h2>
+
+<p>require python3 and pip3</p>
+
+<p>create a directory for our app and go in it.</p>
+
+<p>create an env</p>
+
+<p>if virtualenv is not installed</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip3 install virtualenv
+</code></pre></div></div>
+
+<p>to install all the requirements in the working directory</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>virtualenv <span class="nb">env</span>
+</code></pre></div></div>
+<p>create a env directory</p>
+
+<p>now we activate our environment</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source env</span>/bin/activate
+</code></pre></div></div>
+
+<p>now our command line is prefix with (env)</p>
+
+<p>everything that we install now, will be in our env not anywhere else on our machine.</p>
+
+<h2 id="requirement">requirement</h2>
+
+<p>letâ€™s install our requirement</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip3 <span class="nb">install </span>flask flask-sqlalchemy
+</code></pre></div></div>
+
+<p>python librairy that we need for our app</p>
+:ET

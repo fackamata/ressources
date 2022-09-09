@@ -1,0 +1,12 @@
+I"m<p>c’est un ensemble de tools et script pour nous aider à maintenir nos container en environnement de production</p>
+
+<p>Docker Swarm (docker), Kubernetes (google), Mesos (apache) son des solution de container orchestration</p>
+
+<p>Docker Swarm est facile à mettre en place mais il pêche sur les features de scaling avancé</p>
+
+<p>Mesos est dur à mettre en place mais il apporte des feature avancé.</p>
+
+<p>kubernetes est le plus populaire, il est un peu dure à mettre en place mais il offre de grandes options pour customiser le déploiement.
+Il est également supporter sur la plupart des platform cloud.</p>
+
+:ET

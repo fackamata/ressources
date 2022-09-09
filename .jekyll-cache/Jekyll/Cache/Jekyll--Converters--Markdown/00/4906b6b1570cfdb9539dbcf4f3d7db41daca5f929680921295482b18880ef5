@@ -1,0 +1,110 @@
+I"�<p>on peut créer sa propre image pour le déploiement ou l’envoie d’une app.</p>
+
+<p>losrque l’on créé une image il faut lister les commandes que l’on ferait pour un déploiement manuel.</p>
+
+<p>par exemple pour une app sous flask :</p>
+<ul>
+  <li>OS ubuntu</li>
+  <li>update apt repo</li>
+  <li>install dependencies using apt</li>
+  <li>install Python dependencies using pip</li>
+  <li>copy source code to /opt folder</li>
+  <li>run the web server using ‘flask’ command</li>
+</ul>
+
+<h2 id="create-a-image">create a image</h2>
+
+<p>first create a Dockerfile</p>
+
+<div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> Ubuntu</span>
+
+<span class="k">RUN </span>apt-get update
+<span class="k">RUN </span>apt-get <span class="nb">install </span>python
+
+<span class="k">RUN </span>pip <span class="nb">install </span>flask
+<span class="k">RUN </span>pip <span class="nb">install </span>flask-mysql
+
+<span class="k">COPY</span><span class="s"> . /opt/source-code</span>
+
+<span class="k">ENTRYPOINT</span><span class="s"> FLASK_APP=/opt/source-code/app.py flask run</span>
+</code></pre></div></div>
+
+<h3 id="code-translation">code translation</h3>
+
+<p><code class="language-plaintext highlighter-rouge">FROM Ubuntu</code> =&gt; OS de base de notre container</p>
+
+<p><code class="language-plaintext highlighter-rouge">RUN</code> =&gt; pour installer les dépendances
+à partir de l’OS Ubuntu, install les dépendence, python.
+Install flask et flask-mysql à partir de pip</p>
+
+<p>on copie le code source dans le dossier <code class="language-plaintext highlighter-rouge">/opt/source-code</code></p>
+
+<p>on définit l’ENTRYPOINT dans notre dossier est on lance la commande <code class="language-plaintext highlighter-rouge">flask run</code></p>
+
+<h3 id="build-image">build image</h3>
+
+<p>une fois notre Dockerfile rempli on build l’image avec la commande</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker build Dockerfile <span class="nt">-t</span> dockerAccount/my-app <span class="nb">.</span>
+</code></pre></div></div>
+<p>-t =&gt; tag name for image</p>
+
+<p>cette commande va créer une image sur notre machine</p>
+
+<p>pour rendre cette image dispo dans dockerhub, on utilise la command push</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker push dockerAccount/my-app
+</code></pre></div></div>
+
+<h2 id="dockerfile">Dockerfile</h2>
+
+<p>un Dockerfile s’organise avec des instructions et des arguments</p>
+
+<p>les instructions sont en majuscule et les arguments suivent en minuscule</p>
+
+<p>un container doit toujours être construit à partir d’une autre image ou d’un OS avec la commande <code class="language-plaintext highlighter-rouge">FROM</code></p>
+
+<p><code class="language-plaintext highlighter-rouge">RUN</code> =&gt; lancer une commande à partir de l’OS de base</p>
+
+<p><code class="language-plaintext highlighter-rouge">COPY</code> =&gt; copie le fichier depuis notre machine dans le image docker
+<code class="language-plaintext highlighter-rouge">ENTRYPOINT</code> =&gt; la commande à lancer lorsque l’on lance notre container</p>
+
+<h2 id="larchitecture-en-couche">l’architecture en couche</h2>
+
+<p>notre dossier dockefile une fois builder va exécuter les commandes à la suite et créer notre image avec une architecture en couche (layer)</p>
+
+<p>dans notre exemple :</p>
+
+<ul>
+  <li>Base Ubuntu Layer</li>
+  <li>Changes in apt packages</li>
+  <li>Changes in pip packages</li>
+  <li>source code</li>
+  <li>Update Entrypoint with ‘flask’ command</li>
+</ul>
+
+<p>quand on va télécharger une image ses différentes layer sont télécharger indépendemment et chaque layer enregistre uniquement les changement qui la concerne</p>
+
+<p>cette architecture nous permet de rajouter des layer facilement et de débuguer des layer défectueuse</p>
+
+<h3 id="build">build</h3>
+
+<p>lorsque l’on lance la commande <code class="language-plaintext highlighter-rouge">build</code> on voit ses différentes layer s’exécuter dans le terminal</p>
+
+<h3 id="docker-history">docker history</h3>
+
+<p>on peut voir les informations comme la taille de chaqu’une de nos layer avec la command <code class="language-plaintext highlighter-rouge">history</code></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker <span class="nb">history </span>marlen/my-app
+</code></pre></div></div>
+
+<h2 id="que-peut-on-containerize">que peut-on containerize</h2>
+
+<p>on peut construire une image pour une appli web ou un simple script</p>
+
+<p>l’avantage c’est que l’on install rien, on utilise juste l’image docker et quand on supprime cette image, tout est netoyer pas besoin de désinstaller.</p>
+
+<h2 id="utilité">utilité</h2>
+
+<p>un container sert à exécuter une certaine tâche.</p>
+
+<p>Il n’est pas prévu pour faire tourner un OS</p>
+:ET

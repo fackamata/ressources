@@ -1,0 +1,63 @@
+I"#<h2 id="cmd">CMD</h2>
+
+<p>l’instruction <code class="language-plaintext highlighter-rouge">CMD</code> sert à définir quelle commande va être lancer lors de l’exécution de notre container</p>
+
+<div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> ubuntu:14.04</span>
+...
+<span class="k">CMD</span><span class="s"> ["bash"]</span>
+</code></pre></div></div>
+
+<h3 id="format">format</h3>
+
+<p>l’instruction <code class="language-plaintext highlighter-rouge">CMD</code> peuvent être écrite de deux façon</p>
+
+<p>dans un array :</p>
+<div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CMD</span><span class="s"> ["command", "param1"]</span>
+<span class="k">CMD</span><span class="s"> ["sleep", "5"]</span>
+</code></pre></div></div>
+
+<p>en mode shell :</p>
+<div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CMD</span><span class="s"> command param1</span>
+<span class="k">CMD</span><span class="s"> sleep 5</span>
+</code></pre></div></div>
+
+<h3 id="inconvénient">inconvénient</h3>
+
+<p>avec l’instruction <code class="language-plaintext highlighter-rouge">CMD</code>, l’argument de la commande est codé en dure et on ne peut pas y accéder lorsque l’on run notre container</p>
+
+<h2 id="entrypoint">ENTRYPOINT</h2>
+
+<div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">ENTRYPOINT</span><span class="s"> ["sleep"]</span>
+</code></pre></div></div>
+
+<p>avec l’instruction <code class="language-plaintext highlighter-rouge">ENTRYPOINT</code> on va pouvoir donné un argument à la commande exécuter lors du run de container</p>
+
+<div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run ubuntu-sleeper 10
+</code></pre></div></div>
+
+<p>c’est comme si on avait écrit dans notre Dockerfile</p>
+<div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CMD</span><span class="s"> sleep 10</span>
+</code></pre></div></div>
+
+<p>mais cette fois on peut lui donner la valeur souhaité à chaque lancement de container</p>
+
+<h3 id="valeur-par-défaut">valeur par défaut</h3>
+
+<p>si on veut définir une valeur par défaut à notre ENTRYPOINT</p>
+<div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> Ubuntu</span>
+<span class="k">ENTRYPOINT</span><span class="s"> ["sleep"]</span>
+<span class="k">CMD</span><span class="s"> ["5"]</span>
+</code></pre></div></div>
+
+<p>ici l’instruction <code class="language-plaintext highlighter-rouge">CMD</code> va nous permettre de rajouter l’argument 5 à notre <code class="language-plaintext highlighter-rouge">ENTRYPOINT</code> sleep</p>
+
+<p>comme ça si on entre aucun argument, notre container exécutera la commande sleep pour 5 seconde.</p>
+
+<p>Si on ajoute un argument lors du run de notre container, l’argument de l’instruction <code class="language-plaintext highlighter-rouge">CMD</code> sera remplacer par le notre.</p>
+
+<h3 id="changement-de-entrypoint">changement de ENTRYPOINT</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--entrypoint</span> sleep2.0 ubuntu-sleeper 10
+</code></pre></div></div>
+<p>–entrypoint =&gt; nouvelle commande à exécuter lors du lancement de notre container</p>
+:ET

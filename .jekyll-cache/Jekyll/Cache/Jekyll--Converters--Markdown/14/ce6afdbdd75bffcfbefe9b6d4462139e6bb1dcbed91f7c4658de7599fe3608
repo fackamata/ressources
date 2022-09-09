@@ -1,0 +1,24 @@
+I"#<p>on peut créer plusieurs host, docker swarm va s’occuper de distribuer nos container entres ces hosts pour de meilleur performance</p>
+
+<p>pour cela on doit avoir plusieur host avec docker installer</p>
+
+<p>on désigne un de ces hosts comme le swarm manager et les autres comme slave/worker</p>
+
+<p>ensuite on lance <code class="language-plaintext highlighter-rouge">docker swarm init</code> dans le swarm manager, ça va l’initialiser</p>
+
+<p>cette commande nous renvera une autre commande à lancer sur nos worker host <code class="language-plaintext highlighter-rouge">docker swarm join --token &lt;token&gt;</code> pour qu’il ce join à notre swarm manager</p>
+
+<p>nos worker sont maintenant des nodes de notre swarm cluster</p>
+
+<h2 id="docker-swarm-orchestration">docker swarm orchestration</h2>
+
+<p>pour lancer plusieurs instances d’un serveur web</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker service create <span class="nt">--replicas</span><span class="o">=</span>3 my-web-server
+</code></pre></div></div>
+
+<p>docker service va créer 3 instances de notre webserver</p>
+
+<p>cette commande est lancer depuis le manager node</p>
+
+<p>docker service create fonctionne comme docker run, on lui passe les options de la même manière</p>
+:ET

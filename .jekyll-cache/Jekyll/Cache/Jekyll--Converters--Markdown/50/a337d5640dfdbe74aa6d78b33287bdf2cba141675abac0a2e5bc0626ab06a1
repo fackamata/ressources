@@ -1,0 +1,73 @@
+I".<h2 id="latest">latest</h2>
+<p>lancer la dernière version d’une image avec ou sans tag</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run nginx
+docker run nginx:latest
+</code></pre></div></div>
+
+<h2 id="older-version">older version</h2>
+<p>pour lancer une ancienne version, il suffit d’ajouter un tag</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run redis:4.0
+</code></pre></div></div>
+
+<h2 id="tag">tag</h2>
+
+<p>la liste de tout les tag disponible pour une image peuvent être trouver sur dockerhub.com</p>
+
+<h2 id="stdin">stdin</h2>
+
+<p>par exemple si notre app nécessite un prompt pour une entré utilisateur</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-i</span> kodekloud/simple-prompt-docker
+</code></pre></div></div>
+<p>-i =&gt; pour le mode interactif</p>
+
+<p>nous retournera la sortie attendu mais pas de prompt</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-it</span> kodekloud/simple-prompt-docker
+</code></pre></div></div>
+
+<p>-it =&gt; attach to terminal in a interactive mode</p>
+
+<p>pour avoir le prompte il faut rajouter l’option -t (attach terminal)</p>
+
+<h2 id="port">port</h2>
+
+<p>un container docker tourne dans un docker host</p>
+
+<p>pour accéder à notre container depuis le docker host on utilise l’ip fournit mais depuis l’extérieur de ce host on doit mapper les port</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-p</span> 80:5000 kodekloud/simple-prompt-docker
+</code></pre></div></div>
+
+<p>docker host ip : 192.168.1.5</p>
+
+<p>maintenant quelqu’un d’extérieur à l’host peut accéder via 192.168.1.5:80</p>
+
+<h2 id="volume">volume</h2>
+
+<p>si on supprime un container toutes les données interne sont perdu</p>
+
+<p>si on veut persister des data en dehors d’un container il faut mapper un repertoire</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-v</span> /opt/datadir:/var/lib/mysql mysql
+</code></pre></div></div>
+
+<p>ici, on map le rep /opt/datadir du docker host avec le rep /var/lib/mysql du container mysql</p>
+
+<h2 id="inspect-container">inspect container</h2>
+
+<p>la commande ps nous donne des infos succinte sur nos controller</p>
+
+<p>pour plus d’information</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker inspect <span class="sb">`</span>container name<span class="sb">`</span>
+</code></pre></div></div>
+
+<h2 id="container-log">container log</h2>
+
+<p>pour avoir des infos sur un container en background on lance la commande log</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker logs <span class="sb">`</span>container name<span class="sb">`</span>
+</code></pre></div></div>
+
+:ET

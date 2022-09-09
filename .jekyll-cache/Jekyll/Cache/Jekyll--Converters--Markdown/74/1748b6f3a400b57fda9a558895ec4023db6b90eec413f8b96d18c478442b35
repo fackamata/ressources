@@ -1,0 +1,280 @@
+I"�><h1 id="symfony">symfony</h1>
+
+<ul>
+  <li>
+    <p>configurer son fichier .env : user et password. Pour que doctrine puisse avoir accès à la base de données</p>
+  </li>
+  <li>
+    <p>pour créer la base de donnée par rapport aux entitées :</p>
+  </li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bin/console doctrine:schema:update --force 
+</code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>symfony console doctrine:migrations:migrate
+</code></pre></div></div>
+
+<h2 id="autentification-et-user">Autentification et User</h2>
+
+<h3 id="création-de-luser-avec-">création de l’user avec :</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>symfony console make:user
+</code></pre></div></div>
+<p>permet la création d’une entité user avec une propriété unique, ici sur username
+On retrouve l’entité User dans /src/Entity/</p>
+
+<h3 id="création-des-entité-avec-">création des entité avec :</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>symfony console make:entity
+</code></pre></div></div>
+<p>On retrouve les entitées crées dans /src/Entity/</p>
+
+<h3 id="création-de-lauthentification-">création de l’authentification :</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>symfony console make:auth
+</code></pre></div></div>
+<p>Création de la page login dans /templates/security/login.html.twig</p>
+
+<p>Création des fonction de login et logout dans /Controller/AuthController.php</p>
+
+<h2 id="formulaire">Formulaire</h2>
+
+<h3 id="création-des-formulaire-avec-">création des formulaire avec :</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>symfony console make:form
+</code></pre></div></div>
+<p>Créer des formulaires par rapport au entitées</p>
+
+<h3 id="création-du-formulaire-de-registration-avec-">création du formulaire de registration avec :</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>symfony console make:registration-form
+</code></pre></div></div>
+<p>Créer un formulaire d’autentification, qui peut gérer l’envoie de mail pour valider l’autentification
+mais également le login dès validation et la redirection dès login</p>
+
+<p>on ajoute ensuite les champs que l’on veut pour le formulaire d’enregistrement dans /src/entity/RegistrationFormType.php</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>symfony console make:form
+</code></pre></div></div>
+<h2 id="enregistrement-des-images">Enregistrement des images</h2>
+
+<p>on ajoute dans les entitées voulu :</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">use</span> <span class="nc">App\Interfaces\FilableInterface</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nc">User</span> <span class="kd">implements</span> <span class="nc">FilableInterface</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">const</span> <span class="no">FILE_DIR</span> <span class="o">=</span> <span class="s1">'/upload/user'</span><span class="p">;</span>
+<span class="mf">...</span>
+
+<span class="k">public</span> <span class="k">function</span> <span class="n">getFileDirectory</span><span class="p">():</span> <span class="kt">string</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="k">self</span><span class="o">::</span><span class="no">FILE_DIR</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="récupération-de-luser">récupération de l’user</h2>
+
+<p>pour pouvoir récupérer l’username de l’user, on ajoute a l’entité user :</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">function</span> <span class="n">__toString</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="nf">getUsername</span><span class="p">();</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="récupération-des-types--__tostring">récupération des types / __toString()</h2>
+
+<p>pour pouvoir récupérer le nom des différent type, on ajoute a l’entité type :</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">function</span> <span class="n">__toString</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="nf">getNom</span><span class="p">();</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="automatisation-de-la-date">Automatisation de la date</h2>
+
+<p>pour enregistrer automatiquement la date de publication,</p>
+
+<p>on rajoute dans l’entité</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">function</span> <span class="n">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">date</span> <span class="o">=</span> <span class="k">new</span> <span class="err">\</span><span class="nf">DateTime</span><span class="p">();</span>
+    <span class="p">}</span>
+
+</code></pre></div></div>
+
+<h3 id="création-des-controller-avec-">création des controller avec :</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>symfony console make:controller
+</code></pre></div></div>
+<p>dans le controller on crée les différentes fonction qui on chacune des routes définies et qui renvoie vers la vue donnée.</p>
+
+<h2 id="front-end">Front-end</h2>
+
+<h3 id="css">CSS</h3>
+
+<p>les feuilles de style sont placer dans le fichier /public/css/
+les images relative au front-end sont placer dans le fichier /public/img/</p>
+
+<h3 id="bootstrap-form">Bootstrap form</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">form_themes</span><span class="pi">:</span> <span class="pi">[</span><span class="s1">'</span><span class="s">bootstrap_5_layout.html.twig'</span><span class="pi">]</span>
+</code></pre></div></div>
+<p>Ajout de cette ligne dans /config/packages/twig.yaml.</p>
+
+<p>Permet d’avoir des formulaire bootstrap dans l’ensemble de l’application</p>
+
+<h2 id="affichage-des-descriptions">affichage des descriptions</h2>
+
+<p>dans Twig, on peut couper un texte par un filtre, dans l’exemple, description n’aura que 30 charactères suivi de …</p>
+
+<div class="language-twig highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">{{</span> <span class="nv">conseil.description</span><span class="o">| </span><span class="nf">slice</span><span class="p">(</span><span class="nv">0</span><span class="p">,</span><span class="nv">30</span><span class="p">)</span><span class="cp">}}</span>...
+</code></pre></div></div>
+
+<h2 id="autre">Autre</h2>
+
+<h3 id="role">Role</h3>
+
+<p>dans /config/packages/security.yaml</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">security</span><span class="pi">:</span>
+    <span class="s">...</span>
+    <span class="s">access_control</span><span class="err">:</span>
+        <span class="pi">-</span> <span class="pi">{</span> <span class="nv">path</span><span class="pi">:</span> <span class="nv">^/admin</span><span class="pi">,</span> <span class="nv">roles</span><span class="pi">:</span> <span class="nv">ROLE_ADMIN</span> <span class="pi">}</span>
+</code></pre></div></div>
+
+<h2 id="optimisation">Optimisation</h2>
+
+<h3 id="compteur-de-vue">compteur de vue</h3>
+
+<p>création d’une fonction pour compter le nombre de vue sur une annonce ou un conseil</p>
+
+<p>utilisation double, donc on créer un fonction public dans le dossier Service</p>
+
+<h3 id="user-service">User service</h3>
+
+<p>fonction findByUser : pour trouver les annonces, avis, conseil en fonction de l’utilisateur connecté</p>
+
+<p>fonction count : pour retourner le nombre d’annonces, avis, conseil de chaque utilisateur connecté</p>
+
+<h3 id="image">Image</h3>
+
+<p>Utilisation du bundle LiipImagineBundle pour optimiser les images.</p>
+
+<p>Pour l’installer :</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>composer require liip/imagine-bundle
+</code></pre></div></div>
+
+<p>Configuration dans le fichier Config/Packages/liip_imagine.yaml :</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">liip_imagine</span><span class="pi">:</span>
+    <span class="c1"># valid drivers options include "gd" or "gmagick" or "imagick"</span>
+    <span class="na">driver</span><span class="pi">:</span> <span class="s2">"</span><span class="s">gd"</span>
+    <span class="na">filter_sets</span><span class="pi">:</span>
+        <span class="na">miniature</span><span class="pi">:</span>      <span class="c1"># nom de notre filtre</span>
+            <span class="na">quality</span><span class="pi">:</span> <span class="m">75</span> <span class="c1"># compresse l'image à 75%</span>
+            <span class="na">filters</span><span class="pi">:</span>    <span class="c1"># quel filtre on applique</span>
+                <span class="na">thumbnail</span><span class="pi">:</span>  <span class="c1"># on lui spécifie le filtre</span>
+                    <span class="na">size</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">600</span><span class="pi">,</span> <span class="nv">330</span><span class="pi">]</span>    <span class="c1"># on définit notre format</span>
+                    <span class="na">mode</span><span class="pi">:</span> <span class="s">outbound</span>      <span class="c1"># le mode de découpe à utiliser si le ration ne convient pas</span>
+</code></pre></div></div>
+
+<p>Ça créé un nouveau dossier : /public/media/cache/miniature/ reprend la hiérarchie des images.</p>
+
+<p>et pour utiliser notre nouveau filtre ‘miniature’, dans un fichier twig :</p>
+
+<div class="language-twig highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"</span><span class="cp">{{</span> <span class="nv">annonce.photo</span> <span class="o">| </span><span class="nf">imagine_filter</span><span class="p">(</span><span class="s1">'miniature'</span><span class="p">)</span> <span class="cp">}}</span><span class="s">"</span> <span class="na">alt=</span><span class="s">"</span><span class="cp">{{</span> <span class="nv">annonce.titre</span> <span class="cp">}}</span><span class="s">"</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<h1 id="déploiement">déploiement</h1>
+
+<h2 id="heroku">heroku</h2>
+
+<p>on se log sur heroku :</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>heroku login
+</code></pre></div></div>
+
+<p>on créer le répertoire partagetonterrain avec la région europe :</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>heroku create <span class="nt">--region</span> eu partagetonterrain
+</code></pre></div></div>
+
+<p>ce qui créer l’application</p>
+
+<p>https://partagetonterrain.herokuapp.com/</p>
+
+<p>on modifie la config d’heroku :</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>heroku config:set <span class="nv">APP_ENV</span><span class="o">=</span>prod
+</code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>heroku config:set <span class="nv">APP_SECRET</span><span class="o">=</span><span class="si">$(</span>php <span class="nt">-r</span> <span class="s1">'echo bin2hex(random_bytes(16));'</span><span class="si">)</span>
+</code></pre></div></div>
+
+<h3 id="création-du-procfile-">création du Procfile :</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">touch </span>Procfile
+<span class="nb">echo</span> <span class="s2">"release: php bin/console cache:clear"</span> <span class="o">&gt;</span> Procfile
+<span class="nb">echo</span> <span class="s2">"web: heroku-php-apache2 public/"</span> <span class="o">&gt;</span> Procfile
+</code></pre></div></div>
+<p>La première commande pour que le cache soit netoyer à chaque nouveau déploiement</p>
+
+<h3 id="ajout-pour-mysql-">ajout pour MySql :</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>heroku addons:add cleardb:ignite
+</code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>heroku config:get CLEARDB_DATABASE_URL
+</code></pre></div></div>
+
+<p>Pour voir les config heroku :</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>heroku config
+</code></pre></div></div>
+
+<h3 id="ajout-apache">ajout apache</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>composer require symfony/apache-pack
+</code></pre></div></div>
+
+<p>créer le fichier .htaccess dans /public</p>
+
+<h1 id="page-derreur">page d’erreur</h1>
+
+<p>installer twig-pack</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>composer require symfony/twig-pack
+</code></pre></div></div>
+
+<p>Dans Template créer les dossier bundles/TwigBundle/Exception</p>
+
+<p>Pour voir les erreurs, il faut passer en mode prod dans .env, et toujours supprimer le cache en prod
+dans var/cache/prod</p>
+
+<p>Sinon pour tester en mode dev dans l’url on tape :</p>
+
+<p><a href="http://127.0.0.1:8000/index.php/_error/404">127.0.0.1:8000/index.php/_error/404</a></p>
+
+<h3 id="code-et-texte-dans-twig">code et texte dans twig</h3>
+
+<p>Pour récupérer les codes ou messages d’erreur dans twig :</p>
+
+<div class="language-twig highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">{{</span> <span class="nv">status_code</span> <span class="cp">}}</span>
+<span class="cp">{{</span> <span class="nv">status_text</span> <span class="cp">}}</span>
+</code></pre></div></div>
+
+<p>on peut mettre un dump vide pour voir toutes les infos disponible</p>
+
+<h2 id="page-derreur-personaliser">page d’erreur personaliser</h2>
+
+<p>installer twig-pack</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>composer require symfony/twig-pack
+</code></pre></div></div>
+
+<p>Dans Template créer les dossier bundles/TwigBundle/Exception</p>
+
+<p>Pour voir les erreurs, il faut passer en mode prod dans .env, et toujours supprimer le cache en prod
+dans var/cache/prod</p>
+
+<p>Sinon pour tester en mode dev dans l’url on tape :</p>
+
+<p><a href="http://127.0.0.1:8000/index.php/_error/404">127.0.0.1:8000/index.php/_error/404</a></p>
+
+<h3 id="code-et-texte-dans-twig-1">code et texte dans twig</h3>
+
+<p>Pour récupérer les codes ou messages d’erreur dans twig :</p>
+
+<div class="language-twig highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">{{</span> <span class="nv">status_code</span> <span class="cp">}}</span>
+<span class="cp">{{</span> <span class="nv">status_text</span> <span class="cp">}}</span>
+</code></pre></div></div>
+
+<p>on peut mettre un dump vide pour voir toutes les données auquelles ont a accès.</p>
+
+:ET

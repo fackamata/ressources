@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Environment Variables - </title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+  </head>
+  <body>
+    <nav id="navbarTop">
+
+    
+        <!-- docker -->
+        <ul>
+            
+            <li><a href=" /flask/home" 
+                docker
+                class="  ">
+                flask</a>
+                
+            </li>
+        
+            <li><a href=" /jekyll/home" 
+                docker
+                class="  ">
+                jekyll</a>
+                
+            </li>
+        
+            <li><a href=" /symfony/home" 
+                docker
+                class="  ">
+                symfony</a>
+                
+            </li>
+        
+            <li><a href=" /mysql/home" 
+                docker
+                class="  ">
+                mysql</a>
+                
+            </li>
+        
+            <li><a href=" /laravel/home" 
+                docker
+                class="  ">
+                laravel</a>
+                
+            </li>
+        
+            <li><a href=" /docker/home" 
+                docker
+                class="  activeTop  ">
+                docker</a>
+                
+            </li>
+        
+    </ul>
+</nav>
+    <nav id="sidebar" class="sidenav">
+    
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <ul>
+        
+        
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+                    
+                
+                    <li><a href="/docker/home" 
+                        class="  ">
+                                           
+                            home</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/getting-started" 
+                        class="  ">
+                        
+                            getting started</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/run" 
+                        class="  ">
+                                           
+                            run</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/environment-variables" 
+                        class="  active  ">
+                        
+                            environment variables</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/docker-images" 
+                        class="  ">
+                        
+                            docker images</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/CMD-vs-ENTRYPOINT" 
+                        class="  ">
+                        
+                            CMD vs ENTRYPOINT</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/networking" 
+                        class="  ">
+                                           
+                            networking</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/storage" 
+                        class="  ">
+                                           
+                            storage</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/docker-compose" 
+                        class="  ">
+                        
+                            docker compose</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/docker-registry" 
+                        class="  ">
+                        
+                            docker registry</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/container-orcherstration" 
+                        class="  ">
+                        
+                            container orcherstration</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/kubernetes" 
+                        class="  ">
+                                           
+                            kubernetes</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/docker/docker-swarm" 
+                        class="  ">
+                        
+                            docker swarm</a>
+                        
+
+                    </li>
+                
+            
+        
+    </ul>
+</nav>
+    
+    <button onclick="openNav()" id="sideBtn">></button>
+    <main>
+      <!-- <button onclick="sideFunction()" id="sideBtn" title="Go to top">></button> -->
+      <h1>Environment variables</h1>
+      
+      <h2 id="lancer-les-variable-denvironnement">lancer les variable d’environnement</h2>
+
+<p>pour lancer une variable d’environnement lors du lancement d’un container</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-e</span> <span class="nv">APP_COLOR</span><span class="o">=</span>blue simple-webapp-color
+</code></pre></div></div>
+
+<p>-e =&gt; environment variable</p>
+
+<h2 id="trouver-les-variable-denvironnement">trouver les variable d’environnement</h2>
+
+<p>pour trouver les différentes variable d’environnement disponible pour une image</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker inspect <span class="sb">`</span>container name<span class="sb">`</span>
+</code></pre></div></div>
+
+<p>dans le resultat sous config on retrouve env qui regroupe les variables d’environnement set dans le container</p>
+
+      
+      <button onclick="topFunction()" id="topBtn" title="Go to top">></button>
+    </main>
+
+    <script src="/assets/js/sideBar.js"></script>
+    <script src="/assets/js/topButton.js"></script>
+    <script src="/assets/js/capitalizeFirstLetter.js"></script>
+
+  </body>
+</html>

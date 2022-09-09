@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Setup - </title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+  </head>
+  <body>
+    <nav id="navbarTop">
+
+    
+        <!-- flask -->
+        <ul>
+            
+            <li><a href=" /flask/home" 
+                flask
+                class="  activeTop  ">
+                flask</a>
+                
+            </li>
+        
+            <li><a href=" /jekyll/home" 
+                flask
+                class="  ">
+                jekyll</a>
+                
+            </li>
+        
+            <li><a href=" /symfony/home" 
+                flask
+                class="  ">
+                symfony</a>
+                
+            </li>
+        
+            <li><a href=" /mysql/home" 
+                flask
+                class="  ">
+                mysql</a>
+                
+            </li>
+        
+            <li><a href=" /laravel/home" 
+                flask
+                class="  ">
+                laravel</a>
+                
+            </li>
+        
+            <li><a href=" /docker/home" 
+                flask
+                class="  ">
+                docker</a>
+                
+            </li>
+        
+    </ul>
+</nav>
+    <nav id="sidebar" class="sidenav">
+    
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <ul>
+        
+        
+        
+            
+            
+                    
+                
+                    <li><a href="/flask/setup" 
+                        class="  active  ">
+                                           
+                            setup</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/flask/app-basics" 
+                        class="  ">
+                        
+                            app basics</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/flask/jinja" 
+                        class="  ">
+                                           
+                            jinja</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/flask/database" 
+                        class="  ">
+                                           
+                            database</a>
+                        
+
+                    </li>
+                
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+    </ul>
+</nav>
+    
+    <button onclick="openNav()" id="sideBtn">></button>
+    <main>
+      <!-- <button onclick="sideFunction()" id="sideBtn" title="Go to top">></button> -->
+      <h1>Setup</h1>
+      
+      <h2 id="install">install</h2>
+
+<p>require python3 and pip3</p>
+
+<p>create a directory for our app and go in it.</p>
+
+<p>create an env</p>
+
+<p>if virtualenv is not installed</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip3 install virtualenv
+</code></pre></div></div>
+
+<p>to install all the requirements in the working directory</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>virtualenv <span class="nb">env</span>
+</code></pre></div></div>
+<p>create a env directory</p>
+
+<p>now we activate our environment</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source env</span>/bin/activate
+</code></pre></div></div>
+
+<p>now our command line is prefix with (env)</p>
+
+<p>everything that we install now, will be in our env not anywhere else on our machine.</p>
+
+<h2 id="requirement">requirement</h2>
+
+<p>let’s install our requirement</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip3 <span class="nb">install </span>flask flask-sqlalchemy
+</code></pre></div></div>
+
+<p>python librairy that we need for our app</p>
+
+      
+      <button onclick="topFunction()" id="topBtn" title="Go to top">></button>
+    </main>
+
+    <script src="/assets/js/sideBar.js"></script>
+    <script src="/assets/js/topButton.js"></script>
+    <script src="/assets/js/capitalizeFirstLetter.js"></script>
+
+  </body>
+</html>

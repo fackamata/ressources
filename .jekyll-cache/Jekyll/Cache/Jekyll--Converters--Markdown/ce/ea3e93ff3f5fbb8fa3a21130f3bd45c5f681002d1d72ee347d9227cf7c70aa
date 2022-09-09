@@ -1,0 +1,67 @@
+I"z<p>lors de l’installation de docker le dossier /var/lib/docker est créé</p>
+
+<p>lors d’un build d’image, docker garde en cache les layer. Si on build une autre image avec des layer similaire, docker ne va pas les builder mais utiliser les layer garder en cache. Donc un gain de temps lors du build ou update</p>
+
+<h2 id="container-layer">container layer</h2>
+
+<p><img src="/assets/img/docker/layerRight.png" alt="layer right" /></p>
+
+<p>une image contient plusieur layer en read only</p>
+
+<p>quand on run cette image, une container layer est créé en mode read &amp; write. Mais toute les infos de ce couche sont supprimer quand on ferme notre conteneur</p>
+
+<h2 id="persiste-data-of-container">persiste data of container</h2>
+
+<p>pour persister des données d’un container, il faut créer un volume</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker volume create data_volume
+</code></pre></div></div>
+
+<p>ce volume est stocker dans le dossier volumes: /var/lib/docker/volumes/data_volume/</p>
+
+<h3 id="volume-mounting">volume mounting</h3>
+<p>on monte les volumes présent dans /var/lib/docker/volumes/</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-v</span> data_volume:/var/lib/mysql mysql
+</code></pre></div></div>
+<p>-v =&gt; mount a volume</p>
+
+<p>avec l’option v, on peut monter un volume dans notre container à l’emplacement indiquer</p>
+
+<p>si on a pas créé le volume avant cette commande, docker va le créer automatiquement</p>
+
+<h3 id="bind-mounting">bind mounting</h3>
+
+<p>on peut monter n’impote quel dossier du docker host</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-v</span> /data/mysql:/var/lib/mysql mysql
+</code></pre></div></div>
+
+<h2 id="new-way">new way</h2>
+
+<p>l’option -v est obsolet, il est préférable d’utiliser –mount, c’est plus parlant</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--mount</span> <span class="nb">type</span><span class="o">=</span><span class="nb">bind</span>,source<span class="o">=</span>/data/mysql,target<span class="o">=</span>/var/lib/mysql mysql
+</code></pre></div></div>
+
+<p>on y précise le type de mount (bind,volume), la source et la target</p>
+
+<p><img src="/assets/img/docker/volumeMounting.png" alt="volume mounting" /></p>
+
+<h2 id="storage-drivers">storage drivers</h2>
+
+<p>l’architecture en layer, le montage de disk est possible grace aux storage drivers.</p>
+
+<p>il y a plusieur driver :</p>
+<ul>
+  <li>AUFS - ubuntu</li>
+  <li>ZFS</li>
+  <li>BTRFS</li>
+  <li>Device Mapper - fedora/centOS</li>
+  <li>Overlay</li>
+  <li>Overlay2</li>
+</ul>
+
+<p>docker va choisir automatiquement le meilleur driver en fonction de notre OS</p>
+
+:ET

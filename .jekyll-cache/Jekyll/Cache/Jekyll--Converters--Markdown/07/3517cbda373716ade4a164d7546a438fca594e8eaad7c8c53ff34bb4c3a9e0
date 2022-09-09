@@ -1,0 +1,54 @@
+I"R<p>il existe différent type d’event comme : login, logout, registered, passwordReset…</p>
+
+<p>dans le fichier <code class="language-plaintext highlighter-rouge">app/Http/Controllers/Auth/RegisteredUserController.php</code>, à la ligne 49, on utilise la fonction event</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">event</span><span class="p">(</span><span class="k">new</span> <span class="nc">Registered</span><span class="p">(</span><span class="nv">$user</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>cette fonction va appeler les listeners de cette évênement</p>
+
+<p>dans le fichier <code class="language-plaintext highlighter-rouge">app/Providers/EventServiceProvider.php</code>, on retrouve ce listener</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">protected</span> <span class="nv">$listen</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="nc">Registered</span><span class="o">::</span><span class="n">class</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="nc">SendEmailVerificationNotification</span><span class="o">::</span><span class="n">class</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">];</span>
+</code></pre></div></div>
+<p>quand l’évênement Registered est déclenché, la fonction SendEmailVerificationNotification va être déclenchée.</p>
+
+<h2 id="création-devent">création d’event</h2>
+
+<p>voir <a href="https://laravel.com/docs/9.x/events#generating-events-and-listeners">documentation</a></p>
+
+<p>on créer l’event :</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>php artisan make:event PostCreatedEvent
+</code></pre></div></div>
+
+<p>on créer le listener :</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>php artisan make:listener PostCreatedListener <span class="nt">--event</span><span class="o">=</span>PostCreatedEvent
+</code></pre></div></div>
+
+<p>Ces commandes vont nous créer les dossier Event et Listener dans app</p>
+
+<h2 id="utilisation-dun-event">utilisation d’un event</h2>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">event</span><span class="p">(</span><span class="k">new</span> <span class="nc">PostCreatedEvent</span><span class="p">(</span><span class="nv">$post</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>celui-ci va appeler le listener PostCreatedListener, et on place la logique dans la fonction handle de notre listener</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">function</span> <span class="n">handle</span><span class="p">(</span><span class="kt">PostCreatedEvent</span> <span class="nv">$event</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nf">dd</span><span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="n">post</span><span class="o">-&gt;</span><span class="n">title</span> <span class="mf">.</span> <span class="s1">' vient d\être créé !'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="mapping">mapping</h2>
+<p>on doit mapper ses event listener dans le EventService Provider pour pouvoir l’utiliser:</p>
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">protected</span> <span class="nv">$listen</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="nc">Registered</span><span class="o">::</span><span class="n">class</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="nc">SendEmailVerificationNotification</span><span class="o">::</span><span class="n">class</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="nc">PostCreatedEvent</span><span class="o">::</span><span class="n">class</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="nc">PostCreatedListener</span><span class="o">::</span><span class="n">class</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">];</span>
+</code></pre></div></div>
+:ET
