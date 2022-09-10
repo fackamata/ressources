@@ -20,7 +20,7 @@ body {
   font-size: 13px;
 }
 main{
-  width: 100vw;
+  // width: 100vw;
   margin-top: 2vh;
 }
 
@@ -76,7 +76,7 @@ img{
   transform: rotate(-90deg);
 }
 
-#sideBtn{
+#sideBtnLeft{
   display: block;
   position: fixed;
   top: 40px;
@@ -91,4 +91,21 @@ img{
   padding: 10px 15px;
   border-radius: 40%;
   // transform: rotate(-90deg);
+}
+
+#sideBtnRight{
+  display: block;
+  position: fixed;
+  top: 40px;
+  right: 20px;
+  font-size: 18px;
+  z-index: 3;
+  border: none;
+  outline: none;
+  background-color: $backgroundColorLight;
+  color: $titleColor;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 40%;
+  transform: rotate(-180deg);
 }

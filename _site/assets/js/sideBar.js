@@ -1,10 +1,10 @@
-var sideBar = document.getElementById("sidebar");
+var sideBarLeft = document.getElementById("sidebar");
 
 
-function openNav() {
-    sideBar.style.display = "block";
+function openSideNavLeft() {
+    sideBarLeft.style.display = "block";
 }
-function closeNav() {
-    sideBar.style.display = "none";
+function closeSideNavLeft() {
+    sideBarLeft.style.display = "none";
 }
 

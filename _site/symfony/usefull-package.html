@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="/assets/css/main.css">
   </head>
   <body>
-    <nav id="navbarTop">
+    <nav id="sidebarRight">
 
+    <a href="javascript:void(0)" class="closebtnRight" onclick="closeSideNavRight()">&times;</a>
     
         <!-- symfony -->
         <ul>
@@ -59,7 +60,7 @@
 </nav>
     <nav id="sidebar" class="sidenav">
     
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="javascript:void(0)" class="closebtn" onclick="closeSideNavLeft()">&times;</a>
     <ul>
         
         
@@ -112,7 +113,8 @@
     </ul>
 </nav>
     
-    <button onclick="openNav()" id="sideBtn">></button>
+    <button onclick="openSideNavLeft()" id="sideBtnLeft">></button>
+    <button onclick="openSideNavRight()" id="sideBtnRight">></button>
     <main>
       <!-- <button onclick="sideFunction()" id="sideBtn" title="Go to top">></button> -->
       <h1>Usefull package</h1>
@@ -170,6 +172,7 @@ composer require templates      // flex aliases
     </main>
 
     <script src="/assets/js/sideBar.js"></script>
+    <script src="/assets/js/sideBarRight.js"></script>
     <script src="/assets/js/topButton.js"></script>
     <script src="/assets/js/capitalizeFirstLetter.js"></script>
 

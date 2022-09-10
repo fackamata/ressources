@@ -10,7 +10,8 @@
     {% include navbar.html %}
     {% include sidebar.html %}
     
-    <button onclick="openNav()" id="sideBtn">></button>
+    <button onclick="openSideNavLeft()" id="sideBtnLeft">></button>
+    <button onclick="openSideNavRight()" id="sideBtnRight">></button>
     <main>
       <!-- <button onclick="sideFunction()" id="sideBtn" title="Go to top">></button> -->
       <h1>{{page.titre | capitalize}}</h1>
@@ -21,6 +22,7 @@
     </main>
 
     <script src="{{ '/assets/js/sideBar.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/sideBarRight.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/topButton.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/capitalizeFirstLetter.js' | relative_url }}"></script>
 
