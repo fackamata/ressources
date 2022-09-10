@@ -100,10 +100,14 @@ output true, so all the items of our collection will be a page linkable
 ## debug
 
 to inspect a variable like with console_log or var_dump :
+{% raw %}
 ```html
 {{ variable | inspect }} 
 ```
+{% endraw %}
 ou
+{% raw %}
 ```html
 {{ variable | jsonify }} 
 ```
+{% endraw %}

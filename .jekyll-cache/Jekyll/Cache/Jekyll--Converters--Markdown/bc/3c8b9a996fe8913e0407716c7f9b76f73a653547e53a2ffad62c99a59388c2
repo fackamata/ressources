@@ -1,117 +1,4 @@
-<!DOCTYPE html>
-<html lang="en-US">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8">
-    <title>Home - </title>
-    <link rel="stylesheet" href="/assets/css/main.css">
-  </head>
-  <body>
-    <nav id="sidebarRight">
-
-    <a href="javascript:void(0)" class="closebtnRight" onclick="closeSideNavRight()">&times;</a>
-    
-        <!-- jekyll -->
-        <ul>
-            
-            <li><a href=" /flask/home" 
-                jekyll
-                class="  ">
-                flask</a>
-                
-            </li>
-        
-            <li><a href=" /jekyll/home" 
-                jekyll
-                class="  activeTop  ">
-                jekyll</a>
-                
-            </li>
-        
-            <li><a href=" /symfony/home" 
-                jekyll
-                class="  ">
-                symfony</a>
-                
-            </li>
-        
-            <li><a href=" /mysql/home" 
-                jekyll
-                class="  ">
-                mysql</a>
-                
-            </li>
-        
-            <li><a href=" /laravel/home" 
-                jekyll
-                class="  ">
-                laravel</a>
-                
-            </li>
-        
-            <li><a href=" /docker/home" 
-                jekyll
-                class="  ">
-                docker</a>
-                
-            </li>
-        
-    </ul>
-</nav>
-    <nav id="sidebar" class="sidenav">
-    
-    <a href="javascript:void(0)" class="closebtn" onclick="closeSideNavLeft()">&times;</a>
-    <ul>
-        
-        
-        
-            
-            
-        
-            
-            
-                    
-                
-                    <li><a href="/jekyll/home" 
-                        class="  active  ">
-                                           
-                            home</a>
-                        
-
-                    </li>
-                
-                    <li><a href="/jekyll/back-office" 
-                        class="  ">
-                        
-                            back office</a>
-                        
-
-                    </li>
-                
-            
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-            
-            
-        
-    </ul>
-</nav>
-    
-    <button onclick="openSideNavLeft()" id="sideBtnLeft">></button>
-    <button onclick="openSideNavRight()" id="sideBtnRight">></button>
-    <main>
-      <!-- <button onclick="sideFunction()" id="sideBtn" title="Go to top">></button> -->
-      <h1>Jekyll</h1>
-      
-      <p>To install it in ubuntu : <a href="https://jekyllrb.com/docs/installation/ubuntu/">Installation</a>.</p>
+I"æ<p>To install it in ubuntu : <a href="https://jekyllrb.com/docs/installation/ubuntu/">Installation</a>.</p>
 
 <h2 id="create-a-jekyll">create a jekyll</h2>
 
@@ -197,23 +84,11 @@ $</span><span class="na">baseurl</span><span class="p">:</span> <span class="s2"
 
 <p>to inspect a variable like with console_log or var_dump :</p>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ variable | inspect }} 
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nil 
 </code></pre></div></div>
 
 <p>ou</p>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{{ variable | jsonify }} 
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>null 
 </code></pre></div></div>
-
-
-      
-      <button onclick="topFunction()" id="topBtn" title="Go to top">></button>
-    </main>
-
-    <script src="/assets/js/sideBar.js"></script>
-    <script src="/assets/js/sideBarRight.js"></script>
-    <script src="/assets/js/topButton.js"></script>
-    <script src="/assets/js/capitalizeFirstLetter.js"></script>
-
-  </body>
-</html>
+:ET

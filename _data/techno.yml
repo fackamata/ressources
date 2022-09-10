@@ -2,6 +2,7 @@
   link: /flask
   active: flask
   nav:
+    - home
     - setup
     - app-basics
     - jinja
@@ -10,13 +11,13 @@
   link: /jekyll
   active: jekyll
   nav:
+    - home
     - back-office
-    - getting-started
-    - usefull-package
 - title: symfony
   link: /symfony
   active: symfony
   nav:
+    - home
     - projet
     - getting-started
     - usefull-package
@@ -24,12 +25,14 @@
   link: /mysql
   active: mysql
   nav:
+    - home
     - command-line
     - cheat-sheet
 - title: laravel
   link: /laravel
   active: laravel
   nav:
+    - home
     - first-app
     - simple-app
     - setup
