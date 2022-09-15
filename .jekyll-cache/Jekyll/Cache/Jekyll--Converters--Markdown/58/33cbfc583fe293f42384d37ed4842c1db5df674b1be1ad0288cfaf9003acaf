@@ -1,0 +1,217 @@
+I"x <ol>
+  <li>
+    <p>Le curseur se déplace avec les touches fléchées ou les touches hjkl.
+      h (gauche)      j (bas)      k (haut)      l (droite)</p>
+  </li>
+  <li>
+    <p>Pour démarrer Vim à l’invite du shell tapez :  vim FICHIER <Entrée></Entrée></p>
+  </li>
+  <li>
+    <p>Pour quitter Vim tapez :  <Échap> :q! <Entrée>  pour perdre tous les
+                                                changements.
+              OU tapez :  <Échap> :wq <Entrée>  pour enregistrer les
+                                                changements.</Entrée></Échap></Entrée></Échap></p>
+  </li>
+  <li>
+    <p>Pour effacer un caractère sous le curseur tapez :  x</p>
+  </li>
+  <li>
+    <p>Pour insérer ou ajouter du texte tapez :
+    i   tapez le texte à insérer avant le curseur   <Échap>
+    A   tapez le texte à ajouter en fin de ligne    <Échap></Échap></Échap></p>
+  </li>
+</ol>
+
+<p>NOTE : Appuyer  <Échap>  vous place en mode Normal ou annule une commande
+       partiellement tapée dont vous ne voulez plus.</Échap></p>
+
+<p>Leçon 2.3 : À PROPOS DES OPÉRATEURS ET DES MOUVEMENTS</p>
+
+<p>Plusieurs commandes qui changent le texte sont constituées d’un opérateur
+  et d’un mouvement. Le format pour une commande d’effacement avec l’opérateur
+  d  d’effacement est le suivant :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    d   mouvement
+</code></pre></div></div>
+
+<p>Où :
+    d         - est l’opérateur d’effacement
+    mouvement - est le mouvement sur lequel agit l’opérateur (listés
+                ci-dessous)</p>
+
+<p>Une courte liste de mouvements :
+    w - jusqu’au début du prochain mot, en EXCLUANT son premier caractère.
+    e - jusqu’à la fin du mot courant, en EXCLUANT son dernier caractère.
+    $ - jusqu’à la fin de la ligne, en INCLUANT son dernier caractère.</p>
+
+<p>Ainsi, taper  de  va effacer depuis le curseur jusqu’à la fin du mot.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                    RÉSUMÉ DE LA LEÇON 2
+</code></pre></div></div>
+
+<ol>
+  <li>
+    <p>Pour effacer du curseur jusqu’au mot suivant tapez :         dw</p>
+  </li>
+  <li>
+    <p>Pour effacer du curseur jusqu’à la fin d’une ligne tapez :   d$</p>
+  </li>
+  <li>
+    <p>Pour effacer toute une ligne tapez :                         dd</p>
+  </li>
+  <li>
+    <p>Pour répéter un déplacement ajoutez un quantificateur :      2w</p>
+  </li>
+  <li>
+    <p>Le format d’une commande de changement est :</p>
+
+    <p>opérateur   [nombre]   déplacement</p>
+
+    <p>Où :
+   opérateur   - est ce qu’il faut faire, comme  d  pour effacer.
+   [nombre]    - un quantificateur optionnel pour répéter le déplacement.
+   déplacement - déplace le long du texte à opérer, tel que  w  (mot),
+               $ (jusqu’à la fin de ligne), etc.</p>
+  </li>
+  <li>
+    <p>Pour se déplacer au début de ligne, utilisez un zéro :  0</p>
+  </li>
+  <li>
+    <p>Pour annuler des actions précédentes, tapez :            u (u minuscule)
+Pour annuler tous les changements sur une ligne tapez :  U (U majuscule)
+Pour annuler l’annulation tapez :                        CTRL-R</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                 RÉSUMÉ DE LA LEÇON 3
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Pour remettre le texte qui a déjà été effacé, tapez  p . Cela Place le
+texte effacé APRÈS le curseur (si une ligne complète a été effacée, elle
+sera placée sous la ligne du curseur).</p>
+  </li>
+  <li>
+    <p>Pour remplacer le caractère sous le curseur, tapez  r  suivi du caractère
+qui remplacera l’original.</p>
+  </li>
+  <li>
+    <p>L’opérateur de changement vous permet de changer depuis la position du
+curseur jusqu’où le déplacement vous amène. Par exemple, tapez  ce
+pour changer du curseur jusqu’à la fin du mot,  c$  pour changer jusqu’à
+la fin d’une ligne.</p>
+  </li>
+  <li>
+    <p>Le format pour le changement est :</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>c   [nombre]   déplacement
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>Passez maintenant à la leçon suivante.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     RÉSUMÉ DE LA LEÇON 4
+</code></pre></div></div>
+
+<ol>
+  <li>
+    <p>CTRL-G       affiche la position dans le fichier et l’état de celui-ci.
+          G  déplace à la fin du fichier.
+nombre    G  déplace au numéro de ligne.
+         gg  déplace à la première ligne.</p>
+  </li>
+  <li>
+    <p>Taper  /  suivi d’un texte recherche ce texte vers l’AVANT.
+Taper  ?  suivi d’un texte recherche ce texte vers l’ARRIÈRE.
+Après une recherche tapez  n  pour trouver l’occurrence suivante dans la
+même direction ou  Maj-N  pour rechercher dans la direction opposée.</p>
+  </li>
+  <li>
+    <p>Taper  %  lorsque le curseur est sur  (, ), [, ], { ou }  déplace
+celui-ci sur le caractère correspondant.</p>
+  </li>
+  <li>
+    <p>Pour remplacer le premier aa par bb sur une ligne tapez     :s/aa/bb
+Pour remplacer tous les aa par bb sur une ligne tapez       :s/aa/bb/g
+Pour remplacer du texte entre deux numéros de ligne tapez   :#,#s/aa/bb/g
+Pour remplacer toutes les occurrences dans le fichier tapez :%s/aa/bb/g
+Pour demander une confirmation à chaque fois ajoutez ‘c’    :%s/aa/bb/gc</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                RÉSUMÉ DE LA LEÇON 5
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>:!commande  exécute une commande externe.</p>
+
+    <p>Quelques exemples pratiques :
+ (Windows)       (Unix)
+  :!dir           :!ls          affiche le contenu du répertoire courant.
+  :!del FICHIER   :!rm FICHIER  efface FICHIER.</p>
+  </li>
+  <li>
+    <p>:w FICHIER  enregistre le fichier Vim courant sur le disque avec pour
+nom FICHIER.</p>
+  </li>
+  <li>
+    <p>v  déplacement  :w FICHIER sauvegarde les lignes de la sélection Visuelle
+dans le fichier FICHIER.</p>
+  </li>
+  <li>
+    <p>:r FICHIER  récupère le contenu du fichier FICHIER et l’insère sous la
+position du curseur.</p>
+  </li>
+  <li>
+    <p>:r !dir  lit la sortie de la commande dir et l’insère sous la position
+du curseur.</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      RÉSUMÉ DE LA LEÇON 6
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Taper  o  ouvre une ligne SOUS le curseur et démarre le mode Insertion.
+Taper  O  ouvre une ligne au-DESSUS du curseur.</p>
+  </li>
+  <li>
+    <p>Taper  a  pour insérer du texte APRÈS le curseur.
+Taper  A  pour insérer du texte après la fin de ligne.</p>
+  </li>
+  <li>
+    <p>Taper  e  déplace à la fin du mot.</p>
+  </li>
+  <li>
+    <p>Taper  y  copie du texte,  p  le colle.</p>
+  </li>
+  <li>
+    <p>Taper  R  majuscule active le mode Remplacement jusqu’à ce qu’ <Échap>
+soit appuyé.</Échap></p>
+  </li>
+  <li>
+    <p>Taper  “:set xxx”  active l’option “xxx”. Quelques options sont :
+   ‘ic’  ‘ingnorecase’ pour ignorer la casse lors des recherches.
+   ‘is’  ‘incsearch’   pour montrer les appariements partiels.
+   ‘hls’ ‘hlsearch’    pour mettre en surbrillance les appariements.</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>              RÉSUMÉ DE LA LEÇON 7
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Tapez  :help  ou appuyez <F1> ou <Aide> pour ouvrir la fenêtre d'aide.</Aide></F1></p>
+  </li>
+  <li>
+    <p>Tapez  :help cmd  pour trouver l’aide sur  cmd .</p>
+  </li>
+  <li>
+    <p>Tapez  CTRL-W CTRL-W  pour sauter à une autre fenêtre.</p>
+  </li>
+  <li>
+    <p>Tapez  :q  pour fermer la fenêtre d’aide.</p>
+  </li>
+  <li>
+    <p>Créez un script de démarrage vimrc pour conserver vos réglages préférés.</p>
+  </li>
+  <li>
+    <p>Quand vous tapez une commande  :  appuyez CTRL-D pour voir les
+complètements possibles. Appuyez <TAB> pour utiliser un complètement.</TAB></p>
+  </li>
+</ol>
+
+:ET

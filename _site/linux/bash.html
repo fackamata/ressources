@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Bash - </title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+  </head>
+  <body>
+    <nav id="sidebarRight">
+
+    <a href="javascript:void(0)" class="closebtnRight" onclick="closeSideNavRight()">&times;</a>
+    
+        <!-- linux -->
+        <ul>
+            
+            <li><a href=" /flask/home" 
+                linux
+                class="  ">
+                flask</a>
+                
+            </li>
+        
+            <li><a href=" /jekyll/home" 
+                linux
+                class="  ">
+                jekyll</a>
+                
+            </li>
+        
+            <li><a href=" /symfony/home" 
+                linux
+                class="  ">
+                symfony</a>
+                
+            </li>
+        
+            <li><a href=" /mysql/home" 
+                linux
+                class="  ">
+                mysql</a>
+                
+            </li>
+        
+            <li><a href=" /laravel/home" 
+                linux
+                class="  ">
+                laravel</a>
+                
+            </li>
+        
+            <li><a href=" /docker/home" 
+                linux
+                class="  ">
+                docker</a>
+                
+            </li>
+        
+            <li><a href=" /linux/home" 
+                linux
+                class="  activeTop  ">
+                linux</a>
+                
+            </li>
+        
+    </ul>
+</nav>
+    <nav id="sidebar" class="sidenav">
+    
+    <a href="javascript:void(0)" class="closebtn" onclick="closeSideNavLeft()">&times;</a>
+    <ul>
+        
+        
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+                    
+                
+                    <li><a href="/linux/home" 
+                        class="  ">
+                                           
+                            home</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/bash" 
+                        class="  active  ">
+                                           
+                            bash</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/cheat-sheet" 
+                        class="  ">
+                        
+                            cheat sheet</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/install" 
+                        class="  ">
+                                           
+                            install</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/linux-structure" 
+                        class="  ">
+                        
+                            linux structure</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/regex" 
+                        class="  ">
+                                           
+                            regex</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/vim" 
+                        class="  ">
+                                           
+                            vim</a>
+                        
+
+                    </li>
+                
+            
+        
+    </ul>
+</nav>
+    
+    <button onclick="openSideNavLeft()" id="sideBtnLeft">></button>
+    <button onclick="openSideNavRight()" id="sideBtnRight">></button>
+    <main>
+      <!-- <button onclick="sideFunction()" id="sideBtn" title="Go to top">></button> -->
+      <h1>Bash</h1>
+      
+      <h1 id="bash">bash</h1>
+
+<h2 id="script">script</h2>
+
+<h3 id="special-character">special character</h3>
+
+<h4>$?</h4>
+<p>error code of the last command</p>
+
+<h4 id="-1">$@</h4>
+<p>all the argument of a script</p>
+
+<h4 id="1-">$1 …</h4>
+<p>first argument of a script</p>
+
+<p>$2 for the second
+$3 for the third</p>
+
+<h4 id="-2">&gt;</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s1">'test'</span> <span class="o">&gt;</span> new.txt
+</code></pre></div></div>
+<p>write test in the file new.txt, create the file if it doesn’t exit. Erase all the content all the file.</p>
+
+<h4 id="-3">»</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s1">'text suite'</span> <span class="o">&gt;&gt;</span> new.txt
+</code></pre></div></div>
+
+<p>append text suite to our file new.txt. Erase nothing, just append at the end of file.</p>
+
+<h4 id="-4">&lt;</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">grep test</span> &lt; new.txt
+</code></pre></div></div>
+<p>new.txt is send to grep as an input.</p>
+
+<p>equivalent to <code class="language-plaintext highlighter-rouge">new.txt | grep test</code></p>
+
+<h4 id="-5">«</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">grep test</span> <span class="o">&lt;&lt;</span> <span class="no">EOF</span><span class="sh">
+</span></code></pre></div></div>
+
+<p>similar to &lt; but instead of a file, we are writing in therminal until EOF</p>
+
+<h2 id="web-exploitation">web exploitation</h2>
+
+<h3 id="get-header">get header</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-I</span> www.website.com
+</code></pre></div></div>
+
+<h3 id="get-cookie">get cookie</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl URL <span class="nt">--cookie-jar</span> cookie_file
+</code></pre></div></div>
+
+<h2 id="shortcut">shortcut</h2>
+<ul>
+  <li>CTRL + L : Clear the screen.</li>
+  <li>CTRL + W : Delete the word starting at cursor.</li>
+  <li>CTRL + U : Clear the line i.e. Delete all words from command line.</li>
+  <li>Up and Down arrow keys : Recall commands (see command history).</li>
+  <li>Tab : Auto-complete files, directory, command names and much more.</li>
+  <li>CTRL + R : Search through previously used commands (see command history)</li>
+  <li>CTRL + C : Cancel currently running commands.</li>
+  <li>CTRL + T : Swap the last two characters before the cursor.</li>
+  <li>ESC + T : Swap the last two words before the cursor.</li>
+  <li>CTRL + H : Delete the letter starting at cursor.</li>
+</ul>
+
+<h3 id="exectutable">exectutable</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod</span> +x myScript
+</code></pre></div></div>
+
+<h3 id="global">global</h3>
+<p>we can make a script executable globally with a link :</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo ln </span>myScript.any /usr/local/bin/myScript
+</code></pre></div></div>
+
+<h2 id="some-command">some command</h2>
+
+<h3 id="re-read-a-file">re read a file</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">.</span> .bashrc
+</code></pre></div></div>
+<p>re read the bashrc file, if we added a new alias</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">set</span> | less
+</code></pre></div></div>
+<p>print out the entire environement</p>
+
+<h2 id="ip-address">ip address</h2>
+<p>get ip address from alias</p>
+
+<p>to get the ip address</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ifconfig | <span class="nb">grep </span>broadcast | <span class="nb">awk</span> <span class="s1">'{print $2}'</span>
+</code></pre></div></div>
+
+<p>create an alias to stock it</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">alias </span><span class="nv">myip</span><span class="o">=</span><span class="s2">"echo </span><span class="si">$(</span>ifconfig | <span class="nb">grep </span>broadcast | <span class="nb">awk</span> <span class="s1">'{print $2}'</span><span class="s2">"
+</span></code></pre></div></div>
+
+<p>now, we get the ip address from the alias myip</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ip
+192.168.1.1
+</code></pre></div></div>
+
+<h2 id="alias">alias</h2>
+<p>it’s better to stock them in ~/.bash_aliases</p>
+
+<p>Then we put alias in this file and run</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span> ~/.bashrc
+</code></pre></div></div>
+
+      
+      <button onclick="topFunction()" id="topBtn" title="Go to top">></button>
+    </main>
+
+    <script src="/assets/js/sideBar.js"></script>
+    <script src="/assets/js/sideBarRight.js"></script>
+    <script src="/assets/js/topButton.js"></script>
+    <script src="/assets/js/capitalizeFirstLetter.js"></script>
+
+  </body>
+</html>

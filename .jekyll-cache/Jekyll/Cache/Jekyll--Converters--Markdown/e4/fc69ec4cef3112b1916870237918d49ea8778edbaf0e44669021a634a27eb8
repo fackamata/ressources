@@ -1,0 +1,255 @@
+I"�!<h1 id="regex">regex</h1>
+
+<h2 id="caret---">caret - ^</h2>
+
+<h3 id="stand-for">stand for</h3>
+<p>^ -&gt; start with</p>
+
+<h3 id="exemple">exemple</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">grep</span> <span class="s1">'^ad'</span> name.txt
+    adam
+    adnan
+</code></pre></div></div>
+
+<p>return only what start with ad</p>
+
+<p>^ are place before the search pattern</p>
+
+<h2 id="dollar---">dollar - $</h2>
+
+<h3 id="stand-for-1">stand for</h3>
+<p>$ -&gt; finish with</p>
+
+<h3 id="exemple-1">exemple</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">grep</span> <span class="s1">'sam$'</span> name.txt
+    basam
+</code></pre></div></div>
+
+<p>return only what finish with sam</p>
+
+<p>$ are place at the end of the search pattern</p>
+
+<h2 id="dot---">dot - .</h2>
+
+<h3 id="stand-for-2">stand for</h3>
+<p>. -&gt; replace a character</p>
+
+<h3 id="exemple-2">exemple</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">grep</span> <span class="s1">'c.r'</span> name.txt
+    caroline
+    corentin
+    corine
+    cyrill
+</code></pre></div></div>
+<p>replace any character</p>
+
+<p>to match only word we use -w (word)</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">grep</span> <span class="nt">-w</span> <span class="s1">'c.r'</span> word.txt
+    car
+    cor
+    cir
+</code></pre></div></div>
+
+<p>if we are looking for an actual dot :</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">grep</span> <span class="s1">'\.'</span> /etc/login.defs
+</code></pre></div></div>
+<p>if we escape the dot, it’ll considered as a simple dot.</p>
+
+<h2 id="asterics---">asterics - *</h2>
+
+<h3 id="stand-for-3">stand for</h3>
+<ul>
+  <li>-&gt; match the previous element 0 or more times</li>
+</ul>
+
+<h3 id="exemple-3">exemple</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">grep</span> <span class="s1">'let*'</span> name.txt
+    le
+    <span class="nb">let
+    </span>lett
+    lettt
+</code></pre></div></div>
+
+<p>we can combine with dot</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">grep</span> <span class="nt">-r</span> <span class="s1">'/.*/'</span> /etc/
+    /usr/man/
+    /usr/share/
+    /path/to/
+    /usr/bin/
+</code></pre></div></div>
+
+<h2 id="plus---">plus - +</h2>
+
+<h3 id="stand-for-4">stand for</h3>
+<ul>
+  <li>-&gt; match the previous element 1 or more times</li>
+</ul>
+
+<h3 id="escaping">escaping</h3>
+<p>the plus symbole needs to be escape</p>
+
+<p>we can use -E option for extended-regexp
+it interpret patterns as extende regular expressions</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">grep</span> <span class="nt">-E</span> <span class="s1">'a+'</span>
+</code></pre></div></div>
+
+<p>or we can use egrep</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>egrep <span class="s1">'a+'</span>
+</code></pre></div></div>
+
+<h3 id="exemple-4">exemple</h3>
+
+<p>simmilar to * but with a minimum of one occurence</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">grep</span> <span class="s1">'let+'</span> name.txt
+    <span class="nb">let
+    </span>lett
+    lettt
+</code></pre></div></div>
+
+<p>we can combine with dot</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">grep</span> <span class="nt">-r</span> <span class="s1">'/.*/'</span> /etc/
+    /usr/man/
+    /usr/share/
+    /path/to/
+    /usr/bin/
+</code></pre></div></div>
+
+<h2 id="braces---">braces - {}</h2>
+
+<h3 id="stand-for-5">stand for</h3>
+<p>{} -&gt; previous element can exist ‘this many’ times</p>
+
+<h3 id="exemple-5">exemple</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">grep</span> <span class="s1">'0{3,}'</span> name.txt
+    000e
+    00003
+</code></pre></div></div>
+
+<p>this expression will match 3 zeros at least</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">grep</span> <span class="s1">'10{,3}'</span> name.txt
+    1
+    10
+    1000
+</code></pre></div></div>
+
+<p>this expression will match 1 follow by at most 3 zeros (can be none)</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>egrep <span class="s1">'10{3}'</span> name.txt
+    1000
+    1000s
+    10008
+</code></pre></div></div>
+
+<p>this expression will match 1 follow 3 zeros</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>egrep <span class="s1">'10{3,5}'</span> name.txt
+    1000
+    100000
+    100000e
+</code></pre></div></div>
+
+<p>this expression will match 1 follow 3 zeros and maximum 5 zeros</p>
+
+<p>we can combine with dot</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>egrep <span class="nt">-r</span> <span class="s1">'/.*/'</span> /etc/
+    /usr/man/
+    /usr/share/
+    /path/to/
+    /usr/bin/
+</code></pre></div></div>
+
+<h2 id="question-mark---">question mark - ?</h2>
+
+<h3 id="stand-for-6">stand for</h3>
+<p>? -&gt; make the previous element optional
+exist 0 or 1 time</p>
+
+<h3 id="example">example</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>egrep <span class="nt">-r</span> <span class="s1">'disabled?'</span> /etc/
+    disable
+    disabled
+    disables
+</code></pre></div></div>
+<p>in this case the d is optional.</p>
+
+<h2 id="vertical-pipe---">vertical pipe - |</h2>
+
+<h3 id="stand-for-7">stand for</h3>
+<p>| -&gt; match one thing or the other</p>
+
+<h3 id="example-1">example</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>egrep <span class="nt">-r</span> <span class="s1">'disabled|enabled'</span> /etc/
+    enabled
+    disabled
+</code></pre></div></div>
+<p>will match all occurence of disabled or enabled</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>egrep <span class="nt">-r</span> <span class="s1">'disabled?|enabled?'</span> /etc/
+    enabled
+    <span class="nb">enable
+    </span>disabled
+    disable
+</code></pre></div></div>
+<p>will match all occurence of disable. or enable.</p>
+
+<h2 id="brackets---">brackets - []</h2>
+
+<h3 id="stand-for-8">stand for</h3>
+<p>[] -&gt; ranges or sets</p>
+
+<p>range : [a-z] all the letter between a to z [0-9] [a-zA-Z0-9]
+set : [abz954] only the letter specified in the set</p>
+
+<h3 id="example-2">example</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>egrep <span class="nt">-r</span> <span class="s1">'c[au]t'</span> /etc/
+    <span class="nb">cat
+    cut</span>
+</code></pre></div></div>
+<p>will match cat or cut</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>egrep <span class="nt">-r</span> <span class="s1">'/dev/[a-z]*[0-9]?'</span> /etc/
+    /dev/sda
+    /dev/sda1
+    /dev/sda2
+    /dev/sdd
+    /dev/twa0
+</code></pre></div></div>
+
+<h2 id="parentheses---">parentheses - ()</h2>
+
+<h3 id="stand-for-9">stand for</h3>
+<p>() -&gt; subexpressions</p>
+
+<h3 id="example-3">example</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>egrep <span class="nt">-r</span> <span class="s1">'/dev/( ([a-z]|[A-Z])* [0-9]? )'</span> /etc/
+    /dev/scanner
+    /dev/ttyS0
+    /dev/ttyS0p0
+    /dev/term
+</code></pre></div></div>
+
+<h2 id="caret-in-brakets---">caret in brakets - [^]</h2>
+
+<h3 id="stand-for-10">stand for</h3>
+<p>[^] -&gt; negated ranges or sets</p>
+
+<h3 id="example-4">example</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>egrep <span class="nt">-r</span> <span class="s1">'http[^s]'</span> /etc/
+</code></pre></div></div>
+<p>will match http but not https</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>egrep <span class="nt">-r</span> <span class="s1">'[^a-z]'</span> /etc/
+</code></pre></div></div>
+<p>will match only uppercase caractere</p>
+:ET

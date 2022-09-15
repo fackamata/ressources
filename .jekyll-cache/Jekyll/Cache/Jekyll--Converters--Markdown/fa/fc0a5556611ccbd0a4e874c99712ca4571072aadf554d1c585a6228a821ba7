@@ -1,0 +1,89 @@
+I"�<h2 id="some-command">some command</h2>
+
+<p>neofetch - get info on computer
+cpufetch - get info on cpu
+bpytop - python version of top, can be personalise
+ascii-image-converter - convert image to ascii art, look option
+speedtest-cli - quick internet speed test
+updatedb - update a file name database
+locate - list files in databases that match a pattern
+uname -a 	Shows the current kernel and OS information
+apropos     short version of help</p>
+
+<h2 id="cut">cut</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cut</span> <span class="nt">-d</span> <span class="s1">' '</span> <span class="nt">-f</span> 4
+</code></pre></div></div>
+<p>-d for delimiter, here ‘ ‘
+-f for field, here the 4th one</p>
+
+<h2 id="tr">tr</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">tr</span> <span class="nt">-d</span> <span class="s1">':'</span> 
+</code></pre></div></div>
+<p>-d for delimiter, here ‘:’</p>
+
+<p>it’s gonna remove ‘:’</p>
+
+<h2 id="access-another-computer-from-file-manager">access another computer from file-manager</h2>
+
+<p>on the server side install</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>openssh-server
+</code></pre></div></div>
+
+<p>on the client side install if ssh is not allready installed</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>openssh-client
+</code></pre></div></div>
+
+<p>in the file-manager, go to ‘Other locations’</p>
+
+<p>in connect to server : sftp://192.168.1.?</p>
+
+<h2 id="access-another-computer-from-terminal">access another computer from terminal</h2>
+
+<p>by ssh</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh user@192.168.1.10
+</code></pre></div></div>
+
+<p>by sftp</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sftp user@192.168.1.10
+</code></pre></div></div>
+
+<h2 id="decode">decode</h2>
+
+<p>to decode on base64</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> &lt;to decode&gt; | <span class="nb">base64</span> <span class="nt">-d</span>
+</code></pre></div></div>
+
+<p>to decode hex to ascii</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo </span>0x70 | xxd <span class="nt">-r</span> <span class="nt">-p</span>
+</code></pre></div></div>
+
+<p>to decode hex to decimal</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">printf</span> <span class="s2">"%d</span><span class="se">\n</span><span class="s2">"</span> 0x3D
+or
+<span class="nb">echo</span> <span class="s2">"ibase=16; </span><span class="nv">$h</span><span class="s2">"</span>| bc
+or
+<span class="nb">echo</span> <span class="k">$((</span><span class="m">16#ff</span><span class="k">))</span>
+</code></pre></div></div>
+
+<p>to convert number (ex : 42) to binary</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"obase=2;42"</span> | bc
+</code></pre></div></div>
+
+<p>to decode ascii to text</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo </span>100 | <span class="nb">awk</span> <span class="s1">'{printf("%c",$1)}'</span>
+</code></pre></div></div>
+
+<h2 id="hash">hash</h2>
+
+<p>to hash in md5 (ex Chinatown)</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">printf</span> <span class="s1">'%s'</span> <span class="s2">"Chinatown"</span> | <span class="nb">md5sum</span>
+</code></pre></div></div>
+
+<h2 id="get-info-on-file">get info on file</h2>
+
+<p>to read, write and edit meta information</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>exiftool file.jpg
+</code></pre></div></div>
+:ET

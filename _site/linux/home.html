@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Home - </title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+  </head>
+  <body>
+    <nav id="sidebarRight">
+
+    <a href="javascript:void(0)" class="closebtnRight" onclick="closeSideNavRight()">&times;</a>
+    
+        <!-- linux -->
+        <ul>
+            
+            <li><a href=" /flask/home" 
+                linux
+                class="  ">
+                flask</a>
+                
+            </li>
+        
+            <li><a href=" /jekyll/home" 
+                linux
+                class="  ">
+                jekyll</a>
+                
+            </li>
+        
+            <li><a href=" /symfony/home" 
+                linux
+                class="  ">
+                symfony</a>
+                
+            </li>
+        
+            <li><a href=" /mysql/home" 
+                linux
+                class="  ">
+                mysql</a>
+                
+            </li>
+        
+            <li><a href=" /laravel/home" 
+                linux
+                class="  ">
+                laravel</a>
+                
+            </li>
+        
+            <li><a href=" /docker/home" 
+                linux
+                class="  ">
+                docker</a>
+                
+            </li>
+        
+            <li><a href=" /linux/home" 
+                linux
+                class="  activeTop  ">
+                linux</a>
+                
+            </li>
+        
+    </ul>
+</nav>
+    <nav id="sidebar" class="sidenav">
+    
+    <a href="javascript:void(0)" class="closebtn" onclick="closeSideNavLeft()">&times;</a>
+    <ul>
+        
+        
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+                    
+                
+                    <li><a href="/linux/home" 
+                        class="  active  ">
+                                           
+                            home</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/bash" 
+                        class="  ">
+                                           
+                            bash</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/cheat-sheet" 
+                        class="  ">
+                        
+                            cheat sheet</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/install" 
+                        class="  ">
+                                           
+                            install</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/linux-structure" 
+                        class="  ">
+                        
+                            linux structure</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/regex" 
+                        class="  ">
+                                           
+                            regex</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/vim" 
+                        class="  ">
+                                           
+                            vim</a>
+                        
+
+                    </li>
+                
+            
+        
+    </ul>
+</nav>
+    
+    <button onclick="openSideNavLeft()" id="sideBtnLeft">></button>
+    <button onclick="openSideNavRight()" id="sideBtnRight">></button>
+    <main>
+      <!-- <button onclick="sideFunction()" id="sideBtn" title="Go to top">></button> -->
+      <h1>Home</h1>
+      
+      <h2 id="some-command">some command</h2>
+
+<p>neofetch - get info on computer
+cpufetch - get info on cpu
+bpytop - python version of top, can be personalise
+ascii-image-converter - convert image to ascii art, look option
+speedtest-cli - quick internet speed test
+updatedb - update a file name database
+locate - list files in databases that match a pattern
+uname -a 	Shows the current kernel and OS information
+apropos     short version of help</p>
+
+<h2 id="cut">cut</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cut</span> <span class="nt">-d</span> <span class="s1">' '</span> <span class="nt">-f</span> 4
+</code></pre></div></div>
+<p>-d for delimiter, here ‘ ‘
+-f for field, here the 4th one</p>
+
+<h2 id="tr">tr</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">tr</span> <span class="nt">-d</span> <span class="s1">':'</span> 
+</code></pre></div></div>
+<p>-d for delimiter, here ‘:’</p>
+
+<p>it’s gonna remove ‘:’</p>
+
+<h2 id="access-another-computer-from-file-manager">access another computer from file-manager</h2>
+
+<p>on the server side install</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>openssh-server
+</code></pre></div></div>
+
+<p>on the client side install if ssh is not allready installed</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>openssh-client
+</code></pre></div></div>
+
+<p>in the file-manager, go to ‘Other locations’</p>
+
+<p>in connect to server : sftp://192.168.1.?</p>
+
+<h2 id="access-another-computer-from-terminal">access another computer from terminal</h2>
+
+<p>by ssh</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh user@192.168.1.10
+</code></pre></div></div>
+
+<p>by sftp</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sftp user@192.168.1.10
+</code></pre></div></div>
+
+<h2 id="decode">decode</h2>
+
+<p>to decode on base64</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> &lt;to decode&gt; | <span class="nb">base64</span> <span class="nt">-d</span>
+</code></pre></div></div>
+
+<p>to decode hex to ascii</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo </span>0x70 | xxd <span class="nt">-r</span> <span class="nt">-p</span>
+</code></pre></div></div>
+
+<p>to decode hex to decimal</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">printf</span> <span class="s2">"%d</span><span class="se">\n</span><span class="s2">"</span> 0x3D
+or
+<span class="nb">echo</span> <span class="s2">"ibase=16; </span><span class="nv">$h</span><span class="s2">"</span>| bc
+or
+<span class="nb">echo</span> <span class="k">$((</span><span class="m">16#ff</span><span class="k">))</span>
+</code></pre></div></div>
+
+<p>to convert number (ex : 42) to binary</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"obase=2;42"</span> | bc
+</code></pre></div></div>
+
+<p>to decode ascii to text</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo </span>100 | <span class="nb">awk</span> <span class="s1">'{printf("%c",$1)}'</span>
+</code></pre></div></div>
+
+<h2 id="hash">hash</h2>
+
+<p>to hash in md5 (ex Chinatown)</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">printf</span> <span class="s1">'%s'</span> <span class="s2">"Chinatown"</span> | <span class="nb">md5sum</span>
+</code></pre></div></div>
+
+<h2 id="get-info-on-file">get info on file</h2>
+
+<p>to read, write and edit meta information</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>exiftool file.jpg
+</code></pre></div></div>
+
+      
+      <button onclick="topFunction()" id="topBtn" title="Go to top">></button>
+    </main>
+
+    <script src="/assets/js/sideBar.js"></script>
+    <script src="/assets/js/sideBarRight.js"></script>
+    <script src="/assets/js/topButton.js"></script>
+    <script src="/assets/js/capitalizeFirstLetter.js"></script>
+
+  </body>
+</html>
