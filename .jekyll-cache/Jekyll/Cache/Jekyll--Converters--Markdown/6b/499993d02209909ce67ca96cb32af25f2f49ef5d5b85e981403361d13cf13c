@@ -1,0 +1,15 @@
+I"ô<h2 class="-one-column" id="speechsynthesisutterance">SpeechSynthesisUtterance</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">speak</span> <span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">msg</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SpeechSynthesisUtterance</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span>
+  <span class="kd">var</span> <span class="nx">voices</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">speechSynthesis</span><span class="p">.</span><span class="nx">getVoices</span><span class="p">()</span>
+  <span class="nx">msg</span><span class="p">.</span><span class="nx">voice</span> <span class="o">=</span> <span class="nx">voices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">speechSynthesis</span><span class="p">.</span><span class="nx">speak</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">speak</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello, world</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>See: <a href="https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance">SpeechSynthesisUtterance</a> <em>(developer.mozilla.org)</em></p>
+:ET

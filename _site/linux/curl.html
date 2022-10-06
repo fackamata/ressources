@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Curl - </title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+  </head>
+  <body>
+    <nav id="sidebarRight">
+
+    <a href="javascript:void(0)" class="closebtnRight" onclick="closeSideNavRight()">&times;</a>
+    
+        <!-- linux -->
+        <ul>
+            
+            <li><a href=" /php/home" 
+                linux
+                class="  ">
+                php</a>
+                
+            </li>
+        
+            <li><a href=" /flask/home" 
+                linux
+                class="  ">
+                flask</a>
+                
+            </li>
+        
+            <li><a href=" /jekyll/home" 
+                linux
+                class="  ">
+                jekyll</a>
+                
+            </li>
+        
+            <li><a href=" /symfony/home" 
+                linux
+                class="  ">
+                symfony</a>
+                
+            </li>
+        
+            <li><a href=" /mysql/home" 
+                linux
+                class="  ">
+                mysql</a>
+                
+            </li>
+        
+            <li><a href=" /laravel/home" 
+                linux
+                class="  ">
+                laravel</a>
+                
+            </li>
+        
+            <li><a href=" /docker/home" 
+                linux
+                class="  ">
+                docker</a>
+                
+            </li>
+        
+            <li><a href=" /linux/home" 
+                linux
+                class="  activeTop  ">
+                linux</a>
+                
+            </li>
+        
+            <li><a href=" /ansible/home" 
+                linux
+                class="  ">
+                ansible</a>
+                
+            </li>
+        
+            <li><a href=" /git/home" 
+                linux
+                class="  ">
+                git</a>
+                
+            </li>
+        
+            <li><a href=" /javascript/home" 
+                linux
+                class="  ">
+                javascript</a>
+                
+            </li>
+        
+            <li><a href=" /HTML/home" 
+                linux
+                class="  ">
+                HTML</a>
+                
+            </li>
+        
+    </ul>
+</nav>
+    <nav id="sidebar" class="sidenav">
+    
+    <a href="javascript:void(0)" class="closebtn" onclick="closeSideNavLeft()">&times;</a>
+    <ul>
+        
+        
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+                    
+                
+                    <li><a href="/linux/home" 
+                        class="  ">
+                                           
+                            home</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/command-line" 
+                        class="  ">
+                        
+                            command line</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/bash" 
+                        class="  ">
+                                           
+                            bash</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/bash-2" 
+                        class="  ">
+                        
+                            bash 2</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/curl" 
+                        class="  active  ">
+                                           
+                            curl</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/grep" 
+                        class="  ">
+                                           
+                            grep</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/find" 
+                        class="  ">
+                                           
+                            find</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/cheat-sheet" 
+                        class="  ">
+                        
+                            cheat sheet</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/install" 
+                        class="  ">
+                                           
+                            install</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/linux-structure" 
+                        class="  ">
+                        
+                            linux structure</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/regex" 
+                        class="  ">
+                                           
+                            regex</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/regexp" 
+                        class="  ">
+                                           
+                            regexp</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/vim" 
+                        class="  ">
+                                           
+                            vim</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/tar" 
+                        class="  ">
+                                           
+                            tar</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/ubuntu" 
+                        class="  ">
+                                           
+                            ubuntu</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/sed" 
+                        class="  ">
+                                           
+                            sed</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/vim" 
+                        class="  ">
+                                           
+                            vim</a>
+                        
+
+                    </li>
+                
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+    </ul>
+</nav>
+    
+    <button onclick="openSideNavLeft()" id="sideBtnLeft">></button>
+    <button onclick="openSideNavRight()" id="sideBtnRight">></button>
+    <main>
+      <!-- <button onclick="sideFunction()" id="sideBtn" title="Go to top">></button> -->
+      <h1>Curl</h1>
+      
+      <h2 id="options">Options</h2>
+
+<h3 id="options-1">Options</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">-o</span> &lt;file&gt;    <span class="c"># --output: write to file</span>
+<span class="nt">-u</span> user:pass <span class="c"># --user: Authentication</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">-v</span>           <span class="c"># --verbose</span>
+<span class="nt">-vv</span>          <span class="c"># Even more verbose</span>
+<span class="nt">-s</span>           <span class="c"># --silent: don't show progress meter or errors</span>
+<span class="nt">-S</span>           <span class="c"># --show-error: when used with --silent (-sS), show errors but no progress meter</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">-i</span>           <span class="c"># --include: Include the HTTP-header in the output</span>
+<span class="nt">-I</span>           <span class="c"># --head: headers only</span>
+</code></pre></div></div>
+
+<h3 id="request">Request</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">-X</span> POST          <span class="c"># --request</span>
+<span class="nt">-L</span>               <span class="c"># follow link if page redirects</span>
+<span class="nt">-F</span> 	             <span class="c"># --form: HTTP POST data for multipart/form-data</span>
+</code></pre></div></div>
+
+<h3 id="data">Data</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">-d</span> <span class="s1">'data'</span>    <span class="c"># --data: HTTP post data, URL encoded (eg, status="Hello")</span>
+<span class="nt">-d</span> @file     <span class="c"># --data via file</span>
+<span class="nt">-G</span>           <span class="c"># --get: send -d data via get</span>
+</code></pre></div></div>
+
+<h3 id="headers">Headers</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">-A</span> &lt;str&gt;         <span class="c"># --user-agent</span>
+<span class="nt">-b</span> <span class="nv">name</span><span class="o">=</span>val      <span class="c"># --cookie</span>
+<span class="nt">-b</span> FILE          <span class="c"># --cookie</span>
+<span class="nt">-H</span> <span class="s2">"X-Foo: y"</span>    <span class="c"># --header</span>
+<span class="nt">--compressed</span>     <span class="c"># use deflate/gzip</span>
+</code></pre></div></div>
+
+<h3 id="ssl">SSL</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nt">--cacert</span> &lt;file&gt;
+    <span class="nt">--capath</span> &lt;<span class="nb">dir</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">-E</span>, <span class="nt">--cert</span> &lt;cert&gt;     <span class="c"># --cert: Client cert file</span>
+    <span class="nt">--cert-type</span>       <span class="c"># der/pem/eng</span>
+<span class="nt">-k</span>, <span class="nt">--insecure</span>        <span class="c"># for self-signed certs</span>
+</code></pre></div></div>
+
+<h2 class="-one-column" id="examples">Examples</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Post data:</span>
+curl <span class="nt">-d</span> <span class="nv">password</span><span class="o">=</span>x http://x.com/y
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Auth/data:</span>
+curl <span class="nt">-u</span> user:pass <span class="nt">-d</span> <span class="nv">status</span><span class="o">=</span><span class="s2">"Hello"</span> http://twitter.com/statuses/update.xml
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># multipart file upload</span>
+curl <span class="nt">-v</span> <span class="nt">-include</span> <span class="nt">--form</span> <span class="nv">key1</span><span class="o">=</span>value1 <span class="nt">--form</span> <span class="nv">upload</span><span class="o">=</span>@localfilename URL
+
+<span class="c"># multipart form: send data from text field and upload file</span>
+curl <span class="nt">-F</span> <span class="nv">person</span><span class="o">=</span>anonymous <span class="nt">-F</span> <span class="nv">secret</span><span class="o">=</span>@file.txt http://example.com/submit.cgi
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Use Curl to Check if a remote resource is available</span>
+<span class="c"># details: https://matthewsetter.com/check-if-file-is-available-with-curl/</span>
+curl <span class="nt">-o</span> /dev/null <span class="nt">--silent</span> <span class="nt">-Iw</span> <span class="s2">"%{http_code}"</span> https://example.com/my.remote.tarball.gz
+</code></pre></div></div>
+
+      
+      <button onclick="topFunction()" id="topBtn" title="Go to top">></button>
+    </main>
+
+    <script src="/assets/js/sideBar.js"></script>
+    <script src="/assets/js/sideBarRight.js"></script>
+    <script src="/assets/js/topButton.js"></script>
+    <script src="/assets/js/capitalizeFirstLetter.js"></script>
+
+  </body>
+</html>

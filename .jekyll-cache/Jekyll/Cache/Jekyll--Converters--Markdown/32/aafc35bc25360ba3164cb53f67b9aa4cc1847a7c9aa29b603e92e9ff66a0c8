@@ -1,0 +1,74 @@
+I"¦<h3 class="-prime" id="usage">Usage</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find &lt;path&gt; &lt;conditions&gt; &lt;actions&gt;
+</code></pre></div></div>
+
+<h3 id="conditions">Conditions</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">-name</span> <span class="s2">"*.c"</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">-user</span> jonathan
+<span class="nt">-nouser</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">-type</span> f            <span class="c"># File</span>
+<span class="nt">-type</span> d            <span class="c"># Directory</span>
+<span class="nt">-type</span> l            <span class="c"># Symlink</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">-depth</span> 2           <span class="c"># At least 3 levels deep</span>
+<span class="nt">-regex</span> PATTERN
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">-size</span> 8            <span class="c"># Exactly 8 512-bit blocks </span>
+<span class="nt">-size</span> <span class="nt">-128c</span>        <span class="c"># Smaller than 128 bytes</span>
+<span class="nt">-size</span> 1440k        <span class="c"># Exactly 1440KiB</span>
+<span class="nt">-size</span> +10M         <span class="c"># Larger than 10MiB</span>
+<span class="nt">-size</span> +2G          <span class="c"># Larger than 2GiB</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">-newer</span>   file.txt
+<span class="nt">-newerm</span>  file.txt        <span class="c"># modified newer than file.txt</span>
+<span class="nt">-newerX</span>  file.txt        <span class="c"># [c]hange, [m]odified, [B]create</span>
+<span class="nt">-newerXt</span> <span class="s2">"1 hour ago"</span>    <span class="c"># [t]imestamp</span>
+</code></pre></div></div>
+
+<h3 id="access-time-conditions">Access time conditions</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">-atime</span> 0           <span class="c"># Last accessed between now and 24 hours ago</span>
+<span class="nt">-atime</span> +0          <span class="c"># Accessed more than 24 hours ago</span>
+<span class="nt">-atime</span> 1           <span class="c"># Accessed between 24 and 48 hours ago</span>
+<span class="nt">-atime</span> +1          <span class="c"># Accessed more than 48 hours ago</span>
+<span class="nt">-atime</span> <span class="nt">-1</span>          <span class="c"># Accessed less than 24 hours ago (same a 0)</span>
+<span class="nt">-ctime</span> <span class="nt">-6h30m</span>      <span class="c"># File status changed within the last 6 hours and 30 minutes</span>
+<span class="nt">-mtime</span> +1w         <span class="c"># Last modified more than 1 week ago</span>
+</code></pre></div></div>
+
+<p>These conditions only work in MacOS and BSD-like systems (no GNU/Linux support).</p>
+
+<h3 id="condition-flow">Condition flow</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="se">\!</span> <span class="nt">-name</span> <span class="s2">"*.c"</span>
+<span class="se">\(</span> x <span class="nt">-or</span> y <span class="se">\)</span>
+</code></pre></div></div>
+
+<h3 id="actions">Actions</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">-exec</span> <span class="nb">rm</span> <span class="o">{}</span> <span class="se">\;</span>
+<span class="nt">-print</span>
+<span class="nt">-delete</span>
+</code></pre></div></div>
+
+<h3 id="examples">Examples</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find <span class="nb">.</span> <span class="nt">-name</span> <span class="s1">'*.jpg'</span>
+find <span class="nb">.</span> <span class="nt">-name</span> <span class="s1">'*.jpg'</span> <span class="nt">-exec</span> <span class="nb">rm</span> <span class="o">{}</span> <span class="se">\;</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find <span class="nb">.</span> <span class="nt">-newerBt</span> <span class="s2">"24 hours ago"</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find <span class="nb">.</span> <span class="nt">-type</span> f <span class="nt">-mtime</span> +29 <span class="c"># find files modified more than 30 days ago</span>
+</code></pre></div></div>
+:ET

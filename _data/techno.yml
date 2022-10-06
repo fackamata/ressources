@@ -1,3 +1,11 @@
+- title: php
+  link: /php
+  active: php
+  nav:
+    - home
+    - composer
+    - changing-version
+    - consume-api
 - title: flask
   link: /flask
   active: flask
@@ -12,6 +20,8 @@
   active: jekyll
   nav:
     - home
+    - jekyll
+    - github
     - back-office
 - title: symfony
   link: /symfony
@@ -53,6 +63,7 @@
   nav:
     - home
     - getting-started
+    - cheat-sheet
     - run
     - environment-variables
     - docker-images
@@ -70,9 +81,63 @@
   active: linux
   nav:
     - home
+    - command-line
     - bash
+    - bash-2
+    - curl
+    - grep
+    - find
     - cheat-sheet
     - install
     - linux-structure
     - regex
+    - regexp
     - vim
+    - tar
+    - ubuntu
+    - sed
+    - vim
+
+- title: ansible
+  link: /ansible
+  active: ansible
+  nav:
+    - home
+    - ansible-guide
+    - ansible-modules
+    - ansible-roles
+    - ansible-examples
+
+- title: git
+  link: /git
+  active: git
+  nav:
+    - home
+    - branch
+    - extras
+    - log
+    - log-format
+    - revisions
+
+- title: javascript
+  link: /javascript
+  active: javascript
+  nav:
+    - home
+    - appcache
+    - array
+    - date
+    - fetch
+    - jquery
+    - jscoverage
+    - jsdoc
+    - jshint
+    - lazy
+    - model
+    - speech
+
+- title: HTML
+  link: /HTML
+  active: HTML
+  nav:
+    - home

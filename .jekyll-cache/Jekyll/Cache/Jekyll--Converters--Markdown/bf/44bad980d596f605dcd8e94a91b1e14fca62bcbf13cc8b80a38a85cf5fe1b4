@@ -1,0 +1,79 @@
+I"¯<h3 class="-prime" id="fetch">Fetch</h3>
+
+<div data-line="4" class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/data.json</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">err</span> <span class="o">=&gt;</span> <span class="p">...)</span>
+</code></pre></div></div>
+
+<h3 id="response">Response</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/data.json</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">text</span><span class="p">()</span>       <span class="c1">// response body (=&gt; Promise)</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span>       <span class="c1">// parse via JSON (=&gt; Promise)</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">status</span>       <span class="c1">//=&gt; 200</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">statusText</span>   <span class="c1">//=&gt; 'OK'</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">redirected</span>   <span class="c1">//=&gt; false</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">ok</span>           <span class="c1">//=&gt; true</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">url</span>          <span class="c1">//=&gt; 'http://site.com/data.json'</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">type</span>         <span class="c1">//=&gt; 'basic'</span>
+                   <span class="c1">//   ('cors' 'default' 'error'</span>
+                   <span class="c1">//    'opaque' 'opaqueredirect')</span>
+
+  <span class="nx">res</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h3 id="request-options">Request options</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/data.json</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">post</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">body</span><span class="p">:</span> <span class="k">new</span> <span class="nx">FormData</span><span class="p">(</span><span class="nx">form</span><span class="p">),</span> <span class="c1">// post body</span>
+  <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(...),</span>
+
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span>
+  <span class="p">},</span>
+
+  <span class="na">credentials</span><span class="p">:</span> <span class="dl">'</span><span class="s1">same-origin</span><span class="dl">'</span><span class="p">,</span> <span class="c1">// send cookies</span>
+  <span class="na">credentials</span><span class="p">:</span> <span class="dl">'</span><span class="s1">include</span><span class="dl">'</span><span class="p">,</span>     <span class="c1">// send cookies, even in CORS</span>
+
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h3 id="catching-errors">Catching errors</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/data.json</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">checkStatus</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">checkStatus</span> <span class="p">(</span><span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span> <span class="o">&gt;=</span> <span class="mi">200</span> <span class="o">&amp;&amp;</span> <span class="nx">res</span><span class="p">.</span><span class="nx">status</span> <span class="o">&lt;</span> <span class="mi">300</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">res</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">err</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">statusText</span><span class="p">)</span>
+    <span class="nx">err</span><span class="p">.</span><span class="nx">response</span> <span class="o">=</span> <span class="nx">res</span>
+    <span class="k">throw</span> <span class="nx">err</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Non-2xx responses are still successful requests. Use another function to turn them to errors.</p>
+
+<h3 id="using-with-nodejs">Using with node.js</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">isomorphic-fetch</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>See: <a href="https://npmjs.com/package/isomorphic-fetch">isomorphic-fetch</a> <em>(npmjs.com)</em></p>
+
+<h2 class="-one-column" id="references">References</h2>
+
+<ul>
+  <li><a href="https://fetch.spec.whatwg.org/">https://fetch.spec.whatwg.org/</a></li>
+  <li><a href="https://www.npmjs.com/package/whatwg-fetch">https://www.npmjs.com/package/whatwg-fetch</a></li>
+</ul>
+:ET

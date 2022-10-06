@@ -1,0 +1,58 @@
+I"V<h2 class="-left-reference" id="shortcuts">Shortcuts</h2>
+
+<h3 id="examples">Examples</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">n</span> <span class="o">=</span> <span class="o">+</span><span class="dl">'</span><span class="s1">4096</span><span class="dl">'</span>    <span class="c1">// n === 4096</span>
+<span class="nx">s</span> <span class="o">=</span> <span class="dl">''</span> <span class="o">+</span> <span class="mi">200</span>   <span class="c1">// s === '200'</span>
+</code></pre></div></div>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">now</span> <span class="o">=</span> <span class="o">+</span><span class="k">new</span> <span class="nb">Date</span><span class="p">()</span>
+<span class="nx">isPublished</span> <span class="o">=</span> <span class="o">!!</span><span class="nx">post</span><span class="p">.</span><span class="nx">publishedAt</span>
+</code></pre></div></div>
+
+<h3 id="shortcuts-1">Shortcuts</h3>
+
+<table class="-left-align -headers">
+  <thead>
+    <tr>
+      <th>What</th>
+      <th>Lazy mode</th>
+      <th>“The right way”</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>String to number</td>
+      <td><code class="language-plaintext highlighter-rouge">+str</code></td>
+      <td><code class="language-plaintext highlighter-rouge">parseInt(str, 10)</code> <em>or</em> <code class="language-plaintext highlighter-rouge">parseFloat()</code></td>
+    </tr>
+    <tr>
+      <td>Math floor</td>
+      <td><code class="language-plaintext highlighter-rouge">num | 0</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Math.floor(num)</code></td>
+    </tr>
+    <tr>
+      <td>Number to string</td>
+      <td><code class="language-plaintext highlighter-rouge">'' + num</code></td>
+      <td><code class="language-plaintext highlighter-rouge">num.toString()</code></td>
+    </tr>
+    <tr>
+      <td>Date to UNIX timestamp</td>
+      <td><code class="language-plaintext highlighter-rouge">+new Date()</code></td>
+      <td><code class="language-plaintext highlighter-rouge">new Date().getTime()</code></td>
+    </tr>
+    <tr>
+      <td>Any to boolean</td>
+      <td><code class="language-plaintext highlighter-rouge">!!value</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Boolean(value)</code></td>
+    </tr>
+    <tr>
+      <td>Check array contents</td>
+      <td><code class="language-plaintext highlighter-rouge">if (~arr.indexOf(v))</code></td>
+      <td><code class="language-plaintext highlighter-rouge">if (arr.includes(v))</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">.includes</code> is ES6-only, otherwise use <code class="language-plaintext highlighter-rouge">.indexOf(val) !== -1</code> if you don’t polyfill.</p>
+:ET

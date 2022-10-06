@@ -1,4 +1,96 @@
-I"�<h2 id="some-command">some command</h2>
+I"�<h2 id="expressions">Expressions</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Expression</th>
+      <th>Example</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">!!</code></td>
+      <td><code class="language-plaintext highlighter-rouge">sudo !!</code></td>
+      <td>Last command (<code class="language-plaintext highlighter-rouge">sudo !!</code>)</td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">!*</code></td>
+      <td><code class="language-plaintext highlighter-rouge">vim !*</code></td>
+      <td>Last command’s parameters (<code class="language-plaintext highlighter-rouge">vim !*</code>)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">!^</code></td>
+      <td> </td>
+      <td>Last command’s first parameter</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">!$</code></td>
+      <td> </td>
+      <td>Last command’s last parameter</td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">!?ls</code> <code class="language-plaintext highlighter-rouge">&lt;tab&gt;</code></td>
+      <td><code class="language-plaintext highlighter-rouge">sudo !?mv</code> <code class="language-plaintext highlighter-rouge">&lt;tab&gt;</code></td>
+      <td>Command and params of last <code class="language-plaintext highlighter-rouge">ls</code> command</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">!?ls?:*</code> <code class="language-plaintext highlighter-rouge">&lt;tab&gt;</code></td>
+      <td> </td>
+      <td>Params of last <code class="language-plaintext highlighter-rouge">ls</code> command</td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">*(m0)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">rm *(m0)</code></td>
+      <td>Last modified today</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">*(m-4)</code></td>
+      <td> </td>
+      <td>Last modified &lt;4 days ago</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="process-substitution">Process Substitution</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Expression</th>
+      <th>Example</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">&lt;(COMMAND)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">grep "needle" &lt;(curl "https://haystack.io")</code></td>
+      <td>Replace argument with <em>named pipe/FIFO</em> (read-only) with command output</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">=(COMMAND)</code></td>
+      <td><code class="language-plaintext highlighter-rouge">vim =(curl "https://haystack.io")</code></td>
+      <td>Replace argument with <em>file</em> (writable) containing command output</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="also-see">Also see</h3>
+
+<ul>
+  <li><a href="./bash">Bash cheatsheet</a></li>
+</ul>
+
+<p>Zsh is mostly compatible with Bash, so most everything in Bash’s cheatsheet also applies.</p>
+
+<h2 id="some-command">some command</h2>
 
 <p>neofetch - get info on computer
 cpufetch - get info on cpu

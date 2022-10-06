@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Log - </title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+  </head>
+  <body>
+    <nav id="sidebarRight">
+
+    <a href="javascript:void(0)" class="closebtnRight" onclick="closeSideNavRight()">&times;</a>
+    
+        <!-- git -->
+        <ul>
+            
+            <li><a href=" /php/home" 
+                git
+                class="  ">
+                php</a>
+                
+            </li>
+        
+            <li><a href=" /flask/home" 
+                git
+                class="  ">
+                flask</a>
+                
+            </li>
+        
+            <li><a href=" /jekyll/home" 
+                git
+                class="  ">
+                jekyll</a>
+                
+            </li>
+        
+            <li><a href=" /symfony/home" 
+                git
+                class="  ">
+                symfony</a>
+                
+            </li>
+        
+            <li><a href=" /mysql/home" 
+                git
+                class="  ">
+                mysql</a>
+                
+            </li>
+        
+            <li><a href=" /laravel/home" 
+                git
+                class="  ">
+                laravel</a>
+                
+            </li>
+        
+            <li><a href=" /docker/home" 
+                git
+                class="  ">
+                docker</a>
+                
+            </li>
+        
+            <li><a href=" /linux/home" 
+                git
+                class="  ">
+                linux</a>
+                
+            </li>
+        
+            <li><a href=" /ansible/home" 
+                git
+                class="  ">
+                ansible</a>
+                
+            </li>
+        
+            <li><a href=" /git/home" 
+                git
+                class="  activeTop  ">
+                git</a>
+                
+            </li>
+        
+            <li><a href=" /javascript/home" 
+                git
+                class="  ">
+                javascript</a>
+                
+            </li>
+        
+            <li><a href=" /HTML/home" 
+                git
+                class="  ">
+                HTML</a>
+                
+            </li>
+        
+    </ul>
+</nav>
+    <nav id="sidebar" class="sidenav">
+    
+    <a href="javascript:void(0)" class="closebtn" onclick="closeSideNavLeft()">&times;</a>
+    <ul>
+        
+        
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+                    
+                
+                    <li><a href="/git/home" 
+                        class="  ">
+                                           
+                            home</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/git/branch" 
+                        class="  ">
+                                           
+                            branch</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/git/extras" 
+                        class="  ">
+                                           
+                            extras</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/git/log" 
+                        class="  active  ">
+                                           
+                            log</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/git/log-format" 
+                        class="  ">
+                        
+                            log format</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/git/revisions" 
+                        class="  ">
+                                           
+                            revisions</a>
+                        
+
+                    </li>
+                
+            
+        
+            
+            
+        
+            
+            
+        
+    </ul>
+</nav>
+    
+    <button onclick="openSideNavLeft()" id="sideBtnLeft">></button>
+    <button onclick="openSideNavRight()" id="sideBtnRight">></button>
+    <main>
+      <!-- <button onclick="sideFunction()" id="sideBtn" title="Go to top">></button> -->
+      <h1>Log</h1>
+      
+      <h3 id="revision-ranges">Revision ranges</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git log master             <span class="c"># branch</span>
+git log origin/master      <span class="c"># branch, remote</span>
+git log v1.0.0             <span class="c"># tag</span>
+
+git log master develop
+
+git log v2.0..master       <span class="c"># reachable from *master* but not *v2.0*</span>
+git log v2.0...master      <span class="c"># reachable from *master* and *v2.0*, but not both</span>
+</code></pre></div></div>
+
+<p>See <a href="./git-revisions">gitrevisions</a>.</p>
+
+<h3 id="basic-filters">Basic filters</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">-n</span>, <span class="nt">--max-count</span><span class="o">=</span>2
+    <span class="nt">--skip</span><span class="o">=</span>2
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nt">--since</span><span class="o">=</span><span class="s2">"1 week ago"</span>
+    <span class="nt">--until</span><span class="o">=</span><span class="s2">"yesterday"</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nt">--author</span><span class="o">=</span><span class="s2">"Rico"</span>
+    <span class="nt">--committer</span><span class="o">=</span><span class="s2">"Rico"</span>
+</code></pre></div></div>
+
+<h3 id="search">Search</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nt">--grep</span><span class="o">=</span><span class="s2">"Merge pull request"</span>   <span class="c"># in commit messages</span>
+    <span class="nt">-S</span><span class="s2">"console.log"</span>               <span class="c"># in code</span>
+    <span class="nt">-G</span><span class="s2">"foo.*"</span>                     <span class="c"># in code (regex)</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nt">--invert-grep</span>
+    <span class="nt">--all-match</span>                   <span class="c"># AND in multi --grep</span>
+</code></pre></div></div>
+
+<h3 id="limiting">Limiting</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nt">--merges</span>
+    <span class="nt">--no-merges</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nt">--first-parent</span>          <span class="c"># no stuff from merged branches</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nt">--branches</span><span class="o">=</span><span class="s2">"feature/*"</span>
+    <span class="nt">--tags</span><span class="o">=</span><span class="s2">"v*"</span>
+    <span class="nt">--remotes</span><span class="o">=</span><span class="s2">"origin"</span>
+</code></pre></div></div>
+
+<h3 id="simplification">Simplification</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git log <span class="nt">--</span> app/file.rb          <span class="c"># only file</span>
+    <span class="nt">--simplify-by-decoration</span>    <span class="c"># tags and branches</span>
+</code></pre></div></div>
+
+<h3 id="ordering">Ordering</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nt">--date-order</span>
+    <span class="nt">--author-date-order</span>
+    <span class="nt">--topo-order</span>              <span class="c"># "smart" ordering</span>
+    <span class="nt">--reverse</span>
+</code></pre></div></div>
+
+<h3 id="formatting">Formatting</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nt">--abbrev-commit</span>
+    <span class="nt">--oneline</span>
+    <span class="nt">--graph</span>
+</code></pre></div></div>
+
+<h3 id="custom-formats">Custom formats</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nt">--pretty</span><span class="o">=</span><span class="s2">"format:%H"</span>
+</code></pre></div></div>
+
+<p>See: <a href="./git-log-format">Git log format cheatsheet</a></p>
+
+<h2 id="also-see">Also see</h2>
+
+<ul>
+  <li><a href="./git-log-format">Git log format cheatsheet</a></li>
+</ul>
+
+      
+      <button onclick="topFunction()" id="topBtn" title="Go to top">></button>
+    </main>
+
+    <script src="/assets/js/sideBar.js"></script>
+    <script src="/assets/js/sideBarRight.js"></script>
+    <script src="/assets/js/topButton.js"></script>
+    <script src="/assets/js/capitalizeFirstLetter.js"></script>
+
+  </body>
+</html>

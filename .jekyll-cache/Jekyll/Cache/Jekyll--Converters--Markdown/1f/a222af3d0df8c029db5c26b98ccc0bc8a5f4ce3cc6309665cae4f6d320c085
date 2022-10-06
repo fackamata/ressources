@@ -1,0 +1,61 @@
+I"9
+<h2 class="-two-column" id="reference">Reference</h2>
+
+<h3 id="deflate--inflate--concatenate">Deflate / Inflate / Concatenate</h3>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Deflate / Compress</span>
+<span class="nb">tar</span> <span class="nt">-czf</span> archive.tar.gz /path/files
+</code></pre></div></div>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Inflate / Uncompress</span>
+<span class="nb">tar</span> <span class="nt">-xzf</span> archive.tar.gz
+</code></pre></div></div>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Concatenate files into a single tar</span>
+<span class="nb">tar</span> <span class="nt">-cf</span> archive.tar /path/files
+</code></pre></div></div>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Extract file to a defined directory</span>
+<span class="nb">tar</span> <span class="nt">-xzf</span> archive.tar.gz <span class="nt">-C</span> /target/directory
+</code></pre></div></div>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Append a file to an existing archive</span>
+<span class="nb">tar</span> <span class="nt">-zu</span> archive.tar.gz <span class="nt">-C</span> /target/file
+</code></pre></div></div>
+
+<h3 id="common-options">Common options</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Option</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">z</code></td>
+      <td>compress with gzip</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">c</code></td>
+      <td>create an archive</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">u</code></td>
+      <td>append files which are newer than the corresponding copy ibn the archive</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">f</code></td>
+      <td>filename of the archive</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">v</code></td>
+      <td>verbose, display what is inflated or deflated</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">a</code></td>
+      <td>unlike of <code class="language-plaintext highlighter-rouge">z</code>, determine compression based on file extension</td>
+    </tr>
+  </tbody>
+</table>
+:ET

@@ -1,0 +1,42 @@
+I"	<h2 id="in-place-replacements">In place replacements</h2>
+
+<h3 id="in-place-replacement-gnu">In-place replacement (GNU)</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sed</span> <span class="nt">-i</span> <span class="nt">-e</span> <span class="s1">'s/foo/bar/'</span> example.md
+</code></pre></div></div>
+
+<p>In GNU sed: use <code class="language-plaintext highlighter-rouge">-i</code> without arg.</p>
+
+<h4 id="in-place-replacement-bsd">In-place replacement (BSD)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sed</span> <span class="nt">-i</span> <span class="s1">''</span> <span class="nt">-e</span> <span class="s1">'s/foo/bar/'</span> example.md
+</code></pre></div></div>
+
+<p>In OSX, <code class="language-plaintext highlighter-rouge">-i ''</code> is required.</p>
+
+<h2 class="-three-column" id="file-regions">File regions</h2>
+
+<h3 id="print-until-a-certain-line-is-met">Print until a certain line is met</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sed</span> <span class="s1">'/begin api/q'</span>
+</code></pre></div></div>
+
+<h3 id="print-until-a-certain-line-is-met-but-not-that-line">Print until a certain line is met, but not that line</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sed</span> <span class="s1">'/^# begin/,$d'</span>
+</code></pre></div></div>
+
+<h3 id="print-everything-after-a-given-line">Print everything after a given line</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sed</span> <span class="nt">-n</span> <span class="s1">'/end api/,$p'</span>
+</code></pre></div></div>
+
+<p>Print after a given line is found.</p>
+
+<h3 id="print-everything-except-matching">Print everything except matching</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sed</span> <span class="nt">-n</span> <span class="s1">'/regex/d;'</span>
+</code></pre></div></div>
+
+<p>Print everything except lines matching regex. Useful for printing files with comments.</p>
+:ET

@@ -1,0 +1,83 @@
+I"<h3 id="arrays">Arrays</h3>
+
+<div class="language-bash -setup highlighter-rouge"><div class="highlight"><pre class="highlight"><code>list <span class="o">=</span> <span class="o">[</span>a,b,c,d,e]
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>list[1]                 // → b
+list.indexOf<span class="o">(</span>b<span class="o">)</span>         // → 1
+list.lastIndexOf<span class="o">(</span>b<span class="o">)</span>     // → 1
+list.includes<span class="o">(</span>b<span class="o">)</span>        // → <span class="nb">true</span>
+</code></pre></div></div>
+
+<h3 id="subsets">Subsets</h3>
+
+<h4 id="immutable">Immutable</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>list.slice<span class="o">(</span>0,1<span class="o">)</span>         // → <span class="o">[</span>a        <span class="o">]</span>
+list.slice<span class="o">(</span>1<span class="o">)</span>           // → <span class="o">[</span>  b,c,d,e]
+list.slice<span class="o">(</span>1,2<span class="o">)</span>         // → <span class="o">[</span>  b      <span class="o">]</span>
+</code></pre></div></div>
+
+<h4 id="mutative">Mutative</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>re <span class="o">=</span> list.splice<span class="o">(</span>1<span class="o">)</span>     // re <span class="o">=</span> <span class="o">[</span>b,c,d,e]  list <span class="o">==</span> <span class="o">[</span>a]
+re <span class="o">=</span> list.splice<span class="o">(</span>1,2<span class="o">)</span>   // re <span class="o">=</span> <span class="o">[</span>b,c]      list <span class="o">==</span> <span class="o">[</span>a,d,e]
+</code></pre></div></div>
+
+<h3 id="adding-items">Adding items</h3>
+
+<h4 id="immutable-1">Immutable</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>list.concat<span class="o">([</span>X,Y]<span class="o">)</span>      // → <span class="o">[</span>_,_,_,_,_,X,Y]
+</code></pre></div></div>
+
+<h4 id="mutative-1">Mutative</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>list.push<span class="o">(</span>X<span class="o">)</span>            // list <span class="o">==</span> <span class="o">[</span>_,_,_,_,_,X]
+list.unshift<span class="o">(</span>X<span class="o">)</span>         // list <span class="o">==</span> <span class="o">[</span>X,_,_,_,_,_]
+list.splice<span class="o">(</span>2, 0, X<span class="o">)</span>    // list <span class="o">==</span> <span class="o">[</span>_,_,X,_,_,_]
+</code></pre></div></div>
+
+<h3 id="inserting">Inserting</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// after <span class="nt">--</span> <span class="o">[</span>_,_,REF,NEW,_,_]
+list.splice<span class="o">(</span>list.indexOf<span class="o">(</span>REF<span class="o">)</span>+1, 0, NEW<span class="o">))</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// before <span class="nt">--</span> <span class="o">[</span>_,_,NEW,REF,_,_]
+list.splice<span class="o">(</span>list.indexOf<span class="o">(</span>REF<span class="o">)</span>, 0, NEW<span class="o">))</span>
+</code></pre></div></div>
+
+<h3 id="replace-items">Replace items</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>list.splice<span class="o">(</span>2, 1, X<span class="o">)</span>    // list <span class="o">==</span> <span class="o">[</span>a,b,X,d,e]
+</code></pre></div></div>
+
+<h3 id="removing-items">Removing items</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>list.pop<span class="o">()</span>              // → e    list <span class="o">==</span> <span class="o">[</span>a,b,c,d]
+list.shift<span class="o">()</span>            // → a    list <span class="o">==</span> <span class="o">[</span>b,c,d,e]
+list.splice<span class="o">(</span>2, 1<span class="o">)</span>       // → <span class="o">[</span>c]  list <span class="o">==</span> <span class="o">[</span>a,b,d,e]
+</code></pre></div></div>
+
+<h3 id="iterables">Iterables</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.filter<span class="o">(</span>n <span class="o">=&gt;</span> ...<span class="o">)</span> <span class="o">=&gt;</span> array
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.forEach<span class="o">(</span>n <span class="o">=&gt;</span> ...<span class="o">)</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.find<span class="o">(</span>n <span class="o">=&gt;</span> ...<span class="o">)</span>  // es6
+.findIndex<span class="o">(</span>...<span class="o">)</span>  // es6
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.every<span class="o">(</span>n <span class="o">=&gt;</span> ...<span class="o">)</span> <span class="o">=&gt;</span> Boolean // ie9+
+.some<span class="o">(</span>n <span class="o">=&gt;</span> ..<span class="o">)</span> <span class="o">=&gt;</span> Boolean   // ie9+
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.map<span class="o">(</span>n <span class="o">=&gt;</span> ...<span class="o">)</span>   // ie9+
+.reduce<span class="o">((</span>total, n<span class="o">)</span> <span class="o">=&gt;</span> total<span class="o">)</span> // ie9+
+.reduceRight<span class="o">(</span>...<span class="o">)</span>
+</code></pre></div></div>
+:ET

@@ -1,0 +1,35 @@
+I"S<h1 id="consume-api">consume api</h1>
+
+<h2 id="create-an-index-file-with-html-form">Create an Index File with HTML Form</h2>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">""</span> <span class="na">method=</span><span class="s">"POST"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label&gt;</span>Enter Order ID:<span class="nt">&lt;/label&gt;&lt;br</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"order_id"</span> <span class="na">placeholder=</span><span class="s">"Enter Order ID"</span> <span class="na">required</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;br</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">name=</span><span class="s">"submit"</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</code></pre></div></div>
+
+<h2 id="fetch-record-with-curl">fetch record with cUrl</h2>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="k">if</span> <span class="p">(</span><span class="k">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'order_id'</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'order_id'</span><span class="p">]</span><span class="o">!=</span><span class="s2">""</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nv">$order_id</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">'order_id'</span><span class="p">];</span>
+	<span class="nv">$url</span> <span class="o">=</span> <span class="s2">"http://localhost/rest/api/"</span><span class="mf">.</span><span class="nv">$order_id</span><span class="p">;</span>
+	
+	<span class="nv">$client</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
+	<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$client</span><span class="p">,</span><span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span><span class="kc">true</span><span class="p">);</span>
+	<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$client</span><span class="p">);</span>
+	
+	<span class="nv">$result</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$response</span><span class="p">);</span>
+	
+	<span class="k">echo</span> <span class="s2">"&lt;table&gt;"</span><span class="p">;</span>
+	<span class="k">echo</span> <span class="s2">"&lt;tr&gt;&lt;td&gt;Order ID:&lt;/td&gt;&lt;td&gt;</span><span class="nv">$result-&gt;order_id</span><span class="s2">&lt;/td&gt;&lt;/tr&gt;"</span><span class="p">;</span>
+	<span class="k">echo</span> <span class="s2">"&lt;tr&gt;&lt;td&gt;Amount:&lt;/td&gt;&lt;td&gt;</span><span class="nv">$result-&gt;amount</span><span class="s2">&lt;/td&gt;&lt;/tr&gt;"</span><span class="p">;</span>
+	<span class="k">echo</span> <span class="s2">"&lt;tr&gt;&lt;td&gt;Response Code:&lt;/td&gt;&lt;td&gt;</span><span class="nv">$result-&gt;response_code</span><span class="s2">&lt;/td&gt;&lt;/tr&gt;"</span><span class="p">;</span>
+	<span class="k">echo</span> <span class="s2">"&lt;tr&gt;&lt;td&gt;Response Desc:&lt;/td&gt;&lt;td&gt;</span><span class="nv">$result-&gt;response_desc</span><span class="s2">&lt;/td&gt;&lt;/tr&gt;"</span><span class="p">;</span>
+	<span class="k">echo</span> <span class="s2">"&lt;/table&gt;"</span><span class="p">;</span>
+<span class="p">}</span>
+    <span class="cp">?&gt;</span>
+</code></pre></div></div>
+:ET

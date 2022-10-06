@@ -1,0 +1,20 @@
+I"	<h2 id="install-other-version-of-php">install other version of php</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>php7.4
+</code></pre></div></div>
+
+<h2 id="list-of-version-available">list of version available</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>update-alternatives <span class="nt">--list</span> php
+</code></pre></div></div>
+
+<h2 id="choose-version-in-availables-one">choose version in available’s one</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>update-alternatives <span class="nt">--config</span> php
+</code></pre></div></div>
+
+<h2 id="desactivate-php-version">desactivate php version</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>a2dismod php7.4
+</code></pre></div></div>
+
+<h2 id="activate-php-version">activate php version</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>a2enmod php8.1
+</code></pre></div></div>
+:ET

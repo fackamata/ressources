@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Ubuntu - </title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+  </head>
+  <body>
+    <nav id="sidebarRight">
+
+    <a href="javascript:void(0)" class="closebtnRight" onclick="closeSideNavRight()">&times;</a>
+    
+        <!-- linux -->
+        <ul>
+            
+            <li><a href=" /php/home" 
+                linux
+                class="  ">
+                php</a>
+                
+            </li>
+        
+            <li><a href=" /flask/home" 
+                linux
+                class="  ">
+                flask</a>
+                
+            </li>
+        
+            <li><a href=" /jekyll/home" 
+                linux
+                class="  ">
+                jekyll</a>
+                
+            </li>
+        
+            <li><a href=" /symfony/home" 
+                linux
+                class="  ">
+                symfony</a>
+                
+            </li>
+        
+            <li><a href=" /mysql/home" 
+                linux
+                class="  ">
+                mysql</a>
+                
+            </li>
+        
+            <li><a href=" /laravel/home" 
+                linux
+                class="  ">
+                laravel</a>
+                
+            </li>
+        
+            <li><a href=" /docker/home" 
+                linux
+                class="  ">
+                docker</a>
+                
+            </li>
+        
+            <li><a href=" /linux/home" 
+                linux
+                class="  activeTop  ">
+                linux</a>
+                
+            </li>
+        
+            <li><a href=" /ansible/home" 
+                linux
+                class="  ">
+                ansible</a>
+                
+            </li>
+        
+            <li><a href=" /git/home" 
+                linux
+                class="  ">
+                git</a>
+                
+            </li>
+        
+            <li><a href=" /javascript/home" 
+                linux
+                class="  ">
+                javascript</a>
+                
+            </li>
+        
+            <li><a href=" /HTML/home" 
+                linux
+                class="  ">
+                HTML</a>
+                
+            </li>
+        
+    </ul>
+</nav>
+    <nav id="sidebar" class="sidenav">
+    
+    <a href="javascript:void(0)" class="closebtn" onclick="closeSideNavLeft()">&times;</a>
+    <ul>
+        
+        
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+                    
+                
+                    <li><a href="/linux/home" 
+                        class="  ">
+                                           
+                            home</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/command-line" 
+                        class="  ">
+                        
+                            command line</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/bash" 
+                        class="  ">
+                                           
+                            bash</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/bash-2" 
+                        class="  ">
+                        
+                            bash 2</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/curl" 
+                        class="  ">
+                                           
+                            curl</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/grep" 
+                        class="  ">
+                                           
+                            grep</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/find" 
+                        class="  ">
+                                           
+                            find</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/cheat-sheet" 
+                        class="  ">
+                        
+                            cheat sheet</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/install" 
+                        class="  ">
+                                           
+                            install</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/linux-structure" 
+                        class="  ">
+                        
+                            linux structure</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/regex" 
+                        class="  ">
+                                           
+                            regex</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/regexp" 
+                        class="  ">
+                                           
+                            regexp</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/vim" 
+                        class="  ">
+                                           
+                            vim</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/tar" 
+                        class="  ">
+                                           
+                            tar</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/ubuntu" 
+                        class="  active  ">
+                                           
+                            ubuntu</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/sed" 
+                        class="  ">
+                                           
+                            sed</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/linux/vim" 
+                        class="  ">
+                                           
+                            vim</a>
+                        
+
+                    </li>
+                
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+    </ul>
+</nav>
+    
+    <button onclick="openSideNavLeft()" id="sideBtnLeft">></button>
+    <button onclick="openSideNavRight()" id="sideBtnRight">></button>
+    <main>
+      <!-- <button onclick="sideFunction()" id="sideBtn" title="Go to top">></button> -->
+      <h1>Ubuntu</h1>
+      
+      <h3 id="aptitude-stuff">Aptitude stuff</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>aptitude search mysql       # Look for something
+dpkg -S `which tsclient`    # What package does it belong to?
+dpkg -L aria2c              # What does this package provide?
+dpkg -i *.deb               # Install a deb file
+dpkg -s nodejs              # Show info
+
+dpkg --get-selections       # list installed packages
+</code></pre></div></div>
+
+<h3 id="apt-archives-path">Apt archives path</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/var/cache/apt/archives
+</code></pre></div></div>
+
+<h3 id="list-services">List services</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>service --status-all
+</code></pre></div></div>
+
+      
+      <button onclick="topFunction()" id="topBtn" title="Go to top">></button>
+    </main>
+
+    <script src="/assets/js/sideBar.js"></script>
+    <script src="/assets/js/sideBarRight.js"></script>
+    <script src="/assets/js/topButton.js"></script>
+    <script src="/assets/js/capitalizeFirstLetter.js"></script>
+
+  </body>
+</html>

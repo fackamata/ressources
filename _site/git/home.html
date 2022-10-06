@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Home - </title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+  </head>
+  <body>
+    <nav id="sidebarRight">
+
+    <a href="javascript:void(0)" class="closebtnRight" onclick="closeSideNavRight()">&times;</a>
+    
+        <!-- git -->
+        <ul>
+            
+            <li><a href=" /php/home" 
+                git
+                class="  ">
+                php</a>
+                
+            </li>
+        
+            <li><a href=" /flask/home" 
+                git
+                class="  ">
+                flask</a>
+                
+            </li>
+        
+            <li><a href=" /jekyll/home" 
+                git
+                class="  ">
+                jekyll</a>
+                
+            </li>
+        
+            <li><a href=" /symfony/home" 
+                git
+                class="  ">
+                symfony</a>
+                
+            </li>
+        
+            <li><a href=" /mysql/home" 
+                git
+                class="  ">
+                mysql</a>
+                
+            </li>
+        
+            <li><a href=" /laravel/home" 
+                git
+                class="  ">
+                laravel</a>
+                
+            </li>
+        
+            <li><a href=" /docker/home" 
+                git
+                class="  ">
+                docker</a>
+                
+            </li>
+        
+            <li><a href=" /linux/home" 
+                git
+                class="  ">
+                linux</a>
+                
+            </li>
+        
+            <li><a href=" /ansible/home" 
+                git
+                class="  ">
+                ansible</a>
+                
+            </li>
+        
+            <li><a href=" /git/home" 
+                git
+                class="  activeTop  ">
+                git</a>
+                
+            </li>
+        
+            <li><a href=" /javascript/home" 
+                git
+                class="  ">
+                javascript</a>
+                
+            </li>
+        
+            <li><a href=" /HTML/home" 
+                git
+                class="  ">
+                HTML</a>
+                
+            </li>
+        
+    </ul>
+</nav>
+    <nav id="sidebar" class="sidenav">
+    
+    <a href="javascript:void(0)" class="closebtn" onclick="closeSideNavLeft()">&times;</a>
+    <ul>
+        
+        
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+        
+            
+            
+                    
+                
+                    <li><a href="/git/home" 
+                        class="  active  ">
+                                           
+                            home</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/git/branch" 
+                        class="  ">
+                                           
+                            branch</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/git/extras" 
+                        class="  ">
+                                           
+                            extras</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/git/log" 
+                        class="  ">
+                                           
+                            log</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/git/log-format" 
+                        class="  ">
+                        
+                            log format</a>
+                        
+
+                    </li>
+                
+                    <li><a href="/git/revisions" 
+                        class="  ">
+                                           
+                            revisions</a>
+                        
+
+                    </li>
+                
+            
+        
+            
+            
+        
+            
+            
+        
+    </ul>
+</nav>
+    
+    <button onclick="openSideNavLeft()" id="sideBtnLeft">></button>
+    <button onclick="openSideNavRight()" id="sideBtnRight">></button>
+    <main>
+      <!-- <button onclick="sideFunction()" id="sideBtn" title="Go to top">></button> -->
+      <h1>Home</h1>
+      
+      <h2 id="refs">Refs</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HEAD^       # 1 commit before head
+HEAD^^      # 2 commits before head
+HEAD~5      # 5 commits before head
+</code></pre></div></div>
+
+<h2 id="branches">Branches</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># create a new branch
+  git checkout -b $branchname
+  git push origin $branchname --set-upstream
+
+# get a remote branch
+  git fetch origin
+  git checkout --track origin/$branchname
+
+# delete local remote-tracking branches (lol)
+  git remote prune origin
+
+# list merged branches
+  git branch -a --merged
+
+# delete remote branch
+  git push origin :$branchname
+  
+# go back to previous branch
+  git checkout -
+</code></pre></div></div>
+
+<h2 id="collaboration">Collaboration</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Rebase your changes on top of the remote master
+  git pull --rebase upstream master
+  
+# Squash multiple commits into one for a cleaner git log
+# (on the following screen change the word pick to either 'f' or 's')
+  git rebase -i $commit_ref
+</code></pre></div></div>
+
+<h2 id="submodules">Submodules</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Import .gitmodules
+  git submodule init
+
+# Clone missing submodules, and checkout commits
+  git submodule update --init --recursive
+
+# Update remote URLs in .gitmodules
+# (Use when you changed remotes in submodules)
+  git submodule sync
+</code></pre></div></div>
+
+<h2 id="diff">Diff</h2>
+
+<h3 id="diff-with-stats">Diff with stats</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff --stat
+app/a.txt    | 2 +-
+app/b.txt    | 8 ++----
+2 files changed, 10 insertions(+), 84 deletions(-)
+</code></pre></div></div>
+
+<h3 id="just-filenames">Just filenames</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff --summary
+</code></pre></div></div>
+
+<h2 id="log-options">Log options</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>--oneline
+  e11e9f9 Commit message here
+
+--decorate
+  shows "(origin/master)"
+
+--graph
+  shows graph lines
+
+--date=relative
+  "2 hours ago"
+</code></pre></div></div>
+
+<h2 id="misc">Misc</h2>
+
+<h3 id="cherry-pick">Cherry pick</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git rebase 76acada^
+</code></pre></div></div>
+
+<h3 id="misc-1">Misc</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># get current sha1 (?)
+  git show-ref HEAD -s
+
+# show single commit info
+  git log -1 f5a960b5
+
+# Go back up to root directory
+  cd "$(git rev-parse --show-top-level)"
+</code></pre></div></div>
+
+<h2 id="short-log">Short log</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> $ git shortlog
+ $ git shortlog HEAD~20..    # last 20 commits
+
+ James Dean (1):
+     Commit here
+     Commit there
+
+ Frank Sinatra (5):
+     Another commit
+     This other commit
+</code></pre></div></div>
+
+<h2 id="bisect">Bisect</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git bisect start HEAD HEAD~6
+git bisect run npm test
+git checkout refs/bisect/bad   # this is where it screwed up
+git bisect reset
+</code></pre></div></div>
+
+<h3 id="manual-bisection">Manual bisection</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git bisect start
+git bisect good   # current version is good
+
+git checkout HEAD~8
+npm test          # see if it's good
+git bisect bad    # current version is bad
+
+git bisect reset  # abort
+</code></pre></div></div>
+
+<h2 id="searching">Searching</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git log --grep="fixes things"  # search in commit messages
+git log -S"window.alert"       # search in code
+git log -G"foo.*"              # search in code (regex)
+</code></pre></div></div>
+
+<h2 id="gpg-signing">GPG Signing</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config set user.signingkey &lt;GPG KEY ID&gt;       # Sets GPG key to use for signing
+
+git commit -m "Implement feature Y" --gpg-sign    # Or -S, GPG signs commit
+
+git config set commit.gpgsign true                # Sign commits by default
+git commit -m "Implement feature Y" --no-gpg-sign # Do not sign
+</code></pre></div></div>
+
+
+      
+      <button onclick="topFunction()" id="topBtn" title="Go to top">></button>
+    </main>
+
+    <script src="/assets/js/sideBar.js"></script>
+    <script src="/assets/js/sideBarRight.js"></script>
+    <script src="/assets/js/topButton.js"></script>
+    <script src="/assets/js/capitalizeFirstLetter.js"></script>
+
+  </body>
+</html>

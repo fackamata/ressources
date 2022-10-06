@@ -1,0 +1,43 @@
+I"�	<h2 id="somme-command">somme command</h2>
+
+<h3 id="ownership-and-permission">ownership and permission</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo chown</span> <span class="nt">-R</span> www-data:www-data /var/www/html
+</code></pre></div></div>
+
+<p>to allow the group www-data to take ownership of folder.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>adduser username www-data
+</code></pre></div></div>
+<p>to add your user to the group www-data</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo chmod</span> <span class="nt">-R</span> 775 /var/www/html/
+</code></pre></div></div>
+<p>To now change file permissions to 775 so that, (U)ser / owner can read, can write and can execute. (G)roup can read, can write and can execute. (O)thers can read, can’t write and can execute.</p>
+
+<h3 id="php-local-server">PHP local server</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>php <span class="nt">-S</span> localhost:8080
+</code></pre></div></div>
+
+<h3 id="vardump">Vardump</h3>
+
+<p>dump information about one or more variables.</p>
+
+<p>&lt;?php var_dump(var1, var2, …); ?&gt;</p>
+
+<h3 id="if-elseif-else">If elseif else</h3>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="nv">$a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$a</span> <span class="o">==</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">echo</span> <span class="s2">"The value of a is equal to 10"</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">elseif</span> <span class="p">(</span><span class="nv">$a</span> <span class="o">==</span> <span class="mi">15</span> <span class="p">){</span>
+<span class="k">echo</span> <span class="s2">"The value of a is equal to 15"</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="k">echo</span> <span class="s2">" a is not equal to 10 or 15 "</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span>
+</code></pre></div></div>
+
+:ET
