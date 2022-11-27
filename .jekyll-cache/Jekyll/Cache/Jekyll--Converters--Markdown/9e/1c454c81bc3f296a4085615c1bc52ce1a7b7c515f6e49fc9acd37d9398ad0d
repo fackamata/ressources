@@ -1,0 +1,18 @@
+I"°<h2 id="add-id">add id</h2>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sentence with id
+{: #supId}
+
+</code></pre></div></div>
+
+<p>to add a specific id, here <code class="language-plaintext highlighter-rouge">&lt;p id='supId'&gt;sentence with id&lt;/p&gt;</code></p>
+
+<h2 id="add-id-1">add id</h2>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gu">### title with class</span>
+{: .supClass}
+
+</code></pre></div></div>
+
+<p>to add a specific id, here <code class="language-plaintext highlighter-rouge">&lt;h3 class='title with class'&gt;title with class&lt;/h3&gt;</code></p>
+:ET

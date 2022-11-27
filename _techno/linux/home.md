@@ -4,6 +4,15 @@ layout: default
 techno: linux
 ---
 
+## restore a system
+
+save /etc and /home in another partition.
+
+```bash
+dpkg --get-selections > pkg.list
+```
+list of all installed software, to restore system at anytime
+
 ## Expressions
 
 | Expression        | Example             | Description

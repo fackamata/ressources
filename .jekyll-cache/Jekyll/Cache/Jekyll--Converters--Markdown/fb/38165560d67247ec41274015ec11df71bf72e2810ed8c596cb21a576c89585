@@ -1,0 +1,90 @@
+I"Ø
+<h1 id="bash-shortcut">bash shortcut</h1>
+
+<h2 id="shortcut">shortcut</h2>
+<ul>
+  <li>CTRL + L : Clear the screen.</li>
+  <li>CTRL + U : Delete all the word before cursor.</li>
+  <li>Tab : Auto-complete files, directory, command names and much more.</li>
+  <li>CTRL + R : Search through previously used commands (see command history)</li>
+  <li>CTRL + C : Cancel currently running commands.</li>
+  <li>CTRL + T : Swap the last two characters before the cursor.</li>
+  <li>ESC + T : Swap the last two words before the cursor.</li>
+  <li>
+    <p>CTRL + H : Delete the letter starting at cursor.</p>
+  </li>
+  <li>CTRL + Z : Suspend the current foreground process running in bash</li>
+  <li>CTRL + D : Close the bash shell</li>
+</ul>
+
+<h2 id="moving-the-cursor">Moving the Cursor</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Command</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Ctrl+A</td>
+      <td style="text-align: left">Go to the beginning of the line.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Ctrl+E</td>
+      <td style="text-align: left">Go to the end of the line.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Alt+B</td>
+      <td style="text-align: left">Go left (back) one word.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Ctrl+B</td>
+      <td style="text-align: left">Go left (back) one character.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Alt+F</td>
+      <td style="text-align: left">Go right (forward) one word.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Ctrl+F</td>
+      <td style="text-align: left">Go right (forward) one character.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Ctrl+XX</td>
+      <td style="text-align: left">Move between the beginning of the line and the current position of the cursor.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="deleting-text">Deleting Text</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Command</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Ctrl+D</td>
+      <td style="text-align: left">Delete the character under the cursor.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Ctrl+H or Backspace</td>
+      <td style="text-align: left">Delete the character before the cursor.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Ctrl+W</td>
+      <td style="text-align: left">Delete the word before the cursor.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Alt+D</td>
+      <td style="text-align: left">Delete the word after the cursor.</td>
+    </tr>
+  </tbody>
+</table>
+
+:ET

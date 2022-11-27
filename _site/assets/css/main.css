@@ -16,8 +16,6 @@ pre code { color: #7ca728; font-size: 10px; }
 
 img { max-width: 100%; }
 
-#topBtn { display: none; position: fixed; bottom: 20px; right: 30px; z-index: 99; font-size: 18px; border: none; outline: none; background-color: #283A55; color: #CAD2E2; cursor: pointer; padding: 10px 15px; border-radius: 40%; transform: rotate(-90deg); }
-
 #sideBtnLeft { display: block; position: fixed; top: 40px; left: 0px; font-size: 18px; z-index: 3; border: none; outline: none; background-color: #1A2332; color: #CAD2E2; cursor: pointer; padding: 10px 15px; border-radius: 40%; }
 
 #sideBtnRight { display: block; position: fixed; top: 40px; right: 20px; font-size: 18px; z-index: 3; border: none; outline: none; background-color: #1A2332; color: #CAD2E2; cursor: pointer; padding: 10px 15px; border-radius: 40%; transform: rotate(-180deg); }

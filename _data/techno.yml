@@ -20,8 +20,6 @@
   active: jekyll
   nav:
     - home
-    - jekyll
-    - github
     - back-office
 - title: symfony
   link: /symfony
@@ -83,6 +81,7 @@
     - home
     - command-line
     - bash
+    - bash-shortcut
     - bash-2
     - curl
     - grep
@@ -97,16 +96,6 @@
     - ubuntu
     - sed
     - vim
-
-- title: ansible
-  link: /ansible
-  active: ansible
-  nav:
-    - home
-    - ansible-guide
-    - ansible-modules
-    - ansible-roles
-    - ansible-examples
 
 - title: git
   link: /git
@@ -141,3 +130,10 @@
   active: HTML
   nav:
     - home
+
+- title: SEO
+  link: /SEO
+  active: SEO
+  nav:
+    - home
+    - description
