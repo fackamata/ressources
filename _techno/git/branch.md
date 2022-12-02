@@ -41,6 +41,22 @@ git branch --list
 
 Existing branches are listed. Current branch will be highlighted with an asterisk.
 
+### Rename branch
+
+```bash
+git branch -a
+* misspelled_Branch
+master
+
+git branch -m new_Name
+
+git branch -a
+* new_Name
+master
+```
+
+Rename the current branch.
+
 ### List merged branches
 
 ```bash

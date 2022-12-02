@@ -1,9 +1,0 @@
-I"/<h2 id="add-id">add id</h2>
-
-<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sentence with id
-{: #supId}
-
-</code></pre></div></div>
-
-<p>to add a specific id, here <code class="language-plaintext highlighter-rouge">&lt;p id='supId'&gt;&lt;/p&gt;</code></p>
-:ET
