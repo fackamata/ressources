@@ -1,0 +1,30 @@
+I"¢<h2 id="some-basics">some basics</h2>
+
+<h3 id="create-app">create app</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npx create-react-app <span class="nb">.</span>
+</code></pre></div></div>
+<p>create a react app in the current directory</p>
+
+<h3 id="run-server">run server</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm start
+</code></pre></div></div>
+<p>run server on localhost:3000</p>
+
+<h3 id="simple-app">simple app</h3>
+<p>in src remove everything except :</p>
+<ul>
+  <li>App.css</li>
+  <li>App.js</li>
+  <li>index.js</li>
+</ul>
+
+<p>and there import on index.js</p>
+
+<h3 id="how-it-work">how it work</h3>
+
+<p>everything will go into <code class="language-plaintext highlighter-rouge">&lt;div id='root'&gt;</code> when the page is loaded. No need to reload again.</p>
+
+<p>pro : nothing need to be download</p>
+
+:ET

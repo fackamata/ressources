@@ -1,4 +1,4 @@
-I"	<h2 class="-three-column" id="working-with-branches">Working with branches</h2>
+I"«<h2 class="-three-column" id="working-with-branches">Working with branches</h2>
 
 <h3 id="creating">Creating</h3>
 
@@ -29,6 +29,21 @@ git checkout <span class="nt">--track</span> origin/<span class="nv">$branchname
 </code></pre></div></div>
 
 <p>Existing branches are listed. Current branch will be highlighted with an asterisk.</p>
+
+<h3 id="rename-branch">Rename branch</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch <span class="nt">-a</span>
+<span class="k">*</span> misspelled_Branch
+master
+
+git branch <span class="nt">-m</span> new_Name
+
+git branch <span class="nt">-a</span>
+<span class="k">*</span> new_Name
+master
+</code></pre></div></div>
+
+<p>Rename the current branch.</p>
 
 <h3 id="list-merged-branches">List merged branches</h3>
 

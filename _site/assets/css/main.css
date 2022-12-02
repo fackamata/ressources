@@ -20,6 +20,8 @@ img { max-width: 100%; }
 
 #sideBtnRight { display: block; position: fixed; top: 40px; right: 20px; font-size: 18px; z-index: 3; border: none; outline: none; background-color: #1A2332; color: #CAD2E2; cursor: pointer; padding: 10px 15px; border-radius: 40%; transform: rotate(-180deg); }
 
+#topBtn { display: none; position: fixed; bottom: 40px; right: 50px; z-index: 99; font-size: 18px; border: none; outline: none; background-color: #1A2332; color: #7ca728; cursor: pointer; padding: 10px 15px; border-radius: 40%; transform: rotate(-90deg); }
+
 .activeTop { color: #9FEF00 !important; }
 
 #sidebarRight { display: block; height: 100%; width: 200px; position: fixed; z-index: 5; top: 0; right: 0; background-color: #1A2332; overflow-x: hidden; transition: 0.5s; padding-top: 60px; }
