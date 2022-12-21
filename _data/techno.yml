@@ -21,6 +21,8 @@
   nav:
     - home
     - back-office
+    - markdown
+    - github-pages
 - title: symfony
   link: /symfony
   active: symfony
