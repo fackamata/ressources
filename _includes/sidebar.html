@@ -9,7 +9,7 @@
             {% if tech.title == page.techno %}
                     
                 {% for navItem in tech.nav %}
-                    <li><a href="{{ site.baseurl }}/{{tech.title}}{{navItem | relative_url }}" 
+                    <li><a href="{{navItem}}" 
                         class=" {% if current[-1] == navItem %} active {% endif %} ">
                         {% if navItem contains "-" %}
                             {{navItem | replace: '-', ' '}}</a>

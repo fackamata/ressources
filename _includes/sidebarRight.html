@@ -5,7 +5,7 @@
         <!-- {{ current[1]}} -->
         <ul>
             {% for tech in site.data.techno %}
-            <li><a href="{{ site.baseurl }} {{ tech.link | relative_url }}/home" 
+            <li><a href="{{ tech.link | relative_url }}/home" 
                 {{ page.techno}}
                 class=" {% if page.techno == tech.active  %} activeTop {% endif %} ">
                 {{ tech.title }}</a>
