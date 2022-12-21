@@ -1,9 +1,0 @@
-I"t<h2 id="unknown-mark-up">unknown mark-up</h2>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;details&gt;</span>
-    <span class="nt">&lt;summary&gt;</span>dropdown<span class="nt">&lt;/summary&gt;</span>
-    Text to be displayed
-<span class="nt">&lt;/details&gt;</span>
-</code></pre></div></div>
-<p><code class="language-plaintext highlighter-rouge">details</code> and <code class="language-plaintext highlighter-rouge">summary</code> are used to create collapside content without using any JavaScript. It’s the semantic method of crating dropdowns.</p>
-:ET

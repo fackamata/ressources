@@ -2,6 +2,6 @@
 layout: default
 ---
 
-# Quelque ressources
+# some resources
 
-Start developing your Jekyll website.
+Choose your technos
