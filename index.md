@@ -4,4 +4,4 @@ layout: default
 
 # some resources
 
-Choose your technos
+Choose your technos on the right sidebar
