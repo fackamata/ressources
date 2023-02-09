@@ -4,15 +4,6 @@ layout: default
 techno: linux
 ---
 
-## restore a system
-
-save /etc and /home in another partition.
-
-```bash
-dpkg --get-selections > pkg.list
-```
-list of all installed software, to restore system at anytime
-
 ## Expressions
 
 | Expression        | Example             | Description
@@ -38,12 +29,6 @@ list of all installed software, to restore system at anytime
 | `<(COMMAND)`      | `grep "needle" <(curl "https://haystack.io")`         | Replace argument with _named pipe/FIFO_ (read-only) with command output
 | `=(COMMAND)`      | `vim =(curl "https://haystack.io")`                   | Replace argument with _file_ (writable) containing command output
 
-
-### Also see
-
-- [Bash cheatsheet](./bash)
-
-Zsh is mostly compatible with Bash, so most everything in Bash's cheatsheet also applies.
 
 ## some command
 
