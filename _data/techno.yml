@@ -94,10 +94,12 @@
     - regex
     - regexp
     - vim
-    - tar
     - ubuntu
     - sed
-    - vim
+    - nmcli
+    - adb
+    - cron
+    - tar
 
 - title: git
   link: /git
