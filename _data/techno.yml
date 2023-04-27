@@ -89,14 +89,12 @@
   active: linux
   nav:
     - home
-    - command-line
+    - cmd-shortcut
     - bash
-    - bash-shortcut
     - bash-2
     - curl
     - wget
     - grep
-    - find
     - cheat-sheet
     - install
     - regex

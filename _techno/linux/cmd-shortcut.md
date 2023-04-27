@@ -1,10 +1,10 @@
 ---
-titre : bash shortcut
+titre : cmd shortcut
 layout: default
 techno: linux
 ---
 
-# bash shortcut
+# cmd shortcut
 
 
 ## shortcut
