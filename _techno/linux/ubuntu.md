@@ -4,6 +4,34 @@ layout: default
 techno: linux
 ---
 
+## shortcut
+
+## Window & Workspace Management
+
+SUPER + H	 -> Minimize windows
+
+### operating system
+
+SUPER	-> Activities overview
+SUPER + A	-> Applications
+SUPER + P	-> Presentation mode (cycle display modes)
+SUPER + L	-> Lock screen
+SUPER + O	-> Orientation lock (on devices w/accelerometer)
+SUPER + D	-> Show desktop
+SUPER + V	-> Calendar and notifications indicator
+SUPER + N	-> Focus active notification
+Ctrl + Alt + T	-> Terminal
+Alt + Space	-> Application menu
+SUPER + Space	-> Switch input source (language keyboard)
+Alt + F2	-> Run command
+Ctrl + Alt + Del	-> Log 
+
+## Accessibility
+
+Alt + SUPER + S	-> Toggle screen reader
+Alt + SUPER + 8	-> Toggle magnifier
+Alt + SUPER + +/-	-> Zoom in/out (when magnifier is active)
+
 ### Aptitude stuff
 
     aptitude search mysql       # Look for something
