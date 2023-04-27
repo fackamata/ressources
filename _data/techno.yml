@@ -100,10 +100,12 @@
     - regex
     - regexp
     - vim
-    - tar
     - ubuntu
     - sed
-    - linux-structure
+    - nmcli
+    - adb
+    - cron
+    - tar
 
 - title: git
   link: /git
